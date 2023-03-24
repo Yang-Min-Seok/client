@@ -1,59 +1,40 @@
-import { BodyDiv, Progress, PplCntBox, PplIntro, PwIntro } from "./style";
+import { BodyDiv, Topper, CntIntro, CntBox, PwIntro, PwBox } from "./style";
 
 function Body () {
-    const handleSubmit = (event) => {
-        
-    }
-
-    const onChange = (event) => {
-        
-    }
     
     return (
         <BodyDiv>
-            
-            <Progress>
+            <Topper>
                 <div></div>
                 <div></div>
-            </Progress>
+            </Topper>
             
-            <PplIntro>
-                총 몇 명의<br />
-                시간표를<br />
-                입력하실 건가요?
-            </PplIntro>
-            
-            <form onSubmit={handleSubmit}>
+            <form>
                 
-                <PplCntBox>
-                    <input 
-                        type="number"
-                        name="pplcnt"
-                        onChange={onChange}
-                    >
-                    </input>명
-                </PplCntBox>
+                <CntIntro>
+                    총 몇 명의<br />
+                    시간표를<br />
+                    입력하실 건가요?
+                </CntIntro>
                 
+                <CntBox>
+                    <input type="number" />명
+                </CntBox>
+
                 <PwIntro>
-                    관리자 비밀번호<br />
-                    4자리를 입력해주세요.
+                    관리자 비밀번호 <br />
+                    4자리를 입려해주세요
                 </PwIntro>
-                
 
-                <input
-                type="password"
-                name="pw"
-                onChange={onChange}
-                ></input>
+                <hr></hr>
 
-                
-                <button 
-                type="submit"
-                onSubmit={handleSubmit}
-                >다음</button>
-            
+                <PwBox>
+                    <input type="password" name="PW" />
+                </PwBox>
+
+                <button type="submit">다음</button>
+
             </form>
-
         </BodyDiv>
     )
 }
