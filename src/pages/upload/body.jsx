@@ -1,6 +1,22 @@
 import { BodyDiv, Topper, Intro, ShowBox } from "./style";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+
 function Body() {
+    
+    const [currFile, setCurrFile] = useState('default');
+
+    const onChangeImage = (e) => {
+        setCurrFile(e.target.files[0]);
+        console.log(currFile);
+        // // 화면에 시간표 사진 표시
+        // const reader = new FileReader();
+        // reader.onload = () => {
+        //   if (reader.readyState === 2 && reader.result !== null) {
+        //     setImage(reader.result);
+        //   }
+        // };
+        // reader.readAsDataURL(e.target.files[0]);
+      };
     
     return (
         <BodyDiv>
@@ -16,11 +32,17 @@ function Body() {
                     에브리타임 시간표 <br />
                     이미지를 업로드해주세요
                 </Intro>
-
-                <input type="file" name="timetable" id="" />
+                
+                {/* filtering */}
+                <input 
+                type="file" 
+                accept="image/jpg,impge/png,image/jpeg" 
+                name="timetable" 
+                onChange={onChangeImage}
+                />
 
                 <ShowBox>
-
+                    
                 </ShowBox>
 
                 <button type="submit">입력완료</button>

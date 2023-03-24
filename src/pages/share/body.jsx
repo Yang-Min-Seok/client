@@ -1,6 +1,7 @@
 import { BodyDiv, Topper, ShareBox, LinkKakao } from "./style";
-
+import { Link } from "react-router-dom";
 function Body() {
+    /* use effect 사용예정 */
     
     return (
         <BodyDiv>
@@ -28,7 +29,8 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
 
-            <button type="submit">다음</button>
+            
+            <Link to="/{생성된링크}">다음</Link>
         </BodyDiv>
     )
 }

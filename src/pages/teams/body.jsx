@@ -1,5 +1,4 @@
 import { BodyDiv, Topper, CntIntro, CntBox, PwIntro, PwBox } from "./style";
-
 function Body () {
     
     return (
@@ -18,7 +17,7 @@ function Body () {
                 </CntIntro>
                 
                 <CntBox>
-                    <input type="number" />명
+                    <input type="number" name="cnt"/>명
                 </CntBox>
 
                 <PwIntro>
@@ -32,7 +31,7 @@ function Body () {
                     <input type="password" name="PW" />
                 </PwBox>
 
-                <button type="submit">다음</button>
+                    <button type="submit">다음</button>
 
             </form>
         </BodyDiv>
