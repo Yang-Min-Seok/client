@@ -36,7 +36,7 @@ function Body() {
                 {/* filtering */}
                 <input 
                 type="file" 
-                accept="image/jpg,impge/png,image/jpeg" 
+                accept="image/jpg" 
                 name="timetable" 
                 onChange={onChangeImage}
                 />
