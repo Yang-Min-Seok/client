@@ -7,7 +7,7 @@ import Gather from "./pages/gather";
 import Show from "./pages/show";
 import Create from "./pages/create";
 import Vote from "./pages/vote";
-
+import Result from "./pages/result";
 function App() {
   return (
     <div>
@@ -21,6 +21,7 @@ function App() {
           <Route path={`/show`} element={<Show />}></Route>
           <Route path={`/create`} element={<Create />}></Route>
           <Route path={`/vote`} element={<Vote />}></Route>
+          <Route path={`/result`} element={<Result />}></Route>
         </Routes>
       </Router>
     </div>
