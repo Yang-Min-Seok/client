@@ -6,6 +6,7 @@ import Upload from "./pages/upload";
 import Gather from "./pages/gather";
 import Show from "./pages/show";
 import Create from "./pages/create";
+import Vote from "./pages/vote";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path={`/gather`} element={<Gather />}></Route>
           <Route path={`/show`} element={<Show />}></Route>
           <Route path={`/create`} element={<Create />}></Route>
+          <Route path={`/vote`} element={<Vote />}></Route>
         </Routes>
       </Router>
     </div>
