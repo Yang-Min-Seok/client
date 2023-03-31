@@ -1,8 +1,11 @@
 import { BodyDiv, Topper, ShareBox, LinkKakao } from "./style";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 function Body() {
-    /* use effect 사용예정 */
     
+    const location = useLocation();
+    const url = location.state.url;
+    const teamId = location.state.teamId;
+
     return (
         <BodyDiv>
 
@@ -17,7 +20,7 @@ function Body() {
                     모두의 시간표를 <br />
                     모아주세요 !
                 </p>
-                <p>https:// ~ </p>
+                <p>{url}</p>
                 
                 <LinkKakao>
                     <div>
@@ -28,9 +31,8 @@ function Body() {
                     </div>
                 </LinkKakao>
             </ShareBox>
-
             
-            <Link to="/{생성된링크}">다음</Link>
+            <Link to={`/upload/${teamId}`} state={{url:url}}>다음</Link>
         </BodyDiv>
     )
 }

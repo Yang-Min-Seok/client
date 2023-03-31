@@ -1,18 +1,19 @@
 import { BodyDiv, Topper, CntIntro, CntBox, PwIntro, PwBox } from "./style";
-import { teams } from "../../apis/teamsApi";
+import { getImgUrl, putImg, teams } from "../../apis/Apis";
 import { useNavigate } from 'react-router-dom';
 import { useState, useCallback } from 'react';
 import useInput from "../../hooks/useInput";
+import { Link } from "react-router-dom";
 
 function Body () {
     const [ numberOfTeam, onChangeNumberOfTeam, setNumberOfTeam ] = useInput(0);
     const [ authCode, onChangeAuthCode, setAuthCode ] = useInput('0');
-    
     const navigate = useNavigate();
+
     const onSubmit = useCallback(
         (e) => {
-          e.preventDefault();
-          teams(navigate, Number(numberOfTeam), authCode)
+            e.preventDefault();
+            teams(navigate, Number(numberOfTeam), authCode); 
         },
       );
 

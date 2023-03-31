@@ -1,13 +1,18 @@
 import { BodyDiv, Topper, Intro, ShowBox } from "./style";
-import { useState } from "react";
-
+import { useState, useCallback } from "react";
+import { putImg } from "../../apis/Apis";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 function Body() {
-    
-    const [currFile, setCurrFile] = useState('default');
 
+    
+    const { teamId } = useParams(); // url의 id값을 가져옴
+    const [currFile, setCurrFile] = useState('default');
+    const location = useLocation();
+    const url = location.state.url;
+    const navigate = useNavigate();
+    
     const onChangeImage = (e) => {
         setCurrFile(e.target.files[0]);
-        console.log(currFile);
         // // 화면에 시간표 사진 표시
         // const reader = new FileReader();
         // reader.onload = () => {
@@ -16,7 +21,15 @@ function Body() {
         //   }
         // };
         // reader.readAsDataURL(e.target.files[0]);
-      };
+    };
+
+    const onSubmit = useCallback(
+        (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            putImg(navigate, url, formData.append('ImgFile', currFile), teamId);
+    },
+    )
     
     return (
         <BodyDiv>
@@ -26,7 +39,7 @@ function Body() {
                 <div></div>
             </Topper>
             
-            <form>
+            <form onSubmit={onSubmit}>
 
                 <Intro>
                     에브리타임 시간표 <br />

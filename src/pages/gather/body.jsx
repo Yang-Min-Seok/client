@@ -1,7 +1,18 @@
 import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
-import { Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
+import { getTeamInfo } from "../../apis/Apis";
+import { useCallback } from "react";
 function Body() {
     
+    const { teamId } = useParams();
+    const location = useLocation();
+    const currUrl = location.state.currUrl;
+    const onClick = useCallback(
+        (e) => {
+            e.preventDefault();
+            getTeamInfo(teamId, currUrl);
+    },
+    )
     return (
         <BodyDiv>
 
@@ -11,7 +22,8 @@ function Body() {
             </Topper>
             
             <GatheringBox>
-                <p>두근구든</p>
+                <p onClick={onClick}
+                >두근구든</p>
                 <h4>
                     모두의 시간표를<br />
                     기다리고 있어요
