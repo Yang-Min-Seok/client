@@ -4,9 +4,10 @@ import { putImg } from "../../apis/Apis";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 function Body() {
 
-    
-    const { teamId } = useParams(); // url의 id값을 가져옴
+    // useParams -> 현 페이지의 맨 마지막 id를 가져옴 (여기서는 teamId)
+    const { teamId } = useParams(); 
     const [currFile, setCurrFile] = useState('default');
+    // url 가져오기
     const location = useLocation();
     const url = location.state.url;
     const navigate = useNavigate();
@@ -23,11 +24,15 @@ function Body() {
         // reader.readAsDataURL(e.target.files[0]);
     };
 
+    // 입력완료 버튼을 눌렀을 때 발생할 함수
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
+            // img 파일을 담을 fromData
             const formData = new FormData();
-            putImg(navigate, url, formData.append('ImgFile', currFile), teamId);
+            // formData에 img파일 담기
+            formData.append('ImgFile', currFile);
+            putImg(navigate, url, formData, teamId);
     },
     )
     

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 function Body() {
     
     const location = useLocation();
+    // teams에서 가져온 url, teamId
     const url = location.state.url;
     const teamId = location.state.teamId;
 
@@ -20,7 +21,7 @@ function Body() {
                     모두의 시간표를 <br />
                     모아주세요 !
                 </p>
-                <p>{url}</p>
+                <p>sharelink</p>
                 
                 <LinkKakao>
                     <div>

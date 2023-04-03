@@ -6,11 +6,11 @@ function Body() {
     
     const { teamId } = useParams();
     const location = useLocation();
-    const currUrl = location.state.currUrl;
+    const url = location.state.url;
     const onClick = useCallback(
         (e) => {
             e.preventDefault();
-            getTeamInfo(teamId, currUrl);
+            getTeamInfo(teamId, url);
     },
     )
     return (
@@ -41,7 +41,7 @@ function Body() {
                 </p>
             </GatheringBox>
             
-            <Link to="#">관리자 권한으로 종료</Link>
+            <Link to="/">관리자 권한으로 종료</Link>
 
         </BodyDiv>
     )

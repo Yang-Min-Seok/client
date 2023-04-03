@@ -10,6 +10,7 @@ function Body () {
     const [ authCode, onChangeAuthCode, setAuthCode ] = useInput('0');
     const navigate = useNavigate();
 
+    // team 인원을 담아 생성 요청
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
@@ -47,9 +48,7 @@ function Body () {
                     <input type="password" name="PW" onChange={onChangeAuthCode}/>
                 </PwBox>
 
-                    <button 
-                    type="submit"
-                    >다음</button>
+                <button type="submit">다음</button>
 
             </form>
         </BodyDiv>
