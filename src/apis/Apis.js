@@ -17,12 +17,15 @@ const s3Api = axios.create({
 
 // 팀 인원을 담은 팀 생성 요청 (서비스 흐름도 - 1)
 export const teams = async (navigate, numberOfTeam, authCode) => {
-    // .then 전까지가 쏘는 구간
+    
+  // .then 전까지가 쏘는 구간
     // response부터가 응답 값을 받아오는 것
     await serverApi.post('https://api.mogong.site/teams', { numberOfTeam, authCode }).then((response) => {
+      // 팀 생성이 완료되었으면
       if (response.data.code === 'T-S001') {
+        // 이미지를 올릴 url presigned-url 요청
         getImgUrl(navigate, response.data.data.teamId);
-      }
+      };
     });
 };
 
@@ -33,30 +36,44 @@ export const getImgUrl = async (navigate, teamId) => {
         // teamId와 preSignedUrl을 들고 /share로
         navigate(`/share`, { state: {url:response.data.data.preSignedUrl, teamId: teamId}
         });
-      }
+      };
     });
 };
 
 // 받은 url에 이미지 첨부 요청
 export const putImg = async (navigate, currUrl, currFile, teamId ) => {
+  // s3에 put 요청 이 때에는 전체 url을 보내야 함 !
   await s3Api.put(currUrl, { currFile } ).then((response) => {
       // imgUrl 형성
       const imgUrl = currUrl.split('?')[0];
+      // uploadImg 호출
+      uploadImg(navigate, imgUrl, teamId);
+  });
+};
+
+// 이미지 업로드하기
+export const uploadImg = async (navigate, imgUrl, teamId) => {
+  await serverApi.post(`https://api.mogong.site/teams/${teamId}`, {'imageUrl' : imgUrl} ).then((response) => {
       // imgUrl을 갖고 gather로
       navigate(`/gather/${teamId}`, { state: {url: imgUrl} })
   });
 };
 
 // gather 에서 새로고침할 때 불러올 api
-export const getTeamInfo = async (teamId, imgUrl) => {
-  await serverApi.post(`https://api.mogong.site/teams/${teamId}`, { "imageUrl" : imgUrl }).then((response) => {
-    // 팀원들이 모두 이미지 업로드가 안된 상태일 때
-    if (response.data.code === 'T-S002') {
-      console.log(response);
-    }
-    // 팀원들이 모두 이미지 업로드가 된 상태일 때
-    else if (response.data.code == 'T-S003'){
-      console.log(response);
-    }
+export const getTeamInfo = async (navigate, teamId, imgUrl) => {
+  await serverApi.get(`https://api.mogong.site/teams/${teamId}/results`).then((response) => {
+      
+      // 팀 결과 생성에 성공했을 경우
+      if (response.data.code === 'T-S004'){
+        console.log(response)
+      }
+
+      // 팀 결과 생성에 성공했을 경우 (인원 미충족시)
+      else if (response.data.code == 'T-F002'){
+        console.log(response)
+        const nowCnt = response.data.data.submit
+        // console.log(nowCnt);
+        return nowCnt;
+      }
   });
 }

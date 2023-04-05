@@ -23,7 +23,7 @@ function Body() {
         // };
         // reader.readAsDataURL(e.target.files[0]);
     };
-
+    
     // 입력완료 버튼을 눌렀을 때 발생할 함수
     const onSubmit = useCallback(
         (e) => {

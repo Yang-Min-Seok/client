@@ -1,17 +1,20 @@
 import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { getTeamInfo } from "../../apis/Apis";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 function Body() {
     
     const { teamId } = useParams();
     const location = useLocation();
     const url = location.state.url;
+    const navigate = useNavigate();
+    const { nowCnt, setNowCnt } = useState('0');
     const onClick = useCallback(
         (e) => {
             e.preventDefault();
-            getTeamInfo(teamId, url);
-    },
+            const newCnt = getTeamInfo(navigate, teamId, url);
+            console.log(newCnt);
+        },
     )
     return (
         <BodyDiv>
@@ -32,7 +35,7 @@ function Body() {
 
                 </Refresh>
                 <p>
-                    지금까지 ~ 명이<br />
+                    지금까지 명이<br />
                     완료했어요!
                 </p>
                 <p>
