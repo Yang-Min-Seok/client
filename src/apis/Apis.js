@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { redirect } from 'react-router-dom';
 const serverApi = axios.create({
     // api 기본 사이트
     baseURL: process.env.REACT_APP_SERVER_URL, // 보안 상 env파일에
@@ -61,19 +62,24 @@ export const uploadImg = async (navigate, imgUrl, teamId) => {
 
 // gather 에서 새로고침할 때 불러올 api
 export const getTeamInfo = async (navigate, teamId, imgUrl) => {
+  let numberOfTeam
+  let nowCnt
+
   await serverApi.get(`https://api.mogong.site/teams/${teamId}/results`).then((response) => {
-      
+      numberOfTeam = response.data.data.numberOfTeam;
+      nowCnt = response.data.data.submit;
+      // console.log(numberOfTeam, nowCnt);
+
       // 팀 결과 생성에 성공했을 경우
-      if (response.data.code === 'T-S004'){
+      if (response.data.code === "T-S004") {
         console.log(response)
       }
 
       // 팀 결과 생성에 성공했을 경우 (인원 미충족시)
-      else if (response.data.code == 'T-F002'){
-        console.log(response)
-        const nowCnt = response.data.data.submit
-        // console.log(nowCnt);
-        return nowCnt;
+      else if (response.data.code === "T-F002") {
+
       }
-  });
-}
+    });
+  
+  return [nowCnt, numberOfTeam]
+};

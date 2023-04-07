@@ -8,14 +8,16 @@ function Body() {
     const location = useLocation();
     const url = location.state.url;
     const navigate = useNavigate();
-    const { nowCnt, setNowCnt } = useState('0');
-    const onClick = useCallback(
-        (e) => {
-            e.preventDefault();
-            const newCnt = getTeamInfo(navigate, teamId, url);
-            console.log(newCnt);
-        },
-    )
+    const [ nowCnt, setNowCnt ] = useState(0);
+    const [ numberOfTeam, setNumberOfTeam ] = useState(0);
+    
+    const onClick = useCallback(async () => {
+        await getTeamInfo(navigate, teamId, url).then((response) => {
+          setNowCnt(response[0])
+          setNumberOfTeam(response[1])
+        });
+      });
+
     return (
         <BodyDiv>
 
@@ -25,17 +27,16 @@ function Body() {
             </Topper>
             
             <GatheringBox>
-                <p onClick={onClick}
-                >두근구든</p>
+                <p>두근구든</p>
                 <h4>
                     모두의 시간표를<br />
                     기다리고 있어요
                 </h4>
-                <Refresh>
-
+                <Refresh onClick={() => onClick()}>
+                    새로고침
                 </Refresh>
                 <p>
-                    지금까지 명이<br />
+                    지금까지 ({nowCnt} / {numberOfTeam})명이<br />
                     완료했어요!
                 </p>
                 <p>
