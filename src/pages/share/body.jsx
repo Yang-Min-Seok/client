@@ -21,7 +21,7 @@ function Body() {
                     모두의 시간표를 <br />
                     모아주세요 !
                 </p>
-                <p>sharelink</p>
+                <Link to={`/upload/${teamId}`} state={{url:url}}>{`http://localhost:3000/upload/${teamId}`}</Link>
                 
                 <LinkKakao>
                     <div>

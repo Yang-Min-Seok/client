@@ -24,6 +24,7 @@ export const teams = async (navigate, numberOfTeam, authCode) => {
     await serverApi.post('https://api.mogong.site/teams', { numberOfTeam, authCode }).then((response) => {
       // 팀 생성이 완료되었으면
       if (response.data.code === 'T-S001') {
+        console.log(response.data.data.teamName);
         // 이미지를 올릴 url presigned-url 요청
         getImgUrl(navigate, response.data.data.teamId);
       };
