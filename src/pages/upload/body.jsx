@@ -13,7 +13,9 @@ function Body() {
     const navigate = useNavigate();
     
     const onChangeImage = (e) => {
-        setCurrFile(e.target.files[0]);
+        if (e.target.files[0] !== undefined) {
+            setCurrFile(e.target.files[0]);
+        }
         // // 화면에 시간표 사진 표시
         // const reader = new FileReader();
         // reader.onload = () => {
@@ -28,11 +30,16 @@ function Body() {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            // img 파일을 담을 fromData
-            const formData = new FormData();
-            // formData에 img파일 담기
-            formData.append('ImgFile', currFile);
-            putImg(navigate, url, formData, teamId);
+            if (currFile !== 'default'){
+                // img 파일을 담을 fromData
+                const formData = new FormData();
+                // formData에 img파일 담기
+                formData.append('ImgFile', currFile);
+                putImg(navigate, url, formData, teamId);
+            }
+            else{
+                alert('이미지를 첨부해주세요.');
+            }   
     },
     )
     

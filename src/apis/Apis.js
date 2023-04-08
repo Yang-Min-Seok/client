@@ -45,10 +45,10 @@ export const getImgUrl = async (navigate, teamId) => {
 export const putImg = async (navigate, currUrl, currFile, teamId ) => {
   // s3에 put 요청 이 때에는 전체 url을 보내야 함 !
   await s3Api.put(currUrl, { currFile } ).then((response) => {
-      // imgUrl 형성
-      const imgUrl = currUrl.split('?')[0];
-      // uploadImg 호출
-      uploadImg(navigate, imgUrl, teamId);
+    // imgUrl 형성
+    const imgUrl = currUrl.split('?')[0];
+    // uploadImg 호출
+    uploadImg(navigate, imgUrl, teamId);
   });
 };
 

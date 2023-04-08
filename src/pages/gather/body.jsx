@@ -1,7 +1,8 @@
 import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { getTeamInfo } from "../../apis/Apis";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
+
 function Body() {
     
     const { teamId } = useParams();
@@ -10,7 +11,7 @@ function Body() {
     const navigate = useNavigate();
     const [ nowCnt, setNowCnt ] = useState(0);
     const [ numberOfTeam, setNumberOfTeam ] = useState(0);
-    
+
     const onClick = useCallback(async () => {
         await getTeamInfo(navigate, teamId, url).then((response) => {
           setNowCnt(response[0])
