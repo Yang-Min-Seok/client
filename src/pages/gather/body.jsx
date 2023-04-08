@@ -18,6 +18,11 @@ function Body() {
           setNumberOfTeam(response[1])
         });
       });
+    
+    useEffect(() => {
+        // 첫 렌더링 때 무조건 실행됨
+        onClick()
+    }, []);
 
     return (
         <BodyDiv>
