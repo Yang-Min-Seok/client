@@ -16,8 +16,8 @@ function App() {
           <Route path={`/`} element={<Landing />}></Route>
           <Route path={`/teams`} element={<Teams />}></Route>
           <Route path={`/share`} element={<Share />}></Route>
-          <Route path={`/upload/:teamId`} element={<Upload />}></Route>
-          <Route path={`/gather/:teamId`} element={<Gather />}></Route>
+          <Route path={`/upload/:teamName`} element={<Upload />}></Route>
+          <Route path={`/gather/:teamName`} element={<Gather />}></Route>
           <Route path={`/show`} element={<Show />}></Route>
           <Route path={`/create`} element={<Create />}></Route>
           <Route path={`/vote`} element={<Vote />}></Route>

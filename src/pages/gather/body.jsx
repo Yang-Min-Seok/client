@@ -5,15 +5,15 @@ import { useCallback, useState, useEffect } from "react";
 
 function Body() {
     
-    const { teamId } = useParams();
     const location = useLocation();
+    const teamId = location.state.teamId;
     const url = location.state.url;
     const navigate = useNavigate();
     const [ nowCnt, setNowCnt ] = useState(0);
     const [ numberOfTeam, setNumberOfTeam ] = useState(0);
 
     const onClick = useCallback(async () => {
-        await getTeamInfo(navigate, teamId, url).then((response) => {
+        await getTeamInfo(teamId).then((response) => {
           setNowCnt(response[0])
           setNumberOfTeam(response[1])
         });

@@ -14,9 +14,9 @@ function Body () {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            teams(navigate, Number(numberOfTeam), authCode); 
+            teams(navigate, Number(numberOfTeam), authCode);
         },
-      );
+    );
 
     return (
         <BodyDiv>

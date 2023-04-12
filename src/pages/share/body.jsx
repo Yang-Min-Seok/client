@@ -3,9 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 function Body() {
     
     const location = useLocation();
+    
     // teams에서 가져온 url, teamId
     const url = location.state.url;
     const teamId = location.state.teamId;
+    const teamName = location.state.teamName;
 
     return (
         <BodyDiv>
@@ -21,7 +23,7 @@ function Body() {
                     모두의 시간표를 <br />
                     모아주세요 !
                 </p>
-                <Link to={`/upload/${teamId}`} state={{url:url}}>{`http://localhost:3000/upload/${teamId}`}</Link>
+                <Link to={`/upload/${teamName}`} state={{url:url, teamId:teamId}}>{`http://localhost:3000/upload/${teamName}`}</Link>
                 
                 <LinkKakao>
                     <div>
@@ -33,7 +35,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/upload/${teamId}`} state={{url:url}}>다음</Link>
+            <Link to={`/upload/${teamName}`} state={{url:url, teamId:teamId}}>다음</Link>
         </BodyDiv>
     )
 }

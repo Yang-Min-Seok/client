@@ -3,14 +3,15 @@ import { useState, useCallback } from "react";
 import { putImg } from "../../apis/Apis";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 function Body() {
-
-    // useParams -> 현 페이지의 맨 마지막 id를 가져옴 (여기서는 teamId)
-    const { teamId } = useParams(); 
+    
     const [currFile, setCurrFile] = useState('default');
     // url 가져오기
     const location = useLocation();
+    const teamId = location.state.teamId;
     const url = location.state.url;
     const navigate = useNavigate();
+    // useParams -> url의 마지막 부분
+    const teamName = useParams();
     
     const onChangeImage = (e) => {
         if (e.target.files[0] !== undefined) {
@@ -30,14 +31,18 @@ function Body() {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
+            // currFile이 비어있지 않으면,
             if (currFile !== 'default'){
-                // img 파일을 담을 fromData
+                // img 파일을 담을 fromData 형성
                 const formData = new FormData();
                 // formData에 img파일 담기
                 formData.append('ImgFile', currFile);
-                putImg(navigate, url, formData, teamId);
+                // putImg 호출
+                putImg(navigate, url, formData, teamId, teamName);
             }
+            // currFile이 비어있으면,
             else{
+                // 경고메세지
                 alert('이미지를 첨부해주세요.');
             }   
     },
