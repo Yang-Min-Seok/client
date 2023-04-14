@@ -56,8 +56,15 @@ export const putImg = async (navigate, currUrl, currFile, teamId, teamName ) => 
 // 이미지 업로드하기
 export const uploadImg = async (navigate, imgUrl, teamId, teamName) => {
   await serverApi.post(`https://api.mogong.site/teams/${teamId}`, {'imageUrl' : imgUrl} ).then((response) => {
-      // imgUrl을 갖고 gather로
-      navigate(`/gather/${teamName.teamName}`, { state: {url: imgUrl, teamId:teamId} })
+      // 팀 멤버의 모든 이미지가 등록되었을 때 (마지막으로 업로드한 사람이 업로드 한 경우)
+      if (response.data.code === 'T-S003') {
+        getTeamInfo(teamId);
+      }
+      // 마지막으로 업로드한 사람이 아닐 경우
+      else{
+        // gather로
+        navigate(`/gather/${teamName.teamName}`, { state: {url: imgUrl, teamId:teamId} })
+      }
   });
 };
 
@@ -70,15 +77,15 @@ export const getTeamInfo = async (teamId) => {
       // update
       numberOfTeam = response.data.data.numberOfTeam;
       nowCnt = response.data.data.submit;
-
+      
       // 팀 결과 생성에 성공했을 경우
       if (response.data.code === "T-S004") {
-        console.log('팀 결과 생성 성공')
+          console.log(response);
       }
 
       // 팀 결과 생성에 성공했을 경우 (인원 미충족시)
       else if (response.data.code === "T-F002") {
-        console.log('팀 인원 미충족')
+
       }
     });
   
