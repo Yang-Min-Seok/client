@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import mainLogo from "../../assets/images/main_logo.png";
-import footerLogo from "../../assets/images/footer_logo_black.png";
 export const BodyDiv = styled.div`
     
     // Link to teams
@@ -45,12 +44,4 @@ export const Intro = styled.p`
 `
 export const Img = styled.div`
     height: 381px;
-`
-export const FooterLogo = styled.div`
-    width: 300px;
-    height: 196.22px;
-    background-image: url(${footerLogo});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
 `

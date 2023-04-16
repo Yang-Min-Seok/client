@@ -1,9 +1,9 @@
 import { BodyDiv, Topper, CntIntro, CntBox, PwIntro, PwBox } from "./style";
-import { getImgUrl, putImg, teams } from "../../apis/Apis";
+import  FooterLogoColor from '../../styles/global/footerLogoColor';
+import { teams } from "../../apis/Apis";
 import { useNavigate } from 'react-router-dom';
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import useInput from "../../hooks/useInput";
-import { Link } from "react-router-dom";
 
 function Body () {
     const [ numberOfTeam, onChangeNumberOfTeam, setNumberOfTeam ] = useInput(0);
@@ -28,18 +28,19 @@ function Body () {
             <form onSubmit={onSubmit}>
                 
                 <CntIntro>
-                    총 몇 명의<br />
-                    시간표를<br />
+                    총 몇 명의 시간표를<br />
                     입력하실 건가요?
                 </CntIntro>
                 
+                <hr></hr>
+
                 <CntBox>
-                    <input type="number" name="cnt" onChange={onChangeNumberOfTeam}/>명
+                    <input type="number" name="cnt" onChange={onChangeNumberOfTeam}/> 명
                 </CntBox>
 
                 <PwIntro>
                     관리자 비밀번호 <br />
-                    4자리를 입려해주세요
+                    4자리를 입력해주세요
                 </PwIntro>
 
                 <hr></hr>
@@ -51,6 +52,7 @@ function Body () {
                 <button type="submit">다음</button>
 
             </form>
+            <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
 }

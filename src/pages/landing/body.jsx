@@ -1,4 +1,5 @@
-import {BodyDiv, Logo, Intro, Img, FooterLogo} from "./style";
+import { BodyDiv, Logo, Intro, Img } from "./style";
+import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 import { Link } from "react-router-dom";
 
 function Body() {
@@ -12,7 +13,7 @@ function Body() {
             </Intro>
             <Img></Img>
             <Link to="/teams">시작하기</Link>
-            <FooterLogo></FooterLogo>
+            <FooterLogoBlack></FooterLogoBlack>
         </BodyDiv>
     )
 }

@@ -6,7 +6,7 @@ function Teams () {
 
     return (
         <Wrapper>
-            <Header>모두의공강</Header>
+            <Header></Header>
             <Body></Body>
         </Wrapper>
     )
