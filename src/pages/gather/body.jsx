@@ -2,6 +2,7 @@ import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
 import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import { getTeamInfo } from "../../apis/Apis";
 import { useCallback, useState, useEffect } from "react";
+import FooterLogoColor from "../../styles/global/footerLogoColor";
 
 function Body() {
     
@@ -38,12 +39,14 @@ function Body() {
                     모두의 시간표를<br />
                     기다리고 있어요
                 </h4>
+
                 <Refresh onClick={() => onClick()}>
-                    새로고침
                 </Refresh>
+
                 <p>
-                    지금까지 ({nowCnt} / {numberOfTeam})명이<br />
-                    완료했어요!
+                    지금까지
+                    <span> ({nowCnt}/{numberOfTeam}) </span>
+                    명이 완료했어요!
                 </p>
                 <p>
                     새로고침을 누르면<br />
@@ -52,7 +55,7 @@ function Body() {
             </GatheringBox>
             
             <Link to="/">관리자 권한으로 종료</Link>
-
+            <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
 }
