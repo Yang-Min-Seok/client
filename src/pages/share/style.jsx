@@ -81,6 +81,7 @@ export const LinkKakao = styled.div`
     margin: 0 auto;
     margin-bottom: 115px;
     div{
+        cursor: pointer;
         width: 60px;
         height: 80px;
     }
