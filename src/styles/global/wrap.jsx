@@ -5,7 +5,7 @@ const Wrapper = styled.div`
     padding: 0;
     line-height: 1;
     list-style: none;
-    max-width: 768px;
+    max-width: 500px;
 `
 
 export default Wrapper;
