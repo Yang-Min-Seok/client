@@ -69,6 +69,7 @@ export const CntBox = styled.div`
         height:43px;
         width:114px;
         font-size: 24px;
+        text-align: center;
     }
 `
 export const PwIntro = styled.p`
@@ -92,5 +93,6 @@ export const PwBox = styled.div`
         height:43px;
         width:114px;
         font-size: 24px;
+        text-align: center;
     }
 `
