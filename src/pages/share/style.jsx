@@ -35,11 +35,11 @@ export const Topper = styled.div`
         border-radius: 50%;
     }
     div:nth-child(1){
-        background-color: #FF9836;
-    }
-    div:nth-child(2){
         border: 1px solid #FF9836;
         box-sizing: border-box;
+    }
+    div:nth-child(2){
+        background-color: #FF9836;
     }
 `
 
