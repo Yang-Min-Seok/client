@@ -2,6 +2,7 @@ import { BodyDiv, Topper, Intro, ShowBox } from "./style";
 import { useState, useCallback } from "react";
 import { putImg } from "../../apis/Apis";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
+import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 function Body() {
     
     const [currFile, setCurrFile] = useState('default');
@@ -16,6 +17,10 @@ function Body() {
     const onChangeImage = (e) => {
         if (e.target.files[0] !== undefined) {
             setCurrFile(e.target.files[0]);
+            console.log(e.target.files[0])
+            // no img sign 숨기기
+            const target = document.getElementById("noImg");
+            target.style.display="none";
         }
         // // 화면에 시간표 사진 표시
         // const reader = new FileReader();
@@ -59,26 +64,29 @@ function Body() {
             <form onSubmit={onSubmit}>
 
                 <Intro>
-                    에브리타임 시간표 <br />
-                    이미지를 업로드해주세요
+                    <b>에브리타임</b> 시간표<br />
+                    이미지를 업로드 해주세요
                 </Intro>
+
+                <label htmlFor="uploadFile">업로드</label>
                 
-                {/* filtering */}
                 <input 
                 type="file" 
                 accept="image/jpg" 
                 name="timetable" 
                 onChange={onChangeImage}
-                />
+                placeholder="업로드"
+                id="uploadFile"
+                />     
 
                 <ShowBox>
-                    
+                    <div></div>
                 </ShowBox>
 
+                <span id="noImg">업로드한 이미지가 없어요</span>
                 <button type="submit">입력완료</button>
-            
             </form>
-            
+            <FooterLogoBlack></FooterLogoBlack>
         </BodyDiv>
     )
 }
