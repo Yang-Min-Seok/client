@@ -1,23 +1,26 @@
-import { BodyDiv, DownloadBox, DownloadIntro, DownloadBtn, TableImg } from "./style";
+import { BodyDiv, DownloadBox, DownloadIntro, TableImg } from "./style";
 import { Link } from "react-router-dom";
+import FooterLogoColor from "../../styles/global/footerLogoColor";
+
 function Body() {
     
     return (
         <BodyDiv>
 
             <DownloadBox>
-                <DownloadIntro>모두의 공강 시간표가 나왔어요!</DownloadIntro>
-                <DownloadBtn>
-                    
-                </DownloadBtn>
+                
+                <DownloadIntro>
+                    <p>모두의 공강 시간표가 나왔어요!</p>
+                </DownloadIntro>
+
             </DownloadBox>
 
             <TableImg>
                 
             </TableImg>
 
-            <Link to="#">다음</Link>
-
+            <Link to="/create">다음</Link>
+            <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
 }
