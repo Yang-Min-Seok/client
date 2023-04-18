@@ -2,6 +2,7 @@ import { BodyDiv, Intro, TimeBox, OptionBox } from "./style";
 import { Link } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 
+// 30분, 60분, 90분 버튼
 function handleOnClick30min() {
     const target = document.getElementById("30minLabel");
     target.style.backgroundColor = "#FF9836";
