@@ -2,7 +2,6 @@ import { BodyDiv, Topper, ShareBox, LinkKakao } from "./style";
 import { Link, useLocation } from "react-router-dom";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 import clipboardCopy from 'clipboard-copy';
-import { useState } from 'react';
 
 function Body() {
     
