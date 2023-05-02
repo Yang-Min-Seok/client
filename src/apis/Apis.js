@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+// middle server api
 const serverApi = axios.create({
     // api 기본 사이트
     baseURL: process.env.REACT_APP_SERVER_URL, // 보안 상 env파일에
@@ -7,6 +9,8 @@ const serverApi = axios.create({
     },
 });
 
+
+// flask server api
 const s3Api = axios.create({
     // api 기본 사이트
     baseURL: process.env.REACT_APP_SERVER_URL, // 보안 상 env파일에
@@ -80,7 +84,7 @@ export const getTeamInfo = async (teamId) => {
       
       // 팀 결과 생성에 성공했을 경우
       if (response.data.code === "T-S004") {
-          console.log(response);
+          
       }
 
       // 팀 결과 생성에 성공했을 경우 (인원 미충족시)
@@ -90,4 +94,15 @@ export const getTeamInfo = async (teamId) => {
     });
   
   return [nowCnt, numberOfTeam]
+};
+
+// 외부 접근 시 teamId를 가져오는 api
+export const getTeamId = async (teamName) => {
+
+  await serverApi.get(`https://api.mogong.site/teams/names/${teamName}`).then((response) => {
+      // 조회 성공 시
+      if (response.data.code == 'T-S005'){
+        console.log(response.data.data.teamId);
+      }
+    });
 };

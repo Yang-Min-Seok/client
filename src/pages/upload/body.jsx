@@ -1,23 +1,23 @@
 import { BodyDiv, Topper, Intro, ShowBox } from "./style";
 import { useState, useCallback } from "react";
-import { putImg } from "../../apis/Apis";
+import { putImg, getTeamId } from "../../apis/Apis";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 function Body() {
     
     const [currFile, setCurrFile] = useState('default');
-    // url 가져오기
-    const location = useLocation();
-    const teamId = location.state.teamId;
-    const url = location.state.url;
-    const navigate = useNavigate();
     // useParams -> url의 마지막 부분
     const teamName = useParams();
-    
+    // teamId
+    const teamId = getTeamId(teamName.teamName);
+
+    // url 가져오기
+    const location = useLocation();
+    const url = location.state.url;
+    const navigate = useNavigate();
     const onChangeImage = (e) => {
         if (e.target.files[0] !== undefined) {
             setCurrFile(e.target.files[0]);
-            console.log(e.target.files[0])
             // no img sign 숨기기
             const target = document.getElementById("noImg");
             target.style.display="none";
