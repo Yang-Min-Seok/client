@@ -54,8 +54,8 @@ export const Topper = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 67px;
+    margin-top: 64px;
+    margin-bottom: 17px;
     div {
         width:10px;
         height:10px;
@@ -93,8 +93,8 @@ export const Intro = styled.p`
 `
 export const ShowBox = styled.div`
     
-    width: 160px;
-    height: 228px;
+    width: 190px;
+    height: 260px;
     margin: 0 auto;
     border: 1px solid #B5B5B5;
     display: flex;

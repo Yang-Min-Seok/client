@@ -11,25 +11,31 @@ function Body() {
     // teamId
     const teamId = getTeamId(teamName.teamName);
 
-    // url 가져오기
+    // url 가져오기 -> 변경 필요
     const location = useLocation();
     const url = location.state.url;
+
     const navigate = useNavigate();
     const onChangeImage = (e) => {
+        // 올렸으면,
         if (e.target.files[0] !== undefined) {
-            setCurrFile(e.target.files[0]);
+            // 선택된 이미지
+            const selectedFile = e.target.files[0];
+            // 선택된 이미지를 URL화
+            const imgUrl = URL.createObjectURL(selectedFile);
+            // useState이용
+            setCurrFile(imgUrl);
+            
+            // imgBox에 올린 이미지 보여주기
+            const target_box = document.getElementById("imgBox");
+            target_box.style.backgroundImage = `url(${imgUrl})`;
+            target_box.style.width = '100%';
+            target_box.style.height = '100%';
+
             // no img sign 숨기기
-            const target = document.getElementById("noImg");
-            target.style.display="none";
+            const target_sign = document.getElementById("noImg");
+            target_sign.style.display="none";
         }
-        // // 화면에 시간표 사진 표시
-        // const reader = new FileReader();
-        // reader.onload = () => {
-        //   if (reader.readyState === 2 && reader.result !== null) {
-        //     setImage(reader.result);
-        //   }
-        // };
-        // reader.readAsDataURL(e.target.files[0]);
     };
     
     // 입력완료 버튼을 눌렀을 때 발생할 함수
@@ -80,7 +86,7 @@ function Body() {
                 />     
 
                 <ShowBox>
-                    <div></div>
+                    <div id="imgBox"></div>
                 </ShowBox>
 
                 <span id="noImg">업로드한 이미지가 없어요</span>
