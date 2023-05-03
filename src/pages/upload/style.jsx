@@ -54,17 +54,17 @@ export const Topper = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 64px;
+    margin-top: 91px;
     margin-bottom: 17px;
     div {
         width:10px;
         height:10px;
         border-radius: 50%;
     }
-    div:nth-child(1){
+    div:nth-child(2){
         background-color: #FF9836;
     }
-    div:nth-child(2){
+    div:nth-child(1){
         border: 1px solid #FF9836;
         box-sizing: border-box;
     }

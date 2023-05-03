@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import mainLogo from "../../assets/images/main_logo.png";
+import landingImg from "../../assets/images/landing_img.png";
 export const BodyDiv = styled.div`
     
     // Link to teams
@@ -43,5 +44,14 @@ export const Intro = styled.p`
     letter-spacing: -0.05em;
 `
 export const Img = styled.div`
-    height: 381px;
+    height: 345px;
+    width: 230px;
+    margin: 0 auto;
+    margin-top: 33px;
+    margin-bottom: 34px;
+    background-image: url(${landingImg});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: 1px solid #F5F5F5;
 `

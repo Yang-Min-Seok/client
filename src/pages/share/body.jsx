@@ -21,12 +21,6 @@ function Body() {
 
     return (
         <BodyDiv>
-
-            <Topper>
-                <div></div>
-                <div></div>
-            </Topper>
-            
             <ShareBox>
                 <p>
                     아래의 링크를 공유하여 <br />
@@ -44,7 +38,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/upload/${teamName}`} state={{url:url, teamId:teamId}}>다음</Link>
+            <Link to={`/upload/${teamName}`} state={{url:url, teamId:teamId}} id="next">다음</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )

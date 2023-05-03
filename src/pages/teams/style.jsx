@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
 export const BodyDiv = styled.div`
-    /* orange line */
-    hr{
-        width: 105px;
-        border: 1px solid #FF9836;
-        margin:0 auto;
-        margin-top: 19px;
-        margin-bottom: 19px;
-    }
     /* submit btn */
     button{
         display: block;
@@ -30,22 +22,49 @@ export const BodyDiv = styled.div`
         margin-bottom: 25px;
     }
 `
-export const Topper = styled.div`
+export const Topper1 = styled.div`
     display: flex;
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 79px;
+    margin-top: 89px;
+    margin-bottom: 15px;
+    
     div {
         width:10px;
         height:10px;
         border-radius: 50%;
     }
+    
     div:nth-child(1){
         background-color: #FF9836;
     }
+    
     div:nth-child(2){
+        border: 1px solid #FF9836;
+        box-sizing: border-box;
+    }
+`
+
+export const Topper2 = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width:10%;
+    margin: 0 auto;
+    margin-top: 75px;
+    margin-bottom: 12px;
+    
+    div {
+        width:10px;
+        height:10px;
+        border-radius: 50%;
+    }
+    
+    div:nth-child(2){
+        background-color: #FF9836;
+    }
+    
+    div:nth-child(1){
         border: 1px solid #FF9836;
         box-sizing: border-box;
     }
@@ -55,6 +74,7 @@ export const CntIntro = styled.p`
     width: 151px;
     height: 50px;
     margin: 0 auto;
+    margin-bottom: 19px;
     font-weight: 400;
     font-size: 20px;
     line-height: 25px;
@@ -66,10 +86,12 @@ export const CntBox = styled.div`
     text-align: center;
     
     input{
-        height:43px;
-        width:114px;
+        height:40px;
+        width:52px;
         font-size: 24px;
         text-align: center;
+        border: 1px solid #B5B5B5;
+        border-radius: 3px;
     }
 `
 export const PwIntro = styled.p`
@@ -82,7 +104,7 @@ export const PwIntro = styled.p`
     text-align: center;
     letter-spacing: -0.05em;
     margin: 0 auto;
-    margin-top: 69px;
+    margin-bottom: 12px;
 `
 export const PwBox = styled.div`
     font-size: 24px;
@@ -90,9 +112,11 @@ export const PwBox = styled.div`
     margin-bottom: 79px;
     
     input{
-        height:43px;
-        width:114px;
+        height:40px;
+        width:150px;
         font-size: 24px;
         text-align: center;
+        border: 1px solid #B5B5B5;
+        border-radius: 3px;
     }
 `

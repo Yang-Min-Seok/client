@@ -89,7 +89,7 @@ function Body() {
                     <div id="imgBox"></div>
                 </ShowBox>
 
-                <span id="noImg">업로드한 이미지가 없어요</span>
+                <span id="noImg">업로드한 이미지가 없어요.</span>
                 <button type="submit">입력완료</button>
             </form>
             <FooterLogoBlack></FooterLogoBlack>

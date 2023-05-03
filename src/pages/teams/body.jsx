@@ -1,4 +1,4 @@
-import { BodyDiv, Topper, CntIntro, CntBox, PwIntro, PwBox } from "./style";
+import { BodyDiv, Topper1, Topper2, CntIntro, CntBox, PwIntro, PwBox } from "./style";
 import  FooterLogoColor from '../../styles/global/footerLogoColor';
 import { teams } from "../../apis/Apis";
 import { useNavigate } from 'react-router-dom';
@@ -20,30 +20,29 @@ function Body () {
 
     return (
         <BodyDiv>
-            <Topper>
-                <div></div>
-                <div></div>
-            </Topper>
+            
             
             <form onSubmit={onSubmit}>
-                
+                <Topper1>
+                    <div></div>
+                    <div></div>
+                </Topper1>
                 <CntIntro>
                     총 몇 명의 시간표를<br />
                     입력하실 건가요?
                 </CntIntro>
-                
-                <hr></hr>
 
                 <CntBox>
                     <input type="number" name="cnt" onChange={onChangeNumberOfTeam}/> 명
                 </CntBox>
-
+                <Topper2>
+                    <div></div>
+                    <div></div>
+                </Topper2>
                 <PwIntro>
                     관리자 비밀번호 <br />
                     4자리를 입력해주세요
                 </PwIntro>
-
-                <hr></hr>
 
                 <PwBox>
                     <input type="password" name="PW" onChange={onChangeAuthCode}/>

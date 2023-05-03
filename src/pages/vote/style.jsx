@@ -40,8 +40,8 @@ export const LinkKakao = styled.div`
 
     /* 링크복사 */
     div:nth-child(1){
-        width: 60px;
-        height: 81px;
+        width: 50px;
+        height: 67.42px;
         background-image: url(${copyLink});
         background-position: center;
         background-repeat: no-repeat;
@@ -50,8 +50,8 @@ export const LinkKakao = styled.div`
 
     /* 카카오톡 */
     div:nth-child(2){
-        width: 60px;
-        height: 81px;
+        width: 50px;
+        height: 67.42px;
         background-image: url(${kakao});
         background-position: center;
         background-repeat: no-repeat;

@@ -2,8 +2,10 @@ import styled from "styled-components";
 import shareIcon from "../../assets/images/link_copy.png"
 import kakaoIcon from "../../assets/images/kakaotalk.png"
 export const BodyDiv = styled.div`
+    margin-top: 170px;
+    
     /* link */
-    a:nth-child(3){
+    #next{
         display: block;
         width: 155px;
         height: 45px;
@@ -19,27 +21,6 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         margin: 0 auto;
         margin-bottom: 36px;
-    }
-`
-
-export const Topper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width:10%;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 145px;
-    div {
-        width:10px;
-        height:10px;
-        border-radius: 50%;
-    }
-    div:nth-child(1){
-        border: 1px solid #FF9836;
-        box-sizing: border-box;
-    }
-    div:nth-child(2){
-        background-color: #FF9836;
     }
 `
 
@@ -82,8 +63,8 @@ export const LinkKakao = styled.div`
     margin-bottom: 115px;
     div{
         cursor: pointer;
-        width: 60px;
-        height: 80px;
+        width: 50px;
+        height: 67.42px;
     }
 
     div:nth-child(1){
