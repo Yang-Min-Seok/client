@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import shareIcon from "../../assets/images/link_copy.png"
-import kakaoIcon from "../../assets/images/kakaotalk.png"
+import copyLink from "../../assets/images/link_copy.png"
+import kakao from "../../assets/images/kakaotalk.png"
 export const BodyDiv = styled.div`
     margin-top: 170px;
     
@@ -57,27 +57,28 @@ export const ShareBox = styled.div`
 
 export const LinkKakao = styled.div`
     display: flex;
-    width: 40%;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-bottom: 115px;
-    div{
-        cursor: pointer;
+    justify-content: center;
+    column-gap: 20px;
+    cursor: pointer;
+    margin-bottom: 127.58px;
+
+    /* 링크복사 */
+    div:nth-child(1){
         width: 50px;
         height: 67.42px;
-    }
-
-    div:nth-child(1){
-        background-image: url(${shareIcon});
+        background-image: url(${copyLink});
         background-position: center;
-        background-size: contain;
         background-repeat: no-repeat;
+        background-size: contain;
     }
 
+    /* 카카오톡 */
     div:nth-child(2){
-        background-image: url(${kakaoIcon});
+        width: 50px;
+        height: 67.42px;
+        background-image: url(${kakao});
         background-position: center;
-        background-size: contain;
         background-repeat: no-repeat;
+        background-size: contain;
     }
 `
