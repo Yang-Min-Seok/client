@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
+import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf"
 
 export const Topper = styled.div`
     display: flex;
@@ -22,6 +24,23 @@ export const Topper = styled.div`
 `
 
 export const BodyDiv = styled.div`
+
+    // import main font
+    @font-face {
+        font-family: 'mainFont';
+        src: url(${mainFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    // import sub font
+    @font-face {
+        font-family: 'subFont';
+        src: url(${subFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+
     p {
         font-weight: 400;
         font-size: 20px;
@@ -30,6 +49,7 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         margin: 0;
         margin-bottom: 19px;
+        font-family: 'mainFont';
     }
 
     form {
@@ -62,6 +82,7 @@ export const BodyDiv = styled.div`
             background-color: #B8B8B8;
             border: none;
             border-radius: 25px;
+            font-family: 'subFont';
         }
     }
 `

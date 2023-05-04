@@ -102,7 +102,7 @@ export const getTeamId = async (teamName) => {
   await serverApi.get(`https://api.mogong.site/teams/names/${teamName}`).then((response) => {
       // 조회 성공 시
       if (response.data.code == 'T-S005'){
-        console.log(response.data.data.teamId);
+        // console.log(response.data.data.teamId);
       }
     });
 };

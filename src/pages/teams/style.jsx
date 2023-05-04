@@ -1,6 +1,25 @@
 import styled from "styled-components";
+import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
+import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf"
 
 export const BodyDiv = styled.div`
+
+    // import main font
+    @font-face {
+        font-family: 'mainFont';
+        src: url(${mainFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    // import sub font
+    @font-face {
+        font-family: 'subFont';
+        src: url(${subFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+
     /* submit btn */
     button{
         display: block;
@@ -16,6 +35,7 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         color:#fff;
         margin: 0 auto;
+        font-family: 'subFont';
     }
     /* form */
     form{
@@ -80,6 +100,7 @@ export const CntIntro = styled.p`
     line-height: 25px;
     text-align: center;
     letter-spacing: -0.05em;
+    font-family: 'mainFont';
 `
 export const CntBox = styled.div`
     font-size: 24px;
@@ -96,7 +117,7 @@ export const CntBox = styled.div`
 `
 export const PwIntro = styled.p`
     display:block;
-    width: 162px;
+    width: 180px;
     height: 50px;
     font-weight: 400;
     font-size: 20px;
@@ -105,6 +126,7 @@ export const PwIntro = styled.p`
     letter-spacing: -0.05em;
     margin: 0 auto;
     margin-bottom: 12px;
+    font-family: 'mainFont';
 `
 export const PwBox = styled.div`
     font-size: 24px;

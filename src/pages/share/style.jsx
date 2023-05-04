@@ -1,9 +1,28 @@
 import styled from "styled-components";
-import copyLink from "../../assets/images/link_copy.png"
-import kakao from "../../assets/images/kakaotalk.png"
+import copyLink from "../../assets/images/link_copy.png";
+import kakao from "../../assets/images/kakaotalk.png";
+import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
+import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
+
 export const BodyDiv = styled.div`
     margin-top: 170px;
     
+    // import main font
+    @font-face {
+        font-family: 'mainFont';
+        src: url(${mainFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    // import sub font
+    @font-face {
+        font-family: 'subFont';
+        src: url(${subFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+
     /* link */
     #next{
         display: block;
@@ -13,14 +32,12 @@ export const BodyDiv = styled.div`
         border-radius: 25px;
         color: #fff;
         background-color: #B8B8B8;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
         line-height: 45px;
         text-align: center;
         letter-spacing: -0.05em;
         margin: 0 auto;
         margin-bottom: 36px;
+        font-family: "subFont";
     }
 `
 
@@ -29,7 +46,7 @@ export const ShareBox = styled.div`
     p{  
         margin: 0 auto;
         display: block;
-        width: 223px;
+        width: 230px;
         height: 50px;
         font-weight: 400;
         font-size: 20px;
@@ -37,11 +54,12 @@ export const ShareBox = styled.div`
         text-align: center;
         letter-spacing: -0.05em;
         margin-bottom: 19px;
+        font-family: 'mainFont';
     }
     /* share link */
     a{  
         display: block;
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
         text-align: center;
         text-decoration: none;
@@ -52,6 +70,7 @@ export const ShareBox = styled.div`
         line-height: 25px;
         letter-spacing: -0.05em;
         margin-bottom: 31px;
+        font-family: 'mainFont';
     }
 `
 

@@ -1,7 +1,27 @@
 import styled from "styled-components";
 import everytimeLogo from "../../assets/images/everytime.png";
 import noImage from "../../assets/images/no_image.png";
+import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
+import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
+
 export const BodyDiv = styled.div`
+    
+    // import main font
+        @font-face {
+        font-family: 'mainFont';
+        src: url(${mainFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    // import sub font
+    @font-face {
+        font-family: 'subFont';
+        src: url(${subFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+
     form{
 
         label{
@@ -10,8 +30,7 @@ export const BodyDiv = styled.div`
             height: 32px;
             margin: 0 auto;
             line-height: 32px;
-            font-style: normal;
-            font-weight: 400;
+            font-family: 'mainFont';
             font-size: 19px;
             text-align: center;
             letter-spacing: -0.05em;
@@ -32,6 +51,7 @@ export const BodyDiv = styled.div`
             text-align: center;
             line-height: 25px;
             color: #FF0404;
+            font-family: 'mainFont';
         }
 
         button{
@@ -46,6 +66,7 @@ export const BodyDiv = styled.div`
             background-color: #FF9836;
             color: #fff;
             font-size: 20px;
+            font-family: 'subFont';
         }
     }
 `
@@ -78,6 +99,7 @@ export const Intro = styled.p`
     line-height: 25px;
     font-size: 20px;
     margin-bottom: 22px;
+    font-family: 'mainFont';
     
     b::before{
         content: "";

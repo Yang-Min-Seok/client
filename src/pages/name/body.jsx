@@ -11,7 +11,7 @@ function Body() {
             <p>이름을 입력해주세요</p>
             <form>
                 <input type="text"/>
-                <button>다음</button>
+                <button type="submit">다음</button>
             </form>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>

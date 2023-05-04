@@ -1,7 +1,24 @@
 import styled from "styled-components";
 import refresh from "../../assets/images/refresh.png";
-
+import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
+import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 export const BodyDiv = styled.div`
+    
+    // import main font
+    @font-face {
+        font-family: 'mainFont';
+        src: url(${mainFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    // import sub font
+    @font-face {
+        font-family: 'subFont';
+        src: url(${subFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
     /* link to exit */
     a {
         display: block;
@@ -62,12 +79,12 @@ export const GatheringBox = styled.div`
         margin: 0 auto;
         height: 50px;
         width:127px;
-        font-weight: 400;
         font-size: 20px;
         line-height: 25px;
         text-align: center;
         letter-spacing: -0.05em;
         margin-bottom: 32px;
+        font-family: 'mainFont';
     }
     
     p:nth-child(4){

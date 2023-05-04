@@ -1,8 +1,27 @@
 import styled from "styled-components";
 import mainLogo from "../../assets/images/main_logo.png";
 import landingImg from "../../assets/images/landing_img.png";
+import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
+import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
+
 export const BodyDiv = styled.div`
     
+    // import main font
+    @font-face {
+        font-family: 'mainFont';
+        src: url(${mainFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+    
+    // import sub font
+    @font-face {
+        font-family: 'subFont';
+        src: url(${subFont}) format('truetype');
+        font-style: normal;
+        font-weight: 400;
+    }
+
     // Link to teams
     a {
         display: block;
@@ -17,6 +36,7 @@ export const BodyDiv = styled.div`
         line-height:45px;
         text-align: center;
         margin-bottom: 25px;
+        font-family: 'subFont';
     }
 
 `
@@ -37,8 +57,7 @@ export const Intro = styled.p`
     height: 75px;
     width: 253px;
     margin-left: 45px;
-    font-style: normal;
-    font-weight: 400;
+    font-family: 'mainFont';
     font-size: 20px;
     line-height: 25px;
     letter-spacing: -0.05em;
