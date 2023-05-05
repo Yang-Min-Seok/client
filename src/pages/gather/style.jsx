@@ -35,6 +35,7 @@ export const BodyDiv = styled.div`
         font-size: 20px;
         letter-spacing: -0.05em;
         margin-bottom: 25px;
+        font-family: 'subFont';
     }
 `
 export const Topper = styled.div`
@@ -59,6 +60,7 @@ export const Topper = styled.div`
     }
 `
 export const GatheringBox = styled.div`
+    font-family: 'mainFont';
     
     p:nth-child(1){
         display: block;
@@ -66,7 +68,6 @@ export const GatheringBox = styled.div`
         width: 70px;
         margin: 0 auto;
         margin-bottom: 4px;
-        font-weight: 400;
         font-size: 20px;
         line-height: 25px;
         text-align: center;

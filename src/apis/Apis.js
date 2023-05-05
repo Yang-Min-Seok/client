@@ -59,6 +59,7 @@ export const putImg = async (navigate, currUrl, currFile, teamId, teamName ) => 
 
 // 이미지 업로드하기
 export const uploadImg = async (navigate, imgUrl, teamId, teamName) => {
+  console.log(teamName);
   await serverApi.post(`https://api.mogong.site/teams/${teamId}`, {'imageUrl' : imgUrl} ).then((response) => {
       // 팀 멤버의 모든 이미지가 등록되었을 때 (마지막으로 업로드한 사람이 업로드 한 경우)
       if (response.data.code === 'T-S003') {
@@ -67,7 +68,7 @@ export const uploadImg = async (navigate, imgUrl, teamId, teamName) => {
       // 마지막으로 업로드한 사람이 아닐 경우
       else{
         // gather로
-        navigate(`/gather/${teamName.teamName}`, { state: {url: imgUrl, teamId:teamId} })
+        navigate(`/gather/${teamName}`, { state: {url: imgUrl, teamId:teamId} })
       }
   });
 };
