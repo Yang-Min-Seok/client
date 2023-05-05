@@ -1,5 +1,5 @@
 import { BodyDiv, Topper, Intro, ShowBox } from "./style";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { putImg, getTeamId } from "../../apis/Apis";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
@@ -7,13 +7,24 @@ function Body() {
     
     const [currFile, setCurrFile] = useState('default');
     // useParams -> url의 마지막 부분
-    const teamName = useParams();
-    // teamId
-    const teamId = getTeamId(teamName.teamName);
+    const teamName = useParams().teamName;
+
 
     // url 가져오기 -> 변경 필요
     const location = useLocation();
     const url = location.state.url;
+
+    // teamId 가져오기
+    const [ teamId, setTeamId ] = useState('');
+    const findTeamID = useCallback(async () => {
+        await getTeamId(teamName).then((response) => {
+          setTeamId(Number(response));
+        });
+    });
+    useEffect(() => {
+        // 첫 렌더링 때 무조건 실행됨
+        findTeamID()
+    }, []);
 
     const navigate = useNavigate();
     const onChangeImage = (e) => {

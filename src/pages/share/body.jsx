@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 import clipboardCopy from 'clipboard-copy';
-import mainLogo from '../../assets/images/main_logo.png';
 
 function Body() {
     

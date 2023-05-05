@@ -98,11 +98,15 @@ export const getTeamInfo = async (teamId) => {
 
 // 외부 접근 시 teamId를 가져오는 api
 export const getTeamId = async (teamName) => {
-
+  
+  let teamId = ''
+  
   await serverApi.get(`https://api.mogong.site/teams/names/${teamName}`).then((response) => {
       // 조회 성공 시
       if (response.data.code == 'T-S005'){
-        // console.log(response.data.data.teamId);
+        teamId = response.data.data.teamId;
       }
-    });
+  });
+  
+  return teamId
 };
