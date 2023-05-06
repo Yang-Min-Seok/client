@@ -19,7 +19,7 @@ function Body() {
                 
             </TableImg>
 
-            <Link to="/create">다음</Link>
+            <Link to="/">처음으로</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
