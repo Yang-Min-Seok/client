@@ -44,33 +44,31 @@ export const BodyDiv = styled.div`
     }
 `
 export const DownloadBox = styled.div`
+    display: flex;
+    justify-content: center;
+`
+export const DownloadIntro = styled.p`
+margin: 0;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: -0.05em;
+    font-family: 'mainFont';
 
 `
-export const DownloadIntro = styled.div`
-    
-    p {
-        margin: 0;
-        text-align: center;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 25px;
-        letter-spacing: -0.05em;
-        font-family: 'mainFont';
-    }
-
-    p::after{
-        content:"";
-        display:inline-block;
-        width:35px;
-        height:35px;
-        background-image: url(${download});
-        background-position: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        transform: translateY(9px) translateX(3px);
-        cursor: pointer;
-    }
+export const DownloadBtn = styled.div`
+    width: 25px;
+    height: 25px;
+    background-image: url(${download});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-left: 10px;
+    cursor: pointer;
+    transform: translateY(1px);
 `
+
 export const TableImg = styled.div`
     margin: 0 auto;
     margin-top: 23px;
@@ -78,4 +76,8 @@ export const TableImg = styled.div`
     width: 232px;
     box-sizing: border-box;
     border: 1px solid #B5B5B5;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
 `
