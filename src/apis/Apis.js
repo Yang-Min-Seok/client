@@ -9,7 +9,6 @@ const serverApi = axios.create({
     },
 });
 
-
 // flask server api
 const s3Api = axios.create({
     // api 기본 사이트
@@ -54,6 +53,24 @@ export const putImg = async (navigate, currUrl, currFile, teamId, teamName ) => 
     const imgUrl = currUrl.split('?')[0];
     // uploadImg 호출
     uploadImg(navigate, imgUrl, teamId, teamName);
+  });
+};
+
+// 멤버 생성하기
+export const createMember = async (navigate, name, teamId, teamName) => {
+  await serverApi.post(`https://api.mogong.site/teams/${teamId}/members`, {'nickName' : name} ).then((response) => {
+      // 멤버 성공에 성공했다면
+      if (response.data.code === 'M-S001'){
+        console.log(response);
+        const imageUrl = response.data.data.imageUrl;
+        const memberId = response.data.data.memberId;
+        const nickName = response.data.data.nickName;
+        navigate(`/upload/${teamName}/${memberId}`, {state: { imageUrl:imageUrl, memberId:memberId, nickName:nickName }});
+      }
+      // 실패했다면
+      else{
+        alert('다시 시도해주세요');
+      }
   });
 };
 

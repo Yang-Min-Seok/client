@@ -78,7 +78,7 @@ function Body() {
                     아래의 링크를 공유하여 <br />
                     모두의 시간표를 모아주세요 !
                 </p>
-                <Link to={`/upload/${teamName}`} state={{url:url, teamId:teamId}}>
+                <Link to={`/name/${teamName}`} state={{url:url, teamId:teamId}}>
                 {`http://localhost:3000/upload/${teamName}`}
                 </Link>
                 
@@ -90,7 +90,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/upload/${teamName}`} state={{url:url, teamId:teamId}} id="next">다음</Link>
+            <Link to={`/name/${teamName}`} state={{url:url, teamId:teamId}} id="next">다음</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )

@@ -17,13 +17,13 @@ function App() {
           <Route path={`/`} element={<Landing />}></Route>
           <Route path={`/teams`} element={<Teams />}></Route>
           <Route path={`/share`} element={<Share />}></Route>
-          <Route path={`/upload/:teamName`} element={<Upload />}></Route>
+          <Route path={`/upload/:teamName/:memberId`} element={<Upload />}></Route>
           <Route path={`/gather/:teamName`} element={<Gather />}></Route>
           <Route path={`/show`} element={<Show />}></Route>
           <Route path={`/create`} element={<Create />}></Route>
           <Route path={`/vote`} element={<Vote />}></Route>
           <Route path={`/result`} element={<Result />}></Route>
-          <Route path={`/name`} element={<Name />}></Route>
+          <Route path={`/name/:teamName`} element={<Name />}></Route>
         </Routes>
       </Router>
     </div>

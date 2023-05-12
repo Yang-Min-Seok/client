@@ -36,7 +36,6 @@ function Body() {
           .then(blob => {
             // Blob으로부터 URL 객체 생성
             const blobUrl = URL.createObjectURL(blob);
-      
             // <a> 엘리먼트 생성
             const a = document.createElement('a');
             a.href = blobUrl;
