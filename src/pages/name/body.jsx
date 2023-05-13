@@ -7,11 +7,11 @@ import { createMember } from "../../apis/Apis";
 
 function Body() {
     // useInput 사용
-    const [ name, onChangeName, setNameTeam ] = useInput('');
+    const [ nickName, onChangeNickName, setNickName ] = useInput('');
     
     // teamId, url
     const location = useLocation();
-    const url = location.state.url;
+    const presignedUrl = location.state.presignedUrl;
     const teamId = location.state.teamId;
 
     // teamName
@@ -22,8 +22,13 @@ function Body() {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            // 멤버 생성 요청
-            createMember(navigate, name, teamId, teamName);
+            if (nickName === ''){
+                alert('이름을 입력해주세요!')
+            }
+            else{
+                // 멤버 생성 요청
+            createMember(navigate, nickName, teamId, teamName, presignedUrl);
+            }
         },
     );
     return (
@@ -34,7 +39,7 @@ function Body() {
             </Topper>
             <p>이름을 입력해주세요</p>
             <form onSubmit={onSubmit}>
-                <input type="text" name="name" onChange={onChangeName}/>
+                <input type="text" name="name" onChange={onChangeNickName}/>
                 <button type="submit">다음</button>
             </form>
             <FooterLogoColor></FooterLogoColor>

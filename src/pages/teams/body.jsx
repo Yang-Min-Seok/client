@@ -1,6 +1,6 @@
 import { BodyDiv, Topper1, Topper2, CntIntro, CntBox, PwIntro, PwBox } from "./style";
 import  FooterLogoColor from '../../styles/global/footerLogoColor';
-import { teams } from "../../apis/Apis";
+import { makeTeams } from "../../apis/Apis";
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 import useInput from "../../hooks/useInput";
@@ -14,7 +14,14 @@ function Body () {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            teams(navigate, Number(numberOfTeam), authCode);
+            // authCode 형식이 안맞으면
+            if (authCode.length !== 4){
+                alert('4자리 비밀번호를 입력해주세요!')
+            }
+            // authCode 형식이 맞으면
+            else{
+                makeTeams(navigate, Number(numberOfTeam), authCode);
+            }
         },
     );
 

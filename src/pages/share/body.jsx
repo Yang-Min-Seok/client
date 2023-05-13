@@ -8,14 +8,14 @@ function Body() {
     
     const location = useLocation();
     
-    // teams에서 가져온 url, teamId
-    const url = location.state.url;
+    // teams에서 가져온 presignedUrl, teamId
+    const presignedUrl = location.state.presignedUrl;
     const teamId = location.state.teamId;
     const teamName = location.state.teamName;
     
     // 클립보드에 복사기능
     function copyToClipboard() {
-        const link = `http://localhost:3000/upload/${teamName}`;
+        const link = `http://localhost:3000/name/${teamName}`;
         clipboardCopy(link);
         alert('링크가 복사되었습니다 !');
     }
@@ -42,7 +42,7 @@ function Body() {
             }
 
             // 링크생성
-            const link = `http://localhost:3000/upload/${teamName}`;
+            const link = `http://localhost:3000/name/${teamName}`;
             
             Kakao.Share.createDefaultButton({
                 container: '#kakaotalk-sharing-btn',
@@ -78,8 +78,8 @@ function Body() {
                     아래의 링크를 공유하여 <br />
                     모두의 시간표를 모아주세요 !
                 </p>
-                <Link to={`/name/${teamName}`} state={{url:url, teamId:teamId}}>
-                {`http://localhost:3000/upload/${teamName}`}
+                <Link to={`/name/${teamName}`} state={{presignedUrl:presignedUrl, teamId:teamId}}>
+                {`http://localhost:3000/name/${teamName}`}
                 </Link>
                 
                 <LinkKakao>
@@ -90,7 +90,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/name/${teamName}`} state={{url:url, teamId:teamId}} id="next">다음</Link>
+            <Link to={`/name/${teamName}`} state={{presignedUrl:presignedUrl, teamId:teamId}} id="next">다음</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )

@@ -9,10 +9,10 @@ function Body() {
     // useParams -> url의 마지막 부분
     const teamName = useParams().teamName;
 
-
-    // url 가져오기 -> 변경 필요
+    // presignedUrl, memberId 가져오기
     const location = useLocation();
-    const url = location.state.url;
+    const presignedUrl = location.state.presignedUrl;
+    const memberId = location.state.memberId;
 
     // teamId 가져오기
     const [ teamId, setTeamId ] = useState('');
@@ -60,7 +60,7 @@ function Body() {
                 // formData에 img파일 담기
                 formData.append('ImgFile', currFile);
                 // putImg 호출
-                putImg(navigate, url, formData, teamId, teamName);
+                putImg(navigate, presignedUrl, formData, teamId, teamName, memberId);
             }
             // currFile이 비어있으면,
             else{
