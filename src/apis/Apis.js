@@ -22,7 +22,7 @@ const s3Api = axios.create({
 export const makeTeams = async (navigate, numberOfTeam, authCode) => {
     
     // .then 전까지가 쏘는 구간
-    // response부터가 응답 값을 받아오는 것
+    // response부터가 응답 값을 받아오는 것1
     await serverApi.post('https://api.mogong.site/teams', { numberOfTeam, authCode }).then((response) => {
       // 팀 생성이 완료되었으면
       if (response.data.code === 'T-S001') {
@@ -38,23 +38,23 @@ export const makeTeams = async (navigate, numberOfTeam, authCode) => {
 export const getImgUrl = async (navigate, teamId, teamName) => {
     await serverApi.post('https://api.mogong.site/images', { extension : ".jpg" } ).then((response) => {
       if (response.data.code === 'I-S001') {
-        const presignedUrl = response.data.data.preSignedUrl;
-        // teamId와 preSignedUrl을 들고 /share로
-        navigate(`/share`, { state: {presignedUrl:presignedUrl, teamId: teamId, teamName: teamName}
+        // teamId와 teamName을 들고 /share로
+        navigate(`/share`, { state: {teamId: teamId, teamName: teamName}
         });
       };
     });
 };
 
 // 멤버 생성하기
-export const createMember = async (navigate, nickName, teamId, teamName, presignedUrl) => {
+export const createMember = async (navigate, nickName, teamId, teamName) => {
   await serverApi.post(`https://api.mogong.site/teams/${teamId}/members`, {'nickName' : nickName} ).then((response) => {
       // 멤버 성공에 성공했다면
       if (response.data.code === 'M-S001'){
+        // imageUrl이 개별 preSignedUrl이 되는 것!
         const imageUrl = response.data.data.imageUrl;
         const memberId = response.data.data.memberId;
         const nickName = response.data.data.nickName;
-        navigate(`/upload/${teamName}/${memberId}`, {state: { imageUrl:imageUrl, memberId:memberId, nickName:nickName, presignedUrl:presignedUrl }});
+        navigate(`/upload/${teamName}/${memberId}`, {state: { preSignedUrl:imageUrl, memberId:memberId, nickName:nickName}});
       }
       // 실패했다면
       else{
@@ -64,9 +64,10 @@ export const createMember = async (navigate, nickName, teamId, teamName, presign
 };
 
 // 받은 url에 이미지 첨부 요청
-export const putImg = async (navigate, presignedUrl, imgFile, teamId, teamName, memberId ) => {
-  // s3에 put 요청 이 때에는 전체 url을 보내야 함 !
-  await s3Api.put(presignedUrl, { imgFile } ).then((response) => {
+export const putImg = async (navigate, preSignedUrl, imgFile, teamId, teamName, memberId ) => {
+  // s3에 put 요청
+  await s3Api.put(preSignedUrl, { imgFile } ).then((response) => {
+    console.log(response);
     // uploadImg 호출
     uploadImg(navigate, teamId, teamName, memberId);
   });
@@ -74,8 +75,8 @@ export const putImg = async (navigate, presignedUrl, imgFile, teamId, teamName, 
 
 // 이미지 업로드하기
 export const uploadImg = async (navigate, teamId, teamName, memberId) => {
-  await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`, { }).then((response) => {
-
+  await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`, {}).then((response) => {
+    console.log(response);
   });
 };
 

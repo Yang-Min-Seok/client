@@ -11,7 +11,6 @@ function Body() {
     
     // teamId, url
     const location = useLocation();
-    const presignedUrl = location.state.presignedUrl;
     const teamId = location.state.teamId;
 
     // teamName
@@ -27,7 +26,7 @@ function Body() {
             }
             else{
                 // 멤버 생성 요청
-            createMember(navigate, nickName, teamId, teamName, presignedUrl);
+            createMember(navigate, nickName, teamId, teamName);
             }
         },
     );

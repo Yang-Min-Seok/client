@@ -8,8 +8,7 @@ function Body() {
     
     const location = useLocation();
     
-    // teams에서 가져온 presignedUrl, teamId
-    const presignedUrl = location.state.presignedUrl;
+    // teams에서 가져온 teamId, teamName
     const teamId = location.state.teamId;
     const teamName = location.state.teamName;
     
@@ -78,7 +77,7 @@ function Body() {
                     아래의 링크를 공유하여 <br />
                     모두의 시간표를 모아주세요 !
                 </p>
-                <Link to={`/name/${teamName}`} state={{presignedUrl:presignedUrl, teamId:teamId}}>
+                <Link to={`/name/${teamName}`} state={{teamId:teamId}}>
                 {`http://localhost:3000/name/${teamName}`}
                 </Link>
                 
@@ -90,7 +89,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/name/${teamName}`} state={{presignedUrl:presignedUrl, teamId:teamId}} id="next">다음</Link>
+            <Link to={`/name/${teamName}`} state={{teamId:teamId}} id="next">다음</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
