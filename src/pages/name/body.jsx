@@ -2,19 +2,29 @@ import { BodyDiv, Topper } from "./style";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import useInput from "../../hooks/useInput";
-import { useCallback } from 'react';
-import { createMember } from "../../apis/Apis";
+import { useCallback, useState, useEffect } from 'react';
+import { createMember, getTeamId } from "../../apis/Apis";
 
 function Body() {
-    // useInput 사용
-    const [ nickName, onChangeNickName, setNickName ] = useInput('');
     
-    // teamId, url
-    const location = useLocation();
-    const teamId = location.state.teamId;
-
     // teamName
     const teamName = useParams().teamName;
+
+    // teamId
+    const [ teamId, setTeamId ] = useState('');
+    const findTeamID = useCallback(async () => {
+        await getTeamId(teamName).then((response) => {
+            setTeamId(Number(response));
+        });
+    });
+    useEffect(() => {
+        // 첫 렌더링 때 무조건 실행됨
+        findTeamID()
+    }, []);
+
+
+    // useInput 사용
+    const [ nickName, onChangeNickName, setNickName ] = useInput('');
     
     const navigate = useNavigate();
     // 이름 제출을 눌렀을 때,
