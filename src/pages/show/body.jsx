@@ -1,37 +1,30 @@
 import { useCallback, useEffect } from 'react';
 import { BodyDiv, DownloadBox, DownloadIntro, TableImg, DownloadBtn } from "./style";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 
 function Body() {
 
-    let resultImg = '';
+    // 결과 이미지 가져오기
+    const location = useLocation();
+    const resultImageUrl = location.state.resultImageUrl;
 
-    // 이미지 띄우기
-    const getReadyForImgShow = useCallback(async () => {
-        // 임시 링크
-        resultImg = `https://mogong.s3.ap-northeast-2.amazonaws.com/image/sample_5.JPG`;
-        
-        // api 나오면 작성
-        // await getResultImg().then((response) => {
-          
-        // });
-        
-        // ImgBox에 resultImg 띄우기
-        const ImgBox = document.getElementById('resultImgBox');
-        ImgBox.style.backgroundImage = `url(${resultImg})`;
-    });
+    // 이미지를 보여주기 구현
+    const showImage = () => {
+        // imgBox에 올린 이미지 보여주기
+        const resultImageBox = document.getElementById("resultImageBox");
+        resultImageBox.style.backgroundImage = `url(${resultImageUrl})`;
+    }
     useEffect(() => {
         // 첫 렌더링 때 무조건 실행됨
-        getReadyForImgShow();
+        showImage();
     }, []);
 
+    // 다운로드 구현
     const handleDownload = () => {
-        // 다운로드할 이미지 URL
-        const url = resultImg;
       
         // 이미지 URL을 Blob으로 변환
-        fetch(url)
+        fetch(resultImageUrl)
           .then(response => response.blob())
           .then(blob => {
             // Blob으로부터 URL 객체 생성
@@ -65,7 +58,7 @@ function Body() {
 
             </DownloadBox>
 
-            <TableImg id="resultImgBox">
+            <TableImg id="resultImageBox">
                 
             </TableImg>
 

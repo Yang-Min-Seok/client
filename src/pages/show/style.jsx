@@ -47,6 +47,7 @@ export const DownloadBox = styled.div`
     display: flex;
     justify-content: center;
 `
+
 export const DownloadIntro = styled.p`
 margin: 0;
     text-align: center;

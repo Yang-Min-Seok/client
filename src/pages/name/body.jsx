@@ -7,7 +7,6 @@ import { createMember, getTeamId } from "../../apis/Apis";
 
 function Body() {
     const location = useLocation();
-    const teamPresignedUrl = location.state.teamPresignedUrl;
     // teamName
     const teamName = useParams().teamName;
 
@@ -37,7 +36,7 @@ function Body() {
             }
             else{
                 // 멤버 생성 요청
-            createMember(navigate, nickName, teamId, teamName, teamPresignedUrl);
+            createMember(navigate, nickName, teamId, teamName);
             }
         },
     );

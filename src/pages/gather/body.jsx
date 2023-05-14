@@ -1,5 +1,5 @@
 import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
-import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getTeamInfo } from "../../apis/Apis";
 import { useCallback, useState, useEffect } from "react";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
@@ -8,15 +8,16 @@ function Body() {
     
     const location = useLocation();
     const teamId = location.state.teamId;
-    const url = location.state.url;
-    const navigate = useNavigate();
-    const [ nowCnt, setNowCnt ] = useState(0);
-    const [ numberOfTeam, setNumberOfTeam ] = useState(0);
+    const teamName = location.state.teamName;
 
+    const [ numberOfSubmit, setNumberOfSubmit ] = useState(0);
+    const [ numberOfMember, setNumberOfMember ] = useState(0);
+
+    const navigate = useNavigate();
     const onClick = useCallback(async () => {
-        await getTeamInfo(teamId).then((response) => {
-          setNowCnt(response[0])
-          setNumberOfTeam(response[1])
+        await getTeamInfo(navigate, teamId, teamName).then((response) => {
+          setNumberOfSubmit(response[0])
+          setNumberOfMember(response[1])
         });
     });
     
@@ -45,7 +46,7 @@ function Body() {
 
                 <p>
                     지금까지
-                    <span> ({nowCnt}/{numberOfTeam}) </span>
+                    <span> ({numberOfSubmit}/{numberOfMember}) </span>
                     명이 완료했어요!
                 </p>
                 <p>

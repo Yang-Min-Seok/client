@@ -38,16 +38,15 @@ export const makeTeams = async (navigate, numberOfTeam, authCode) => {
 export const getImgUrl = async (navigate, teamId, teamName) => {
     await serverApi.post('https://api.mogong.site/images', { extension : ".jpg" } ).then((response) => {
       if (response.data.code === 'I-S001') {
-        const teamPresignedUrl = response.data.data.preSignedUrl;
         // teamId와 teamName을 들고 /share로
-        navigate(`/share`, { state: {teamId: teamId, teamName: teamName, teamPresignedUrl: teamPresignedUrl}
+        navigate(`/share`, { state: {teamId: teamId, teamName: teamName}
         });
       };
     });
 };
 
 // 멤버 생성하기
-export const createMember = async (navigate, nickName, teamId, teamName, teamPresignedUrl) => {
+export const createMember = async (navigate, nickName, teamId, teamName) => {
   await serverApi.post(`https://api.mogong.site/teams/${teamId}/members`, {'nickName' : nickName} ).then((response) => {
       // 멤버 성공에 성공했다면
       if (response.data.code === 'M-S001'){
@@ -55,7 +54,7 @@ export const createMember = async (navigate, nickName, teamId, teamName, teamPre
         const imageUrl = response.data.data.imageUrl;
         const memberId = response.data.data.memberId;
         const nickName = response.data.data.nickName;
-        navigate(`/upload/${teamName}/${memberId}`, {state: { preSignedUrl:imageUrl, memberId:memberId, nickName:nickName, teamPresignedUrl: teamPresignedUrl}});
+        navigate(`/upload/${teamName}/${memberId}`, {state: { preSignedUrl:imageUrl, memberId:memberId, nickName:nickName}});
       }
       // 실패했다면
       else{
@@ -64,47 +63,44 @@ export const createMember = async (navigate, nickName, teamId, teamName, teamPre
   });
 };
 
-// 받은 url에 이미지 첨부 요청
-export const putImg = async (navigate, preSignedUrl, imgFile, teamId, teamName, memberId, teamPresignedUrl) => {
-  // s3에 put 요청
-  await s3Api.put(preSignedUrl, { imgFile }).then((response) => {
-    console.log(response);
-    console.log(teamId, memberId);
-    // uploadImg 호출
-    uploadImg(navigate, teamId, teamName, memberId);
-  });
-};
-
 // 이미지 업로드하기
 export const uploadImg = async (navigate, teamId, teamName, memberId) => {
   await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`).then((response) => {
-    console.log(teamId, memberId);
-    console.log(response);
+    // 이미지 업로드에 성공했으면
+    if (response.data.code === 'M-S003'){
+      navigate(`/gather/${teamName}`, {state: {teamId:teamId, teamName: teamName}})
+    }
   });
 };
 
 // gather 에서 새로고침할 때 불러올 api
-export const getTeamInfo = async (teamId) => {
-  let numberOfTeam
-  let nowCnt
+export const getTeamInfo = async (navigate, teamId, teamName) => {
+  
+  // 팀원수와 멤버수
+  let numberOfMember;
+  let numberOfSubmit;
 
-  await serverApi.get(`https://api.mogong.site/teams/${teamId}/results`).then((response) => {
-      // update
-      numberOfTeam = response.data.data.numberOfTeam;
-      nowCnt = response.data.data.submit;
-      
-      // 팀 결과 생성에 성공했을 경우
-      if (response.data.code === "T-S004") {
+  await serverApi.get(`https://api.mogong.site/teams/${teamId}/v2`).then((response) => {
+
+      // 결과 도출에 성공했으면, (v2부터는 모두 이 안에서 처리하는 듯,,?)
+      if (response.data.code === 'T-S006'){
+        
+        // update
+        numberOfMember = response.data.data.numberOfMember;
+        numberOfSubmit = response.data.data.numberOfSubmit;
+        
+        // 제출수와 인원수가 맞으면(모두 제출했으면)
+        if (numberOfMember === numberOfSubmit){
+          const resultImageUrl = response.data.data.resultImageUrl;
           
+          // resultImageUrl 가지고 show로
+          navigate(`/show/${teamName}`, {state: {resultImageUrl:resultImageUrl,teamId:teamId, teamName:teamName}})
+        }
       }
-
-      // 팀 결과 생성에 성공했을 경우 (인원 미충족시)
-      else if (response.data.code === "T-F002") {
-
-      }
+      
     });
   
-  return [nowCnt, numberOfTeam]
+  return [numberOfSubmit, numberOfMember];
 };
 
 // 외부 접근 시 teamId를 가져오는 api
@@ -123,7 +119,7 @@ export const getTeamId = async (teamName) => {
   return teamId
 };
 
-// 외부 접근 시 teamId를 가져오는 api
+// 투표폼 만들기용 teamResult를 가져오는 api
 export const getTeamResult1 = async (teamId) => {
   await serverApi.get(`https://api.mogong.site/teams/1/v2`).then((response) => {
       console.log(response);
