@@ -1,12 +1,13 @@
 import { BodyDiv, Topper } from "./style";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
-import { useLocation, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import useInput from "../../hooks/useInput";
 import { useCallback, useState, useEffect } from 'react';
 import { createMember, getTeamId } from "../../apis/Apis";
 
 function Body() {
-    
+    const location = useLocation();
+    const teamPresignedUrl = location.state.teamPresignedUrl;
     // teamName
     const teamName = useParams().teamName;
 
@@ -36,7 +37,7 @@ function Body() {
             }
             else{
                 // 멤버 생성 요청
-            createMember(navigate, nickName, teamId, teamName);
+            createMember(navigate, nickName, teamId, teamName, teamPresignedUrl);
             }
         },
     );

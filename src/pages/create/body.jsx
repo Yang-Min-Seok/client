@@ -1,56 +1,75 @@
 import { BodyDiv, Intro, TimeBox, OptionBox } from "./style";
 import { Link } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
-
-// 30분, 60분, 90분 버튼
-function handleOnClick30min() {
-    const target = document.getElementById("30minLabel");
-    target.style.backgroundColor = "#FF9836";
-    target.style.color = "#fff";
-
-    const except1 = document.getElementById("60minLabel");
-    except1.style.backgroundColor = "#fff";
-    except1.style.color = "#000";
-
-    const except2 = document.getElementById("90minLabel");
-    except2.style.backgroundColor = "#fff";
-    except2.style.color = "#000";
-}
-
-function handleOnClick60min() {
-    const target = document.getElementById("60minLabel");
-    target.style.backgroundColor = "#FF9836";
-    target.style.color = "#fff";
-
-    const except1 = document.getElementById("30minLabel");
-    except1.style.backgroundColor = "#fff";
-    except1.style.color = "#000";
-
-    const except2 = document.getElementById("90minLabel");
-    except2.style.backgroundColor = "#fff";
-    except2.style.color = "#000";
-}
-
-function handleOnClick90min() {
-    const target = document.getElementById("90minLabel");
-    target.style.backgroundColor = "#FF9836";
-    target.style.color = "#fff";
-
-    const except1 = document.getElementById("30minLabel");
-    except1.style.backgroundColor = "#fff";
-    except1.style.color = "#000";
-
-    const except2 = document.getElementById("60minLabel");
-    except2.style.backgroundColor = "#fff";
-    except2.style.color = "#000";
-}
-
-function handleOnSubmit() {
-    // 투표 폼 만들기 눌렀을 때
-
-}
+import { getTeamResult1 } from "../../apis/Apis";
+import { useCallback, useState, useEffect } from 'react';
 
 function Body() {
+    
+    // 팀 결과 가져오기
+    // teamResult
+    const [ teamResult, setTeamResult ] = useState('');
+    const getTeamResult = useCallback(async () => {
+        await getTeamResult1(1).then((response) => {
+            
+        });
+    });
+    useEffect(() => {
+        // 첫 렌더링 때 무조건 실행됨
+        getTeamResult()
+    }, []);
+
+    // 30분 버튼 눌렀을 때
+    function handleOnClick30min() {
+        const target = document.getElementById("30minLabel");
+        target.style.backgroundColor = "#FF9836";
+        target.style.color = "#fff";
+
+        const except1 = document.getElementById("60minLabel");
+        except1.style.backgroundColor = "#fff";
+        except1.style.color = "#000";
+
+        const except2 = document.getElementById("90minLabel");
+        except2.style.backgroundColor = "#fff";
+        except2.style.color = "#000";
+    }
+
+
+    // 60분 버튼 눌렀을 때
+    function handleOnClick60min() {
+        const target = document.getElementById("60minLabel");
+        target.style.backgroundColor = "#FF9836";
+        target.style.color = "#fff";
+
+        const except1 = document.getElementById("30minLabel");
+        except1.style.backgroundColor = "#fff";
+        except1.style.color = "#000";
+
+        const except2 = document.getElementById("90minLabel");
+        except2.style.backgroundColor = "#fff";
+        except2.style.color = "#000";
+    }
+
+
+    // 90분 버튼 눌렀을 때
+    function handleOnClick90min() {
+        const target = document.getElementById("90minLabel");
+        target.style.backgroundColor = "#FF9836";
+        target.style.color = "#fff";
+
+        const except1 = document.getElementById("30minLabel");
+        except1.style.backgroundColor = "#fff";
+        except1.style.color = "#000";
+
+        const except2 = document.getElementById("60minLabel");
+        except2.style.backgroundColor = "#fff";
+        except2.style.color = "#000";
+    }
+
+    function handleOnSubmit() {
+        // 투표 폼 만들기 눌렀을 때
+
+    }
     
     return (
         <BodyDiv>
@@ -65,8 +84,7 @@ function Body() {
                 </Intro>
                 
                 <TimeBox>
-                    <input type="checkbox" name="selectedTime" />월요일 9:00 ~ 10:00<br />
-                    <input type="checkbox" name="selectedTime" />화요일 7:00 ~ 9:00<br />
+                    
                 </TimeBox>
 
                 <OptionBox>

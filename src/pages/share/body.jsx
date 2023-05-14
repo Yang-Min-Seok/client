@@ -11,7 +11,8 @@ function Body() {
     // teams에서 가져온 teamId, teamName
     const teamId = location.state.teamId;
     const teamName = location.state.teamName;
-    
+    const teamPresignedUrl = location.state.teamPresignedUrl;
+
     // 클립보드에 복사기능
     function copyToClipboard() {
         const link = `http://localhost:3000/name/${teamName}`;
@@ -77,7 +78,7 @@ function Body() {
                     아래의 링크를 공유하여 <br />
                     모두의 시간표를 모아주세요 !
                 </p>
-                <Link to={`/name/${teamName}`} state={{teamId:teamId}}>
+                <Link to={`/name/${teamName}`} state={{teamId:teamId, teamPresignedUrl: teamPresignedUrl}}>
                 {`http://localhost:3000/name/${teamName}`}
                 </Link>
                 
@@ -89,7 +90,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/name/${teamName}`} state={{teamId:teamId}} id="next">다음</Link>
+            <Link to={`/name/${teamName}`} state={{teamId:teamId, teamPresignedUrl: teamPresignedUrl}} id="next">다음</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
