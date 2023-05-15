@@ -58,7 +58,7 @@ export const BodyDiv = styled.div`
             display: block;
             margin: 0 auto;
             margin-bottom: 16px;
-            margin-top: 45px;
+            margin-top: 50px;
             width: 155px;
             height: 45px;
             border: none;
@@ -82,8 +82,8 @@ export const BodyDiv = styled.div`
         color: #FF0404;
         text-align: center;
         font-size: 18px;
-        margin-bottom: 25px;
-        margin-top: 15px;
+        margin-bottom: 21px;
+        margin-top: 10px;
     }
 
     .popup-overlay {
@@ -166,7 +166,7 @@ export const Topper = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 91px;
+    margin-top: 80px;
     margin-bottom: 17px;
     div {
         width:10px;
