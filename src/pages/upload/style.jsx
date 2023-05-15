@@ -114,7 +114,7 @@ export const BodyDiv = styled.div`
         font-size: 17px;
         line-height: 25px;
         margin: 0;
-        margin-top: 45px;
+        margin-top: 50px;
     }
 
     .popup p{
@@ -125,7 +125,6 @@ export const BodyDiv = styled.div`
         font-size: 20px;
         font-weight: 100;
         margin-bottom: 20px;
-        transform: translateY(-3px);
     }
 
     .popup p span{
@@ -145,7 +144,7 @@ export const BodyDiv = styled.div`
     }
 
     .popup img {
-        max-width: 70%;
+        max-width: 60%;
         max-height: 80vh;
     }
 
