@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BodyDiv, DownloadBox, DownloadIntro, TableImg, DownloadBtn } from "./style";
 import { Link, useLocation } from "react-router-dom";
 import FooterLogoColor from "../../styles/global/footerLogoColor";

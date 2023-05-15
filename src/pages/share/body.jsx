@@ -8,7 +8,7 @@ function Body() {
     
     const location = useLocation();
     
-    // teams에서 가져온 teamId, teamName
+    // teams에서 가져온 teamId, teamName, authCode
     const teamId = location.state.teamId;
     const teamName = location.state.teamName;
 

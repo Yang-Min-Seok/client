@@ -75,7 +75,8 @@ function Body() {
                 }
                 // 에러 처리 
                 catch (err) {
-                console.error('Error uploading image:', err);
+                    alert('유의사항을 확인해주세요!');
+                    console.error('Error uploading image:', err);
                 }
         }
         // 이미지가 비어있으면

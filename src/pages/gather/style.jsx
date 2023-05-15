@@ -20,13 +20,14 @@ export const BodyDiv = styled.div`
         font-weight: 400;
     }
     /* link to exit */
-    a {
+    button {
         display: block;
         text-decoration: none;
         color:#fff;
         width: 220px;
         height: 45px;
         background-color: #B8B8B8;
+        border: none;
         border-radius: 25px;
         line-height: 45px;
         text-align: center;

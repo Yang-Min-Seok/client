@@ -38,6 +38,7 @@ export const BodyDiv = styled.div`
         margin: 0 auto;
         margin-bottom: 36px;
         font-family: "subFont";
+        font-size: 20px;
     }
 `
 

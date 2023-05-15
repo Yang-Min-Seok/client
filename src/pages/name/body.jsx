@@ -6,10 +6,9 @@ import { useCallback, useState, useEffect } from 'react';
 import { createMember, getTeamId } from "../../apis/Apis";
 
 function Body() {
-    const location = useLocation();
+    
     // teamName
     const teamName = useParams().teamName;
-
     // teamId
     const [ teamId, setTeamId ] = useState('');
     const findTeamID = useCallback(async () => {
@@ -36,7 +35,7 @@ function Body() {
             }
             else{
                 // 멤버 생성 요청
-            createMember(navigate, nickName, teamId, teamName);
+                createMember(navigate, nickName, teamId, teamName);
             }
         },
     );

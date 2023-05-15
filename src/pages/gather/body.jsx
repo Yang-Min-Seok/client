@@ -1,6 +1,6 @@
 import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { getTeamInfo } from "../../apis/Apis";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getTeamInfo, getTeamResult } from "../../apis/Apis";
 import { useCallback, useState, useEffect } from "react";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 
@@ -25,6 +25,22 @@ function Body() {
         // 첫 렌더링 때 무조건 실행됨
         onClick()
     }, []);
+
+    // 관리자 권한으로 종료
+    const handleExit = () => {
+        // 입력 받기
+        const authCode = prompt('관리자 비밀번호 4자리를 입력해주세요.');
+
+        // 형식이 올바르지 않으면
+        if (authCode === null || authCode.length !== 4){
+            alert('올바른 비밀번호를 입력해주세요!')
+        }
+        // 올바르면
+        else{
+             // 팀 결과 조회
+            getTeamResult(navigate, teamId, authCode, teamName);
+        }
+    }
 
     return (
         <BodyDiv>
@@ -55,7 +71,7 @@ function Body() {
                 </p>
             </GatheringBox>
             
-            <Link to="/">관리자 권한으로 종료</Link>
+            <button onClick={handleExit}>관리자 권한으로 종료</button>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )
