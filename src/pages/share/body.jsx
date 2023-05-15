@@ -48,9 +48,9 @@ function Body() {
                 objectType: 'feed',
                 content: {
                   title: '모두의 공강',
-                  description: '시간표를 올려봐요!',
+                  description: '시간표 이미지를 넣어 모두의 공강을 확인하세요!',
                   imageUrl:
-                    `https://firebasestorage.googleapis.com/v0/b/fir-readme-storage.appspot.com/o/KakaoTalk_Photo_2023-05-05-00-13-42.png?alt=media&token=9f4f34da-c733-453d-9dec-d018e2306b42`,
+                    `https://github.com/Yang-Min-Seok/Yang-Min-Seok/assets/83502596/de14a5ec-ac80-4c2e-9c51-e8a8be66fac6`,
                   link: {
                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
                     mobileWebUrl: 'http://localhost:3000',
