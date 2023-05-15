@@ -54,12 +54,21 @@ export const createMember = async (navigate, nickName, teamId, teamName) => {
 
 // 이미지 업로드하기
 export const uploadImg = async (navigate, teamId, teamName, memberId) => {
-  await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`).then((response) => {
-    // 이미지 업로드에 성공했으면
-    if (response.data.code === 'M-S003'){
-      navigate(`/gather/${teamName}`, {state: {teamId:teamId, teamName: teamName}})
-    }
-  });
+  
+  // api에서 정상 반응이 오면(파일 형식이 맞으면)
+  try{
+    await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`).then((response) => {
+      // 이미지 업로드에 성공했으면
+      if (response.data.code === 'M-S003'){
+          navigate(`/gather/${teamName}`, {state: {teamId:teamId, teamName: teamName}})
+      }
+    });
+  }
+  // api에서 에러가 나오면(파일 형식이 안맞으면)
+  catch (err) {
+    alert('유의사항을 확인해주세요!')
+  }
+
 };
 
 // 팀 결과 조회 (without authCode)

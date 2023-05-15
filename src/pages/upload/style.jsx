@@ -78,7 +78,12 @@ export const BodyDiv = styled.div`
         width: 55%;
         font-family: 'mainFont';
         line-height: 2;
-
+        text-decoration: underline;
+        color: #FF0404;
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 25px;
+        margin-top: 15px;
     }
 
     .popup-overlay {
@@ -146,7 +151,7 @@ export const BodyDiv = styled.div`
     .popup div:nth-child(5){
         width: 75px;
         height: 32px;
-        background-color: #FF9836;
+        background-color: #B5B5B5;
         color: #fff;
         margin: 0 auto;
         line-height: 32px;
@@ -184,7 +189,6 @@ export const Intro = styled.p`
     text-align: center;
     line-height: 25px;
     font-size: 20px;
-    margin-bottom: 22px;
     font-family: 'mainFont';
     
     b::before{
