@@ -39,10 +39,6 @@ export const BodyDiv = styled.div`
         margin-bottom: 36px;
         font-family: "subFont";
         font-size: 20px;
-        transition: background-color 0.5s;
-    }
-    #next:hover{
-        background-color: #FF9836;
     }
 `
 

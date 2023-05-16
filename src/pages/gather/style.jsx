@@ -37,10 +37,6 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         margin-bottom: 25px;
         font-family: 'subFont';
-        transition: background-color 0.5s;
-    }
-    button:hover{
-        background-color: #FF9836;
     }
 `
 export const Topper = styled.div`

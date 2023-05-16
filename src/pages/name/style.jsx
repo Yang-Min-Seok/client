@@ -83,12 +83,7 @@ export const BodyDiv = styled.div`
             border: none;
             border-radius: 25px;
             font-family: 'subFont';
-            transition: background-color 0.5s;
             cursor: pointer;
-        }
-
-        button:hover{
-            background-color: #FF9836;
         }
     }
 `
