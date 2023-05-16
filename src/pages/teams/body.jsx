@@ -2,7 +2,7 @@ import { BodyDiv, Topper1, Topper2, CntIntro, CntBox, PwIntro, PwBox } from "./s
 import  FooterLogoColor from '../../styles/global/footerLogoColor';
 import { makeTeams } from "../../apis/Apis";
 import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import useInput from "../../hooks/useInput";
 
 function Body () {
@@ -14,16 +14,43 @@ function Body () {
     const onSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            // authCode 형식이 안맞으면
-            if (authCode.length !== 4){
-                alert('4자리 비밀번호를 입력해주세요!')
+            // 인원수 입력 안했으면,
+            if (Number(numberOfTeam) <= 0){
+                const cntInput = document.getElementById('cntInput');
+                cntInput.style.border = '1px solid red';
+                cntInput.style.animationName = 'wrongEffect';
+                cntInput.style.animationDuration = '1s';
+                cntInput.style.animationIterationCount = '1s';
             }
-            // authCode 형식이 맞으면
+            // authCode 입력 안했으면
+            if (authCode.length !== 4){
+                const pwInput = document.getElementById('pwInput');
+                pwInput.style.border = '1px solid red';
+                pwInput.style.animationName = 'wrongEffect';
+                pwInput.style.animationDuration = '1s';
+                pwInput.style.animationIterationCount = '1s';
+            }
+            // 모든 조건 충족되었으면 형식이 맞으면
             else{
                 makeTeams(navigate, Number(numberOfTeam), authCode);
             }
         },
     );
+    
+    // 버튼 활성화 구현
+    const [ nextBtn, setNextBtn ] = useState('');
+    const getNextBtn = () => {
+        setNextBtn(document.getElementById('nextBtn'));
+    }
+    useEffect(() => {
+        getNextBtn();
+    }, []);
+    if (nextBtn !== '' && Number(numberOfTeam) >= 1 && authCode.length === 4){
+        nextBtn.style.backgroundColor = '#FF9836';
+    }
+    else if (nextBtn !== '' && ((Number(numberOfTeam)) <= 0 || authCode.length !== 4)){ 
+        nextBtn.style.backgroundColor = '#B8B8B8';
+    }
 
     return (
         <BodyDiv>
@@ -40,7 +67,7 @@ function Body () {
                 </CntIntro>
 
                 <CntBox>
-                    <input type="number" name="cnt" onChange={onChangeNumberOfTeam}/> 명
+                    <input type="number" name="cnt" onChange={onChangeNumberOfTeam} id="cntInput"/> 명
                 </CntBox>
                 <Topper2>
                     <div></div>
@@ -52,10 +79,10 @@ function Body () {
                 </PwIntro>
 
                 <PwBox>
-                    <input type="password" name="PW" onChange={onChangeAuthCode}/>
+                    <input type="password" name="PW" onChange={onChangeAuthCode} maxLength='4' id="pwInput"/>
                 </PwBox>
 
-                <button type="submit">다음</button>
+                <button type="submit" id='nextBtn'>다음</button>
 
             </form>
             <FooterLogoColor></FooterLogoColor>

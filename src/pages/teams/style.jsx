@@ -4,6 +4,12 @@ import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf"
 
 export const BodyDiv = styled.div`
 
+    // animation
+    @keyframes wrongEffect {
+        from {
+            transform: translateY(-10px);
+        }
+    }
     // import main font
     @font-face {
         font-family: 'mainFont';
@@ -37,7 +43,9 @@ export const BodyDiv = styled.div`
         margin: 0 auto;
         font-family: 'subFont';
         cursor: pointer;
+        transition: 0.5s;
     }
+
     /* form */
     form{
         margin-bottom: 25px;

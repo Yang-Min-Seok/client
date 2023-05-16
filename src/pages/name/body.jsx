@@ -31,7 +31,11 @@ function Body() {
         (e) => {
             e.preventDefault();
             if (nickName === ''){
-                alert('이름을 입력해주세요!')
+                const nickNameInput = document.getElementById('nickNameInput');
+                nickNameInput.style.border = '1px solid red';
+                nickNameInput.style.animationName = 'wrongEffect';
+                nickNameInput.style.animationDuration = '1s';
+                nickNameInput.style.animationIterationCount = '1s';
             }
             else{
                 // 멤버 생성 요청
@@ -39,6 +43,23 @@ function Body() {
             }
         },
     );
+
+    // 버튼 활성화 구현
+    const [ nextBtn, setNextBtn ] = useState('');
+    const getNextBtn = () => {
+        setNextBtn(document.getElementById('nextBtn'));
+    }
+    useEffect(() => {
+        getNextBtn();
+    }, []);
+
+    if (nextBtn !== '' && nickName.length >= 1){
+        nextBtn.style.backgroundColor = '#FF9836';
+    }
+    else if(nextBtn !== '' && nickName.length === 0){
+        nextBtn.style.backgroundColor = '#B8B8B8';
+    }
+
     return (
         <BodyDiv>
             <Topper>
@@ -47,8 +68,8 @@ function Body() {
             </Topper>
             <p>이름을 입력해주세요</p>
             <form onSubmit={onSubmit}>
-                <input type="text" name="name" onChange={onChangeNickName}/>
-                <button type="submit">다음</button>
+                <input type="text" name="name" onChange={onChangeNickName} id="nickNameInput"/>
+                <button type="submit" id="nextBtn">다음</button>
             </form>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>

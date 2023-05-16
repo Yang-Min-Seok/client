@@ -24,6 +24,12 @@ export const Topper = styled.div`
 `
 
 export const BodyDiv = styled.div`
+    // animation
+    @keyframes wrongEffect {
+        from {
+            transform: translateY(-10px);
+        }
+    }
 
     // import main font
     @font-face {
@@ -84,6 +90,7 @@ export const BodyDiv = styled.div`
             border-radius: 25px;
             font-family: 'subFont';
             cursor: pointer;
+            transition: background-color 0.5s;
         }
     }
 `
