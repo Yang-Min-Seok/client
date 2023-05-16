@@ -53,8 +53,8 @@ function Body() {
                     `https://github.com/Yang-Min-Seok/Yang-Min-Seok/assets/83502596/de14a5ec-ac80-4c2e-9c51-e8a8be66fac6`,
                   link: {
                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                    mobileWebUrl: 'https://client-mogong.vercel.app',
-                    webUrl: 'https://client-mogong.vercel.app',
+                    mobileWebUrl: 'http://client-mogong.vercel.app',
+                    webUrl: 'http://client-mogong.vercel.app',
                   },
                 },
                 buttons: [
