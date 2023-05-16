@@ -3,6 +3,8 @@ import everytimeLogo from "../../assets/images/everytime.png";
 import noImage from "../../assets/images/no_image.png";
 import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
+import step1 from "../../assets/images/step_1.png";
+import step2 from "../../assets/images/step_2.png";
 
 export const BodyDiv = styled.div`
     
@@ -72,7 +74,6 @@ export const BodyDiv = styled.div`
     }
 
     // pop-up
-
     #noticeBtn {
         display: block;
         margin: 0 auto;
@@ -87,80 +88,6 @@ export const BodyDiv = styled.div`
         margin-top: 10px;
     }
 
-    .popup-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-    }
-
-    .popup {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        text-align: center;
-    }
-
-    .popup h4{
-        color:#FF0404;
-        font-family: 'mainFont';
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 25px;
-        margin: 0;
-        margin-top: 50px;
-    }
-
-    .popup p{
-        color:#000;
-        font-family: 'mainFont';
-        margin: 0;
-        line-height: 25px;
-        font-size: 20px;
-        font-weight: 100;
-        margin-bottom: 20px;
-    }
-
-    .popup p span{
-        font-weight: 900;
-    }
-
-    .popup p span::before{
-        content: "";
-        display: inline-block;
-        width: 35px;
-        height: 35px;
-        background-image: url(${everytimeLogo});
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        transform: translateY(8px);
-    }
-
-    .popup img {
-        max-width: 60%;
-        max-height: 80%;
-    }
-
-    .popup div:nth-child(5){
-        width: 75px;
-        height: 32px;
-        background-color: #B5B5B5;
-        color: #fff;
-        margin: 0 auto;
-        line-height: 32px;
-        font-family: 'mainFont';
-        cursor: pointer;
-        margin-top: 25px;
-        margin-bottom: 55px;
-    }
 `
 export const Topper = styled.div`
     display: flex;

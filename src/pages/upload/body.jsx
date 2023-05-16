@@ -6,8 +6,6 @@ import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 
 function Body() {
 
-    // // useState -> currFile(시간표이미지)
-    // const [currFile, setCurrFile] = useState('default');
     // useParams -> url의 마지막 부분
     const teamName = useParams().teamName;
 
@@ -87,16 +85,6 @@ function Body() {
 
     }
 
-    const [ showImage, setShowImage ] = useState(false);
-
-    function handleButtonOpen() {
-        setShowImage(true);
-    }
-
-    function handleButtonClose() {
-        setShowImage(false);
-    }
-
     return (
         <BodyDiv>
 
@@ -105,34 +93,13 @@ function Body() {
                 <div></div>
             </Topper>
 
-            <article>
-                {showImage && (
-                    <div className="popup-overlay">
-                        <div className="popup">
-                            <h4>화면 캡처본은 안돼요!</h4>
-                            <p>
-                                <span>에브리타임</span>에서 <br />
-                                시간표를 다운해 주세요
-                            </p>
-                            <img src="https://github.com/Yang-Min-Seok/client/assets/83502596/cc9f1a78-9c8b-4c4a-92fe-ae12c1d45c70" alt="step1" id="step1"/>
-                            <img src="https://github.com/Yang-Min-Seok/client/assets/83502596/49955d7e-69bb-4e39-97ff-bb679d57badb" alt="step2" id="step2"/>
-                            <div
-                                onClick={handleButtonClose}
-                            >
-                                닫기
-                            </div>
-                        </div>
-                    </div>
-                )}
-            </article>
-
             <form onSubmit={handleUpload}>
 
                 <Intro>
                     <b>에브리타임</b> 시간표<br />
                     이미지를 업로드 해주세요
                 </Intro>
-                <p onClick={handleButtonOpen} id="noticeBtn">화면 캡쳐본은 안돼요!! (클릭)</p>
+                <p id="noticeBtn">화면 캡쳐본은 안돼요!! (클릭)</p>
                 <label 
                 htmlFor="uploadFile"
                 >업로드</label>
@@ -145,7 +112,6 @@ function Body() {
                     placeholder="업로드"
                     id="uploadFile"
                 />     
-
                 <ShowBox>
                     <div id="imgBox"></div>
                 </ShowBox>
