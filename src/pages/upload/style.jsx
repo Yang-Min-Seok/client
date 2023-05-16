@@ -67,6 +67,7 @@ export const BodyDiv = styled.div`
             color: #fff;
             font-size: 20px;
             font-family: 'subFont';
+            cursor: pointer;
         }
     }
 
@@ -75,7 +76,7 @@ export const BodyDiv = styled.div`
     #noticeBtn {
         display: block;
         margin: 0 auto;
-        width: 55%;
+        width: 80%;
         font-family: 'mainFont';
         line-height: 2;
         text-decoration: underline;
@@ -111,7 +112,7 @@ export const BodyDiv = styled.div`
         color:#FF0404;
         font-family: 'mainFont';
         font-weight: 400;
-        font-size: 17px;
+        font-size: 15px;
         line-height: 25px;
         margin: 0;
         margin-top: 50px;
@@ -145,7 +146,7 @@ export const BodyDiv = styled.div`
 
     .popup img {
         max-width: 60%;
-        max-height: 80vh;
+        max-height: 80%;
     }
 
     .popup div:nth-child(5){

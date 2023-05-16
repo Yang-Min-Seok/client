@@ -36,6 +36,11 @@ export const BodyDiv = styled.div`
         color:#fff;
         margin: 0 auto;
         font-family: 'subFont';
+        cursor: pointer;
+        transition: background-color 0.5s;
+    }
+    button:hover{
+        background-color: #FF9536;
     }
     /* form */
     form{

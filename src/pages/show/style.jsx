@@ -41,6 +41,10 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         margin-bottom: 25px;
         font-family: 'subFont';
+        transition: background-color 0.5s;
+    }
+    a:hover{
+        background-color: #FF9836;
     }
 `
 export const DownloadBox = styled.div`

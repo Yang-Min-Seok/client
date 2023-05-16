@@ -39,6 +39,10 @@ export const BodyDiv = styled.div`
         margin-bottom: 36px;
         font-family: "subFont";
         font-size: 20px;
+        transition: background-color 0.5s;
+    }
+    #next:hover{
+        background-color: #FF9836;
     }
 `
 
@@ -79,26 +83,24 @@ export const LinkKakao = styled.div`
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    cursor: pointer;
     margin-bottom: 127.58px;
 
-    /* 링크복사 */
-    div:nth-child(1){
+    // 링크복사, 카카오톡
+    div{
+        cursor: pointer;
         width: 50px;
         height: 67.42px;
-        background-image: url(${copyLink});
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
     }
+    /* 링크복사 */
+    div:nth-child(1){
+        background-image: url(${copyLink});
+    }
 
     /* 카카오톡 */
     div:nth-child(2){
-        width: 50px;
-        height: 67.42px;
         background-image: url(${kakao});
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
     }
 `
