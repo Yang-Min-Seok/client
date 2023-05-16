@@ -70,7 +70,7 @@ export const GatheringBox = styled.div`
     p:nth-child(1){
         display: block;
         height: 25px;
-        width: 70px;
+        width: 100%;
         margin: 0 auto;
         margin-bottom: 4px;
         font-size: 20px;
@@ -84,7 +84,7 @@ export const GatheringBox = styled.div`
         display: block;
         margin: 0 auto;
         height: 50px;
-        width:127px;
+        width: 100%;
         font-size: 20px;
         line-height: 25px;
         text-align: center;
