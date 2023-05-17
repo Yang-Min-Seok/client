@@ -88,6 +88,116 @@ export const BodyDiv = styled.div`
         margin-top: 10px;
     }
 
+    #popUpOverlay{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        background-color: rgba(0,0,0,0.7);
+    }
+
+    #popUp{
+        z-index: 2;
+        margin: 0 auto;
+        width: 70%;
+        height: 75%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10%;
+        background-color: #fff;
+        border-radius: 10px;
+    }
+
+    #popUp h4{
+        margin: 0 auto;
+        font-family: 'mainFont';
+        color: #FF0404;
+        font-weight: 100;
+        font-size: 100%;
+        text-align: center;
+        margin-top: 7%;
+    }
+
+    #popUp p:nth-child(2){
+        margin: 0 auto;
+        text-align: center;
+        font-family: 'mainFont';
+        font-size: 100%;
+        line-height: 1.7;
+    }
+
+    #popUp p:nth-child(2)::before{
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-image: url(${everytimeLogo});
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        transform: translateY(8px);
+    }
+
+    #popUp p:nth-child(2) span{
+        font-weight: 900;
+    }
+
+    #popUp div{
+        margin: 0 auto;
+        width: 70%;
+        height: 65%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 1px solid #eee;
+        box-sizing: border-box;
+        margin-top: 3%;
+    }
+
+    #popUp p:nth-child(4){
+        margin: 0 auto;
+        text-align: center;
+        display:block;
+        width: 60px;
+        font-size: 90%;
+        line-height: 1.7;
+        background-color: #B5B5B5;
+        color: #fff;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 6%;
+    }
+
+    // pc
+    @media only screen and (min-width: 768px){
+        #popUpOverlay{
+            
+        }
+
+        #popUp{
+                
+        }
+
+        #popUp h4{
+            font-size: 150%;
+        }
+
+        #popUp p:nth-child(2){
+            font-size: 130%;
+        }
+
+        #popUp div{
+            margin-top: 1%;
+        }
+
+        #popUp p:nth-child(4){
+            width: 100px;
+            font-size: 120%;
+        }
+    }
 `
 export const Topper = styled.div`
     display: flex;
