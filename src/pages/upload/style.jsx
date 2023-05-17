@@ -178,7 +178,7 @@ export const BodyDiv = styled.div`
         }
 
         #popUp{
-                
+            width:40%;
         }
 
         #popUp h4{
