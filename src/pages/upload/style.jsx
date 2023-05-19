@@ -3,8 +3,6 @@ import everytimeLogo from "../../assets/images/everytime.png";
 import noImage from "../../assets/images/no_image.png";
 import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
-import step1 from "../../assets/images/step_1.png";
-import step2 from "../../assets/images/step_2.png";
 
 export const BodyDiv = styled.div`
     

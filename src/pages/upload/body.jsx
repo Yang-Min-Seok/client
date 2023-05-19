@@ -25,9 +25,6 @@ function Body() {
         // 첫 렌더링 때 무조건 실행됨
         findTeamID()
     }, []);
-    
-    const navigate = useNavigate();
-    const [selectedFile, setSelectedFile] = useState(null);
 
     // 이미지 첨부 시
     function handleFileInput(event) {
@@ -54,6 +51,8 @@ function Body() {
         }
     }
 
+    const navigate = useNavigate();
+    const [selectedFile, setSelectedFile] = useState(null);
     // 이미지 업로드 시
     async function handleUpload(e) {
         e.preventDefault();
@@ -63,28 +62,23 @@ function Body() {
                 // put 요청 후
                 const response = await fetch(preSignedUrl, {
                     method: 'PUT',
-                    headers: {
-                    'Content-Type': selectedFile.type
-                    },
                     body: selectedFile
                 });
                 // uploadImg 함수 호출
                 uploadImg(navigate, teamId, teamName, memberId);
-                }
-                // 에러 처리 
-                catch (err) {
-                    alert('유의사항을 확인해주세요!');
-                    console.error('Error uploading image:', err);
-                }
+            }
+            // 에러 처리 
+            catch (err) {
+                alert('유의사항을 확인해주세요!');
+                console.error('Error uploading image:', err);
+            }
         }
         // 이미지가 비어있으면
         else{
             // 경고문구
             alert('파일을 첨부해주세요!')
         }
-
     }
-
 
     // 팝업 창 구현
     const [ popUp, setPopup ] = useState(false);
