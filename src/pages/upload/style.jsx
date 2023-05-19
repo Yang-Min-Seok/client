@@ -100,7 +100,7 @@ export const BodyDiv = styled.div`
         z-index: 2;
         margin: 0 auto;
         width: 70%;
-        height: 75%;
+        height: 70%;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -116,7 +116,7 @@ export const BodyDiv = styled.div`
         font-weight: 100;
         font-size: 100%;
         text-align: center;
-        margin-top: 7%;
+        margin-top: 10%;
     }
 
     #popUp p:nth-child(2){
@@ -163,10 +163,7 @@ export const BodyDiv = styled.div`
         line-height: 1.7;
         background-color: #B5B5B5;
         color: #fff;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 6%;
+        margin-top: 5%;
     }
 
     // pc
