@@ -72,7 +72,7 @@ export const BodyDiv = styled.div`
         }
     }
 
-    // pop-up (default : Iphone SE)
+    // pop-up (default : iphone SE)
     #noticeBtn {
         display: block;
         margin: 0 auto;
@@ -146,7 +146,7 @@ export const BodyDiv = styled.div`
 
     #popUp div{
         margin: 0 auto;
-        width: 60%;
+        width: 70%;
         height: 60%;
         background-image: url(${guideImage});
         background-repeat: no-repeat;
@@ -169,31 +169,116 @@ export const BodyDiv = styled.div`
         margin-top: 7%;
     }
 
-    // pc
-    @media only screen and (min-width: 768px){
+    // iphone 12Pro and iphone XR
+    @media only screen and (min-width: 376px) and (max-width: 414px){
         #popUpOverlay{
-            
+        
         }
 
         #popUp{
-            width:40%;
+            height: 55%;
+            width: 75%;
+            top: 20%;
+        }
+
+        #popUp h4{
+            
+        }
+
+        #popUp p:nth-child(2){
+            
+        }
+
+        #popUp p:nth-child(2)::before{
+            
+        }
+
+        #popUp p:nth-child(2) span{
+            
+        }
+
+        #popUp div{
+            
+        }
+
+        #popUp p:nth-child(4){
+            
+        }
+    }
+    // tablet
+    @media screen and (min-width: 415px) and (max-width:899px){
+        #popUpOverlay{
+        
+        }
+
+        #popUp{
+            width: 55%;
+            height: 65%;
         }
 
         #popUp h4{
             font-size: 150%;
+            margin-bottom: 1%;
         }
 
         #popUp p:nth-child(2){
             font-size: 130%;
         }
 
+        #popUp p:nth-child(2)::before{
+            
+        }
+
+        #popUp p:nth-child(2) span{
+            
+        }
+
         #popUp div{
-            margin-top: 1%;
+            
         }
 
         #popUp p:nth-child(4){
             width: 100px;
+            font-size: 150%;
+        }
+    }
+    // pc
+    @media only screen and (min-width: 900px){
+        #popUpOverlay{
+            
+        }
+
+        #popUp{
+            width: 40%;
+            height: 80%;
+            top: 7%;
+        }
+
+        #popUp h4{
+            font-size: 150%;
+            margin-bottom: 1%;
+        }
+
+        #popUp p:nth-child(2){
             font-size: 120%;
+        }
+
+        #popUp p:nth-child(2)::before{
+            
+        }
+
+        #popUp p:nth-child(2) span{
+            
+        }
+
+        #popUp div{
+            width: 50%;
+        }
+
+        #popUp p:nth-child(4){
+            width: 80px;
+            line-height: 2;
+            margin-top: 5%;
         }
     }
 `
