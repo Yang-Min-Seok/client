@@ -3,6 +3,7 @@ import everytimeLogo from "../../assets/images/everytime.png";
 import noImage from "../../assets/images/no_image.png";
 import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
+import guideImage from "../../assets/images/guide.png";
 
 export const BodyDiv = styled.div`
     
@@ -71,7 +72,7 @@ export const BodyDiv = styled.div`
         }
     }
 
-    // pop-up
+    // pop-up (default : Iphone SE)
     #noticeBtn {
         display: block;
         margin: 0 auto;
@@ -100,11 +101,11 @@ export const BodyDiv = styled.div`
         z-index: 2;
         margin: 0 auto;
         width: 70%;
-        height: 70%;
+        height: 65%;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 10%;
+        top: 15%;
         background-color: #fff;
         border-radius: 10px;
     }
@@ -123,7 +124,7 @@ export const BodyDiv = styled.div`
         margin: 0 auto;
         text-align: center;
         font-family: 'mainFont';
-        font-size: 100%;
+        font-size: 90%;
         line-height: 1.7;
     }
 
@@ -145,10 +146,12 @@ export const BodyDiv = styled.div`
 
     #popUp div{
         margin: 0 auto;
-        width: 70%;
-        height: 65%;
+        width: 60%;
+        height: 60%;
+        background-image: url(${guideImage});
         background-repeat: no-repeat;
         background-position: center;
+        background-size: contain;
         border: 1px solid #eee;
         box-sizing: border-box;
         margin-top: 3%;
@@ -163,7 +166,7 @@ export const BodyDiv = styled.div`
         line-height: 1.7;
         background-color: #B5B5B5;
         color: #fff;
-        margin-top: 5%;
+        margin-top: 7%;
     }
 
     // pc
