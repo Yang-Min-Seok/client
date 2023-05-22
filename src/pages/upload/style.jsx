@@ -102,7 +102,7 @@ export const BodyDiv = styled.div`
         z-index: 2;
         margin: 0 auto;
         width: 70%;
-        height: 65%;
+        height: 70%;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -207,7 +207,7 @@ export const BodyDiv = styled.div`
         }
     }
     // tablet
-    @media screen and (min-width: 415px) and (max-width:899px){
+    @media screen and (min-width: 415px) and (max-width:600px){
         #popUpOverlay{
         
         }
@@ -243,8 +243,48 @@ export const BodyDiv = styled.div`
             font-size: 150%;
         }
     }
-    // pc
-    @media only screen and (min-width: 900px){
+    // pc (half screen)
+    @media only screen and (min-width: 601px) and (max-width: 1000px){
+        #popUpOverlay{
+            
+        }
+
+        #popUp{
+            width: 60%;
+            height: 80%;
+            top: 7%;
+        }
+
+        #popUp h4{
+            font-size: 150%;
+            margin-bottom: 1%;
+        }
+
+        #popUp p:nth-child(2){
+            font-size: 130%;
+        }
+
+        #popUp p:nth-child(2)::before{
+            
+        }
+
+        #popUp p:nth-child(2) span{
+            
+        }
+
+        #popUp div{
+            width: 60%;
+        }
+
+        #popUp p:nth-child(4){
+            width: 80px;
+            line-height: 2;
+            margin-top: 5%;
+            font-size: 120%;
+        }
+    }
+    // pc (full screen)
+    @media only screen and (min-width: 1001px){
         #popUpOverlay{
             
         }

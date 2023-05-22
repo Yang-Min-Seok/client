@@ -4,6 +4,13 @@ import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regu
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 export const BodyDiv = styled.div`
     
+    // animation
+    @keyframes wrongEffect {
+        from {
+            transform: rotate(90deg);
+        }
+    }
+
     // import main font
     @font-face {
         font-family: 'mainFont';
@@ -37,6 +44,7 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         margin-bottom: 25px;
         font-family: 'subFont';
+        cursor: pointer;
     }
 `
 export const Topper = styled.div`

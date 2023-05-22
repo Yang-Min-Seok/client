@@ -57,8 +57,7 @@ function Body() {
                     기다리고 있어요
                 </h4>
 
-                <Refresh onClick={() => onClick()}>
-                </Refresh>
+                <Refresh onClick={() => onClick()} id="refreshBtn"></Refresh>
 
                 <p>
                     지금까지
