@@ -47,7 +47,11 @@ function Body() {
 
             // no img sign 숨기기
             const target_sign = document.getElementById("noImg");
-            target_sign.style.display="none";            
+            target_sign.style.display="none";  
+            
+            const completeBtn = document.getElementById("completeBtn");
+            completeBtn.style.backgroundColor = "#FF9836";
+            
         }
     }
 
@@ -138,7 +142,7 @@ function Body() {
                 </ShowBox>
 
                 <span id="noImg">업로드한 이미지가 없어요.</span>
-                <button type="submit">입력완료</button>
+                <button type="submit" id="completeBtn">입력완료</button>
             </form>
             <FooterLogoBlack></FooterLogoBlack>
         </BodyDiv>

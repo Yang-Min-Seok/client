@@ -19,14 +19,14 @@ export const BodyDiv = styled.div`
         font-style: normal;
         font-weight: 400;
     }
-    /* link to exit */
+    /* 관리자 권한으로 종료 */
     button {
         display: block;
         text-decoration: none;
         color:#fff;
         width: 220px;
         height: 45px;
-        background-color: #B8B8B8;
+        background-color: #FF9836;
         border: none;
         border-radius: 25px;
         line-height: 45px;

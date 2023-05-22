@@ -64,11 +64,12 @@ export const BodyDiv = styled.div`
             height: 45px;
             border: none;
             border-radius: 25px;
-            background-color: #FF9836;
+            background-color: #B5B5B5;
             color: #fff;
             font-size: 20px;
             font-family: 'subFont';
             cursor: pointer;
+            transition: background-color 0.5s;
         }
     }
 
