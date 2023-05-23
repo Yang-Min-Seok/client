@@ -13,11 +13,24 @@ function Body() {
     const [ numberOfSubmit, setNumberOfSubmit ] = useState(0);
     const [ numberOfMember, setNumberOfMember ] = useState(0);
 
+    const refreshEventOver = () => {
+        const refreshBtn = document.getElementById("refreshBtn");
+        refreshBtn.style.boxShadow = "none";
+    }
+
+    const refreshEvent = () => {
+        const refreshBtn = document.getElementById("refreshBtn");
+        refreshBtn.style.boxShadow = "4px 4px 4px #FF9836";
+        refreshBtn.style.borderRadius = "10px";
+        setTimeout(refreshEventOver, 150);
+    }
+
     const navigate = useNavigate();
     const onClick = useCallback(async () => {
+        refreshEvent()
         await getTeamInfo(navigate, teamId, teamName).then((response) => {
-          setNumberOfSubmit(response[0])
-          setNumberOfMember(response[1])
+            setNumberOfSubmit(response[0])
+            setNumberOfMember(response[1])
         });
     });
     
