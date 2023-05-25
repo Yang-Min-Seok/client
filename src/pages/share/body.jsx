@@ -75,7 +75,7 @@ function Body() {
             <ShareBox>
                 <p>
                     아래의 링크를 공유하여 <br />
-                    모두의 시간표를 모아주세요 !
+                    모두의 시간표를 모아주세요!
                 </p>
                 <Link to={`/name/${teamName}`} state={{teamId:teamId}}>
                 {`https://client-lake-one.vercel.app/name/${teamName}`}

@@ -4,6 +4,7 @@ import noImage from "../../assets/images/no_image.png";
 import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 import guideImage from "../../assets/images/guide.png";
+import mainFont2 from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Bold.otf";
 
 export const BodyDiv = styled.div`
     
@@ -12,7 +13,12 @@ export const BodyDiv = styled.div`
         font-family: 'mainFont';
         src: url(${mainFont}) format('truetype');
         font-style: normal;
-        font-weight: 400;
+    }
+
+    // import main font2
+        @font-face {
+        font-family: 'mainFont2';
+        src: url(${mainFont2}) format('truetype');
     }
     
     // import sub font
@@ -20,7 +26,6 @@ export const BodyDiv = styled.div`
         font-family: 'subFont';
         src: url(${subFont}) format('truetype');
         font-style: normal;
-        font-weight: 400;
     }
 
     form{
@@ -32,7 +37,7 @@ export const BodyDiv = styled.div`
             margin: 0 auto;
             line-height: 32px;
             font-family: 'mainFont';
-            font-size: 19px;
+            font-size: 110%;
             text-align: center;
             letter-spacing: -0.05em;
             background-color: #B5B5B5;
@@ -83,7 +88,7 @@ export const BodyDiv = styled.div`
         text-decoration: underline;
         color: #FF0404;
         text-align: center;
-        font-size: 110%;
+        font-size: 105%;
         margin-bottom: 19px;
         margin-top: 7px;
     }
@@ -349,10 +354,9 @@ export const Intro = styled.p`
     margin: 0 auto;
     text-align: center;
     line-height: 1.3;
-    font-size: 110%;
-    font-family: 'mainFont';
+    font-size: 105%;
     
-    b::before{
+    ::before{
         content: "";
         display: inline-block;
         width:25px;

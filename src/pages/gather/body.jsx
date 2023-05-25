@@ -60,10 +60,10 @@ function Body() {
             
             <GatheringBox>
                 <p>두근두근</p>
-                <h4>
+                <p>
                     모두의 시간표를<br />
                     기다리고 있어요
-                </h4>
+                </p>
 
                 <Refresh onClick={() => onClick()} id="refreshBtn"></Refresh>
 

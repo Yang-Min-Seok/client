@@ -7,7 +7,7 @@ export const Topper = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 85px;
+    margin-top: 100px;
     margin-bottom: 10px;
     div {
         width:10px;

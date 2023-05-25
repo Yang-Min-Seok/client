@@ -10,15 +10,12 @@ export const BodyDiv = styled.div`
     @font-face {
         font-family: 'mainFont';
         src: url(${mainFont}) format('truetype');
-        font-style: normal;
     }
     
     // import sub font
     @font-face {
         font-family: 'subFont';
         src: url(${subFont}) format('truetype');
-        font-style: normal;
-        font-weight: 400;
     }
 
     // import sub font
@@ -65,7 +62,7 @@ export const GatheringBox = styled.div`
         color: #828181;
     }
 
-    h4{
+    p:nth-child(2){
         display: block;
         margin: 0 auto;
         height: 50px;
@@ -80,7 +77,7 @@ export const GatheringBox = styled.div`
     
     p:nth-child(4){
         margin: 0;
-        margin-top: 15px;
+        margin-top: 18px;
         text-align: center;
         font-size: 115%;
         font-family: "mainFont2";

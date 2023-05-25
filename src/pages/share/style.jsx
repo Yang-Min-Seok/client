@@ -5,7 +5,7 @@ import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regu
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 
 export const BodyDiv = styled.div`
-    margin-top: 85px;
+    margin-top: 90px;
     
     // import main font
     @font-face {

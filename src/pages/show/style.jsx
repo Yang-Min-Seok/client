@@ -33,13 +33,13 @@ export const BodyDiv = styled.div`
         border-radius: 25px;
         text-align: center;
         margin: 0 auto;
-        margin-top: 46px;
+        margin-top: 40px;
         font-weight: 400;
         font-size: 18px;
         line-height: 45px;
         text-align: center;
         letter-spacing: -0.05em;
-        margin-bottom: 40px;
+        margin-bottom: 28px;
         font-family: 'subFont';
     }
 `
@@ -73,12 +73,11 @@ export const DownloadBtn = styled.div`
 export const TableImg = styled.div`
     margin: 0 auto;
     margin-top: 13px;
-    height: 350px;
-    width: 232px;
+    height: 370px;
+    width: 245px;
     box-sizing: border-box;
     border: 1px solid #B5B5B5;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    
 `

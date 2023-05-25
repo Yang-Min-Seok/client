@@ -56,7 +56,7 @@ export const Topper1 = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 55px;
+    margin-top: 70px;
     margin-bottom: 10px;
     
     div {
