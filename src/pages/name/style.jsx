@@ -7,8 +7,8 @@ export const Topper = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 140px;
-    margin-bottom: 12px;
+    margin-top: 85px;
+    margin-bottom: 10px;
     div {
         width:10px;
         height:10px;
@@ -49,7 +49,7 @@ export const BodyDiv = styled.div`
 
     p {
         font-weight: 400;
-        font-size: 20px;
+        font-size: 110%;
         line-height: 25px;
         text-align: center;
         letter-spacing: -0.05em;
@@ -63,14 +63,15 @@ export const BodyDiv = styled.div`
         input{
             display: block;
             margin: 0 auto;
-            width: 160px;
-            height: 40px;
-            margin-bottom: 140px;
+            width: 120px;
+            height: 30px;
+            margin-bottom: 75px;
             text-align: center;
             font-size: 25px;
             background-color: #FFFFFF;
             border: 1px solid #B5B5B5;
             border-radius: 3px;
+            box-sizing: border-box;
         }
 
         button{

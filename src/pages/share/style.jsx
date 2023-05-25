@@ -5,7 +5,7 @@ import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regu
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 
 export const BodyDiv = styled.div`
-    margin-top: 170px;
+    margin-top: 85px;
     
     // import main font
     @font-face {
@@ -54,11 +54,11 @@ export const ShareBox = styled.div`
         width: 230px;
         height: 50px;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 25px;
+        font-size: 110%;
+        line-height: 1.3;
         text-align: center;
         letter-spacing: -0.05em;
-        margin-bottom: 19px;
+        margin-bottom: 10px;
         font-family: 'mainFont';
     }
     /* share link */
@@ -71,10 +71,10 @@ export const ShareBox = styled.div`
         color: #FF9836;
         font-style: normal;
         font-weight: 400;
-        font-size: 20px;
-        line-height: 25px;
+        font-size: 110%;
+        line-height: 1.3;
         letter-spacing: -0.05em;
-        margin-bottom: 31px;
+        margin-bottom: 15px;
         font-family: 'mainFont';
     }
 `
@@ -83,13 +83,13 @@ export const LinkKakao = styled.div`
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    margin-bottom: 127.58px;
+    margin-bottom: 75px;
 
     // 링크복사, 카카오톡
     div{
         cursor: pointer;
-        width: 50px;
-        height: 67.42px;
+        width: 45px;
+        height: 60px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;

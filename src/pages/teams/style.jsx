@@ -56,8 +56,8 @@ export const Topper1 = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 89px;
-    margin-bottom: 15px;
+    margin-top: 55px;
+    margin-bottom: 10px;
     
     div {
         width:10px;
@@ -80,8 +80,8 @@ export const Topper2 = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 75px;
-    margin-bottom: 12px;
+    margin-top: 55px;
+    margin-bottom: 10px;
     
     div {
         width:10px;
@@ -105,19 +105,19 @@ export const CntIntro = styled.p`
     margin: 0 auto;
     margin-bottom: 19px;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 110%;
+    line-height: 1.3;
     text-align: center;
     letter-spacing: -0.05em;
     font-family: 'mainFont';
 `
 export const CntBox = styled.div`
-    font-size: 24px;
+    font-size: 110%;
     text-align: center;
     
     input{
-        height:40px;
-        width:52px;
+        height:30px;
+        width:40px;
         font-size: 24px;
         text-align: center;
         border: 1px solid #B5B5B5;
@@ -129,8 +129,8 @@ export const PwIntro = styled.p`
     width: 180px;
     height: 50px;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 110%;
+    line-height: 1.3;
     text-align: center;
     letter-spacing: -0.05em;
     margin: 0 auto;
@@ -140,11 +140,11 @@ export const PwIntro = styled.p`
 export const PwBox = styled.div`
     font-size: 24px;
     text-align: center;
-    margin-bottom: 79px;
+    margin-bottom: 55px;
     
     input{
-        height:40px;
-        width:150px;
+        height:30px;
+        width:100px;
         font-size: 24px;
         text-align: center;
         border: 1px solid #B5B5B5;

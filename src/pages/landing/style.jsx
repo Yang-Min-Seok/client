@@ -41,25 +41,24 @@ export const BodyDiv = styled.div`
 
 `
 export const Logo = styled.div`
-    width: 70px;
+    width: 60px;
     height: 47.6px;
     background-image: url(${mainLogo});
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-top: 45px;
-    margin-left: 45px;
-    margin-bottom: 29.4px;
+    margin-top: 35px;
+    margin-left: 35px;
+    margin-bottom: 15px;
 `
 export const Intro = styled.p`
     margin: 0;
     display: block;
-    height: 75px;
     width: 253px;
-    margin-left: 45px;
+    margin-left: 35px;
     font-family: 'mainFont';
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 100%;
+    line-height: 1.3;
     letter-spacing: -0.05em;
 `
 export const Img = styled.div`
