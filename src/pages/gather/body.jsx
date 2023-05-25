@@ -57,14 +57,9 @@ function Body() {
 
     return (
         <BodyDiv>
-
-            <Topper>
-                <div></div>
-                <div></div>
-            </Topper>
             
             <GatheringBox>
-                <p>두근구든</p>
+                <p>두근두근</p>
                 <h4>
                     모두의 시간표를<br />
                     기다리고 있어요
@@ -74,7 +69,7 @@ function Body() {
 
                 <p>
                     지금까지
-                    <span> ({numberOfSubmit}/{numberOfMember}) </span>
+                    <span> ({numberOfSubmit}/{numberOfMember})</span>
                     명이 완료했어요!
                 </p>
                 <p>

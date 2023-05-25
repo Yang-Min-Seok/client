@@ -36,7 +36,7 @@ export const BodyDiv = styled.div`
         text-align: center;
         letter-spacing: -0.05em;
         margin: 0 auto;
-        margin-bottom: 36px;
+        margin-bottom: 172px;
         font-family: "subFont";
         font-size: 20px;
         transition: background-color 0.5s;

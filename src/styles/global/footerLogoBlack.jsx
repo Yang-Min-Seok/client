@@ -2,7 +2,7 @@ import styled from "styled-components";
 import footerLogo from "../../assets/images/footer_logo_black.png";
 
 const FooterLogoBlack = styled.div`
-    width: 300px;
+    width: 270px;
     height: 196.22px;
     background-image: url(${footerLogo});
     background-position: center;

@@ -5,7 +5,7 @@ import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regu
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 
 export const BodyDiv = styled.div`
-    
+
     // import main font
     @font-face {
         font-family: 'mainFont';

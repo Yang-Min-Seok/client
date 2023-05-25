@@ -2,6 +2,8 @@ import styled from "styled-components";
 import refresh from "../../assets/images/refresh.png";
 import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regular.otf";
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
+import mainFont2 from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Bold.otf";
+
 export const BodyDiv = styled.div`
 
     // import main font
@@ -9,7 +11,6 @@ export const BodyDiv = styled.div`
         font-family: 'mainFont';
         src: url(${mainFont}) format('truetype');
         font-style: normal;
-        font-weight: 400;
     }
     
     // import sub font
@@ -19,6 +20,13 @@ export const BodyDiv = styled.div`
         font-style: normal;
         font-weight: 400;
     }
+
+    // import sub font
+    @font-face {
+        font-family: 'mainFont2';
+        src: url(${mainFont2}) format('truetype');
+    }
+
     /* 관리자 권한으로 종료 */
     button {
         display: block;
@@ -35,42 +43,22 @@ export const BodyDiv = styled.div`
         font-weight: 400;
         font-size: 20px;
         letter-spacing: -0.05em;
-        margin-bottom: 25px;
+        margin-bottom: 153px;
         font-family: 'subFont';
         cursor: pointer;
     }
 `
-export const Topper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width:10%;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 72px;
-    
-    div {
-        width:10px;
-        height:10px;
-        border-radius: 50%;
-    }
-    div:nth-child(1){
-        border: 1px solid #FF9836;
-        box-sizing: border-box;
-    }
-    div:nth-child(2){
-        background-color: #FF9836;
-    }
-`
+
 export const GatheringBox = styled.div`
     font-family: 'mainFont';
-    
+    margin-top: 50px;
     p:nth-child(1){
         display: block;
         height: 25px;
         width: 100%;
         margin: 0 auto;
         margin-bottom: 4px;
-        font-size: 20px;
+        font-size: 110%;
         line-height: 25px;
         text-align: center;
         letter-spacing: -0.05em;
@@ -82,19 +70,20 @@ export const GatheringBox = styled.div`
         margin: 0 auto;
         height: 50px;
         width: 100%;
-        font-size: 20px;
-        line-height: 25px;
+        font-size: 110%;
+        line-height: 1.3;
         text-align: center;
         letter-spacing: -0.05em;
-        margin-bottom: 32px;
+        margin-bottom: 15px;
         font-family: 'mainFont';
     }
     
     p:nth-child(4){
         margin: 0;
-        margin-top: 32px;
+        margin-top: 15px;
         text-align: center;
-        font-weight: 700;
+        font-size: 115%;
+        font-family: "mainFont2";
         span{
             color: #FF0404;
         }
@@ -103,17 +92,17 @@ export const GatheringBox = styled.div`
     p:nth-child(5){
         font-style: normal;
         font-weight: 400;
-        font-size: 19px;
-        line-height: 25px;
+        font-size: 105%;
+        line-height: 1.3;
         text-align: center;
         letter-spacing: -0.05em;
         color: #828181;
-        margin-bottom: 87px;
+        margin-bottom: 55px;
     }
 `
 export const Refresh = styled.div`
-    width: 90px;
-    height: 109px;
+    width: 70px;
+    height: 90px;
     margin: 0 auto;
     background-image: url(${refresh});
     background-position: center;

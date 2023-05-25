@@ -37,7 +37,7 @@ export const BodyDiv = styled.div`
             letter-spacing: -0.05em;
             background-color: #B5B5B5;
             color: #fff;
-            margin-bottom: 21px;
+            margin-bottom: 19px;
         }
 
         #uploadFile{
@@ -79,13 +79,13 @@ export const BodyDiv = styled.div`
         margin: 0 auto;
         width: 80%;
         font-family: 'mainFont';
-        line-height: 2;
+        line-height: 1.3;
         text-decoration: underline;
         color: #FF0404;
         text-align: center;
-        font-size: 18px;
-        margin-bottom: 21px;
-        margin-top: 10px;
+        font-size: 110%;
+        margin-bottom: 19px;
+        margin-top: 7px;
     }
 
     #popUpOverlay{
@@ -116,9 +116,9 @@ export const BodyDiv = styled.div`
         font-family: 'mainFont';
         color: #FF0404;
         font-weight: 100;
-        font-size: 100%;
+        font-size: 90%;
         text-align: center;
-        margin-top: 10%;
+        margin-top: 11%;
     }
 
     #popUp p:nth-child(2){
@@ -126,19 +126,19 @@ export const BodyDiv = styled.div`
         text-align: center;
         font-family: 'mainFont';
         font-size: 90%;
-        line-height: 1.7;
+        line-height: 1.3;
     }
 
     #popUp p:nth-child(2)::before{
         content: "";
         display: inline-block;
-        width: 30px;
-        height: 30px;
+        width: 22px;
+        height: 22px;
         background-image: url(${everytimeLogo});
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        transform: translateY(8px);
+        transform: translateY(5px);
     }
 
     #popUp p:nth-child(2) span{
@@ -147,15 +147,14 @@ export const BodyDiv = styled.div`
 
     #popUp div{
         margin: 0 auto;
-        width: 70%;
+        width: 80%;
         height: 60%;
         background-image: url(${guideImage});
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        border: 1px solid #eee;
         box-sizing: border-box;
-        margin-top: 3%;
+        margin-top: 4%;
     }
 
     #popUp p:nth-child(4){
@@ -167,7 +166,7 @@ export const BodyDiv = styled.div`
         line-height: 1.7;
         background-color: #B5B5B5;
         color: #fff;
-        margin-top: 7%;
+        margin-top: 4%;
     }
 
     // iphone 12Pro and iphone XR
@@ -328,8 +327,8 @@ export const Topper = styled.div`
     justify-content: space-between;
     width:10%;
     margin: 0 auto;
-    margin-top: 80px;
-    margin-bottom: 17px;
+    margin-top: 50px;
+    margin-bottom: 10px;
     div {
         width:10px;
         height:10px;
@@ -349,8 +348,8 @@ export const Intro = styled.p`
     height:50px;
     margin: 0 auto;
     text-align: center;
-    line-height: 25px;
-    font-size: 20px;
+    line-height: 1.3;
+    font-size: 110%;
     font-family: 'mainFont';
     
     b::before{
@@ -362,7 +361,7 @@ export const Intro = styled.p`
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
-        transform: translateY(4px);
+        transform: translateY(5px);
     }
 `
 export const ShowBox = styled.div`
@@ -375,7 +374,7 @@ export const ShowBox = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 17px;
+    margin-bottom: 10px;
     
     div{
         width:60px;

@@ -67,7 +67,7 @@ export const BodyDiv = styled.div`
             height: 30px;
             margin-bottom: 75px;
             text-align: center;
-            font-size: 25px;
+            font-size: 100%;
             background-color: #FFFFFF;
             border: 1px solid #B5B5B5;
             border-radius: 3px;
@@ -79,7 +79,7 @@ export const BodyDiv = styled.div`
             margin: 0 auto;
             width: 155px;
             height: 45px;
-            margin-bottom: 155px;
+            margin-bottom: 282px;
             font-weight: 400;
             font-size: 20px;
             line-height: 22px;

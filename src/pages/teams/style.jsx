@@ -48,7 +48,7 @@ export const BodyDiv = styled.div`
 
     /* form */
     form{
-        margin-bottom: 25px;
+        margin-bottom: 132px;
     }
 `
 export const Topper1 = styled.div`

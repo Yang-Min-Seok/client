@@ -124,7 +124,7 @@ function Body() {
                     <b>에브리타임</b> 시간표<br />
                     이미지를 업로드 해주세요
                 </Intro>
-                <p id="noticeBtn" onClick={turnOnPopUp}>화면 캡쳐본은 안돼요!! (클릭)</p>
+                <p id="noticeBtn" onClick={turnOnPopUp}>화면 캡쳐본은 안돼요! (클릭)</p>
                 <label 
                 htmlFor="uploadFile"
                 >업로드</label>

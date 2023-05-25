@@ -4,7 +4,7 @@ import mainFont from "../../styles/fonts/NotoSansCJKkr-hinted/NotoSansCJKkr-Regu
 import subFont from "../../styles/fonts/ONE_Mobile_Title_OTF.otf";
 
 export const BodyDiv = styled.div`
-    margin-top: 72px;
+    margin-top: 55px;
     
     // import main font
     @font-face {
@@ -29,7 +29,7 @@ export const BodyDiv = styled.div`
         height: 45px;
         text-decoration: none;
         color: #fff;
-        background-color: #888888;
+        background-color: #B5B5B5;
         border-radius: 25px;
         text-align: center;
         margin: 0 auto;
@@ -39,7 +39,7 @@ export const BodyDiv = styled.div`
         line-height: 45px;
         text-align: center;
         letter-spacing: -0.05em;
-        margin-bottom: 25px;
+        margin-bottom: 40px;
         font-family: 'subFont';
     }
 `
@@ -49,30 +49,30 @@ export const DownloadBox = styled.div`
 `
 
 export const DownloadIntro = styled.p`
-margin: 0;
+    margin: 0;
     text-align: center;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 110%;
     line-height: 25px;
     letter-spacing: -0.05em;
     font-family: 'mainFont';
 
 `
 export const DownloadBtn = styled.div`
-    width: 25px;
-    height: 25px;
+    width: 32px;
+    height: 32px;
     background-image: url(${download});
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
     margin-left: 10px;
     cursor: pointer;
-    transform: translateY(1px);
+    transform: translateY(-2px);
 `
 
 export const TableImg = styled.div`
     margin: 0 auto;
-    margin-top: 23px;
+    margin-top: 13px;
     height: 350px;
     width: 232px;
     box-sizing: border-box;
