@@ -14,7 +14,7 @@ function Body() {
 
     // 클립보드에 복사기능
     function copyToClipboard() {
-        const link = `https://client-lake-one.vercel.app/name/${teamName}`;
+        const link = `https://www.mogong.app/name/${teamName}`;
         clipboardCopy(link);
         alert('링크가 복사되었습니다 !');
     }
@@ -41,7 +41,7 @@ function Body() {
             }
 
             // 링크생성
-            const link = `https://client-lake-one.vercel.app/name/${teamName}`;
+            const link = `https://www.mogong.app/name/${teamName}`;
             
             Kakao.Share.createDefaultButton({
                 container: '#kakaotalk-sharing-btn',
@@ -53,8 +53,8 @@ function Body() {
                     `https://github.com/Yang-Min-Seok/Yang-Min-Seok/assets/83502596/de14a5ec-ac80-4c2e-9c51-e8a8be66fac6`,
                   link: {
                     // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                    mobileWebUrl: 'http://client-lake-one.vercel.app',
-                    webUrl: 'http://client-lake-one.vercel.app/',
+                    mobileWebUrl: 'http://www.mogong.app/',
+                    webUrl: 'http://www.mogong.app/',
                   },
                 },
                 buttons: [
@@ -78,7 +78,7 @@ function Body() {
                     모두의 시간표를 모아주세요!
                 </p>
                 <Link to={`/name/${teamName}`} state={{teamId:teamId}}>
-                {`https://client-lake-one.vercel.app/name/${teamName}`}
+                {`https://www.mogong.app/name/${teamName}`}
                 </Link>
                 
                 <LinkKakao>

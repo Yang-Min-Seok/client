@@ -15,14 +15,14 @@ function Body() {
 
     const refreshEventOver = () => {
         const refreshBtn = document.getElementById("refreshBtn");
-        refreshBtn.style.boxShadow = "none";
+        refreshBtn.style.transform = 'rotate(0deg)';
     }
 
     const refreshEvent = () => {
         const refreshBtn = document.getElementById("refreshBtn");
-        refreshBtn.style.boxShadow = "4px 4px 4px #FF9836";
-        refreshBtn.style.borderRadius = "10px";
-        setTimeout(refreshEventOver, 150);
+        refreshBtn.style.transition = 'all 0.3s';
+        refreshBtn.style.transform = 'rotate(90deg)';
+        setTimeout(refreshEventOver, 300);
     }
 
     const navigate = useNavigate();
