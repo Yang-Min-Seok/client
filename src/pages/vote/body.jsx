@@ -91,7 +91,7 @@ function Body() {
                 objectType: 'feed',
                 content: {
                   title: '모두의 공강',
-                  description: '당신의 시간표에 투표하세요!',
+                  description: '모두의 공강시간이 나왔어요! 가장 선호하는 시간대를 투표해주세요.',
                   imageUrl:
                     `https://github.com/Yang-Min-Seok/Yang-Min-Seok/assets/83502596/de14a5ec-ac80-4c2e-9c51-e8a8be66fac6`,
                   link: {
@@ -102,7 +102,7 @@ function Body() {
                 },
                 buttons: [
                   {
-                    title: '시간표 추가하러 가기',
+                    title: '선호시간대 투표하러 가기',
                     link: {
                       mobileWebUrl: link,
                       webUrl: link,
