@@ -76,7 +76,7 @@ export const TimeBox = styled.div`
     background-color: #D9D9D9;
     margin-top: 23px;
     margin-bottom: 20px;
-    padding: 40px;
+    padding: 20px;
     box-sizing: border-box;
     overflow: scroll;
 `

@@ -29,7 +29,7 @@ export const BodyDiv = styled.div`
         height: 45px;
         text-decoration: none;
         color: #fff;
-        background-color: #B5B5B5;
+        background-color: #FF9836;
         border-radius: 25px;
         text-align: center;
         margin: 0 auto;

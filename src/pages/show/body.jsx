@@ -1,13 +1,18 @@
 import { useEffect } from 'react';
 import { BodyDiv, DownloadBox, DownloadIntro, TableImg, DownloadBtn } from "./style";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 
 function Body() {
 
-    // 결과 이미지 가져오기
+    // teamName
+    const teamName = useParams().teamName;
+
+    // resultImage, teamId, timeResponses 가져오기
     const location = useLocation();
     const resultImageUrl = location.state.resultImageUrl;
+    const teamId = location.state.teamId;
+    const timeResponses = location.state.timeResponses;
 
     // 이미지를 보여주기 구현
     const showImage = () => {
@@ -62,6 +67,7 @@ function Body() {
                 
             </TableImg>
 
+            <Link to={`/create/${teamName}`} state={{teamId:teamId, teamName: teamName, timeResponses: timeResponses}}>다음</Link>
             <Link to="/">처음으로</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>

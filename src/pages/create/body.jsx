@@ -1,26 +1,130 @@
 import { BodyDiv, Intro, TimeBox, OptionBox } from "./style";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
-import { getTeamResult1 } from "../../apis/Apis";
-import { useCallback, useState, useEffect } from 'react';
+import { useEffect } from "react";
 
 function Body() {
+
+    // teamName, timeResponses 가져오기
+    const location = useLocation();
+    const teamName = location.state.teamName;
+    const timeResponses = location.state.timeResponses;
     
-    // 팀 결과 가져오기
-    // teamResult
-    const [ teamResult, setTeamResult ] = useState('');
-    const getTeamResult = useCallback(async () => {
-        await getTeamResult1(1).then((response) => {
+    // 시간표 만들기
+    const timeTable = [];
+    for (let i=0; i <= 6; i++){
+        timeTable.push(timeResponses.times[i].time);
+    }
+
+    // 예시 폼 만들기
+    const makeSample = (min) => {
+        // days
+        const days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
+        
+        // sampleBox
+        const sampleBox = document.getElementById('sampleBox');
+
+        // 30분 기준
+        if (min===30){
             
-        });
-    });
-    useEffect(() => {
-        // 첫 렌더링 때 무조건 실행됨
-        getTeamResult()
-    }, []);
+            // times
+            const times = [];
+            let hour = 9;
+            for (let i=0; i<=29; i++){
+                // 홀수면
+                if (i%2){
+                    times.push(`${hour-1}:30 ~ ${hour}:00`);
+                }
+                // 짝수면
+                else{
+                    times.push(`${hour}:00 ~ ${hour}:30`);
+                    hour ++;
+                }
+            };
+
+            // 시간표를 돌면서
+            for (let i=0; i<=6; i++){
+                for (let j=0; j<=29; j++){
+                    // 공강 시간이면
+                    if (!timeTable[i][j]){
+                        const exisitingHTML = sampleBox.innerHTML;
+                        // sampleBox에 추가
+                        sampleBox.innerHTML = `${exisitingHTML}<p>${days[i]} ${times[j]}</p>`;
+                    }
+                }
+            }
+        }
+
+        // 60분 기준
+        else if (min===60) {
+
+            // times
+            const times = [];
+            let hour = 9;
+            for (let i=0; i<=28; i++){
+                // 홀수면
+                if (i%2){
+                    times.push(`${hour}:30 ~ ${hour+1}:30`);
+                    hour ++;
+                }
+                // 짝수면
+                else{
+                    times.push(`${hour}:00 ~ ${hour+1}:00`);
+                }
+            };
+
+            // 시간표를 돌면서
+            for (let i=0; i<=6; i++){
+                for (let j=0; j<=28; j++){
+                    // 공강 시간이면
+                    if (!timeTable[i][j] && !timeTable[i][j+1]){
+                        const exisitingHTML = sampleBox.innerHTML;
+                        // sampleBox에 추가
+                        sampleBox.innerHTML = `${exisitingHTML}<p>${days[i]} ${times[j]}</p>`;
+                    }
+                }
+            };
+        }
+
+        // 90분 기준
+        else if (min===90) {
+            
+            // times
+            const times = [];
+            let hour = 9;
+            for (let i=0; i<=27; i++){
+                // 홀수면
+                if(i%2){
+                    times.push(`${hour}:30 ~ ${hour+2}:00`);
+                    hour ++;
+                }
+                // 짝수면
+                else{
+                    times.push(`${hour}:00 ~ ${hour+1}:30`);
+                }
+            };
+
+            // 시간표를 돌면서
+            for (let i=0; i<=6; i++){
+                for (let j=0; j<=27; j++){
+                    // 공강 시간이면
+                    if (!timeTable[i][j] && !timeTable[i][j+1] && !timeTable[i][j+2]){
+                        const exisitingHTML = sampleBox.innerHTML;
+                        // sampleBox에 추가
+                        sampleBox.innerHTML = `${exisitingHTML}<p>${days[i]} ${times[j]}</p>`;
+                    }
+                }
+            };
+        }
+    }
 
     // 30분 버튼 눌렀을 때
     function handleOnClick30min() {
+        // sampleBox 초기화
+        const sampleBox = document.getElementById('sampleBox');
+        sampleBox.innerText = '';
+
+        // 색 바꾸기
         const target = document.getElementById("30minLabel");
         target.style.backgroundColor = "#FF9836";
         target.style.color = "#fff";
@@ -32,11 +136,19 @@ function Body() {
         const except2 = document.getElementById("90minLabel");
         except2.style.backgroundColor = "#fff";
         except2.style.color = "#000";
-    }
+        
+        // makeSample 호출
+        makeSample(30);
+    };
 
 
     // 60분 버튼 눌렀을 때
     function handleOnClick60min() {
+        // sampleBox 초기화
+        const sampleBox = document.getElementById('sampleBox');
+        sampleBox.innerText = '';
+
+        // 색 바꾸기
         const target = document.getElementById("60minLabel");
         target.style.backgroundColor = "#FF9836";
         target.style.color = "#fff";
@@ -48,11 +160,19 @@ function Body() {
         const except2 = document.getElementById("90minLabel");
         except2.style.backgroundColor = "#fff";
         except2.style.color = "#000";
-    }
+        
+        // makeSample 호출
+        makeSample(60);
+    };
 
 
     // 90분 버튼 눌렀을 때
     function handleOnClick90min() {
+        // sampleBox 초기화
+        const sampleBox = document.getElementById('sampleBox');
+        sampleBox.innerText = '';
+
+        // 색 바꾸기
         const target = document.getElementById("90minLabel");
         target.style.backgroundColor = "#FF9836";
         target.style.color = "#fff";
@@ -64,17 +184,58 @@ function Body() {
         const except2 = document.getElementById("60minLabel");
         except2.style.backgroundColor = "#fff";
         except2.style.color = "#000";
-    }
 
-    function handleOnSubmit() {
-        // 투표 폼 만들기 눌렀을 때
+        // makeSample 호출
+        makeSample(90);
+    };
 
-    }
+    const navigate = useNavigate();
+    // 투표 폼 만들기 눌렀을 때
+    const makeForm = (e) => {
+        e.preventDefault();
+        // sampleBox
+        const sampleBox = document.getElementById('sampleBox');
+        
+        // 필요한 정보들
+        const is30min = e.target[0].checked;
+        const is60min = e.target[1].checked;
+        const is90min = e.target[2].checked;
+
+        // 투표에 보낼 정보들
+        let min = '';
+        const rawVoteList = sampleBox.innerText.split('\n');
+        const voteList = []
+        const lenOfVoteList = rawVoteList.length;
+        for (let i=0; i<lenOfVoteList; i++){
+            if (rawVoteList[i]){
+                voteList.push(rawVoteList[i]);
+            };
+        }
+
+        if(is30min){
+            min = 30;
+        }
+        else if(is60min){
+            min = 60;
+        }
+        else if(is90min){
+            min = 90;
+        }
+        const isDuplicated = e.target[3].checked;
+        
+        // 투표 화면으로
+        navigate(`/vote/${teamName}`, {state: {voteList:voteList, min:min, isDuplicated, isDuplicated}});
+    };
+    
+    // default 설정 -> 30분 선택
+    useEffect(() => {
+        handleOnClick30min();
+    }, []);
     
     return (
         <BodyDiv>
             
-            <form onSubmit={handleOnSubmit}>
+            <form onSubmit={makeForm}>
                 <Intro>
                     <p>
                         시간 단위를 설정하면,<br />
@@ -83,7 +244,7 @@ function Body() {
                     </p>
                 </Intro>
                 
-                <TimeBox>
+                <TimeBox id="sampleBox">
                     
                 </TimeBox>
 

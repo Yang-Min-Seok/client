@@ -1,6 +1,6 @@
 import { BodyDiv, Topper } from "./style";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import useInput from "../../hooks/useInput";
 import { useCallback, useState, useEffect } from 'react';
 import { createMember, getTeamId } from "../../apis/Apis";

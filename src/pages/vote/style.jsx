@@ -12,23 +12,28 @@ export const StepOneBox = styled.div`
     font-size: 20px;
     line-height: 25px;
     letter-spacing: -0.05em;
-    
     /* step 1 ~ */
     p:nth-child(1){
-        padding-left: 45px;
-
+        display: block;
+        width: 299px;
+        margin: 0 auto;
+        margin-bottom: 20px;
         span{
             font-weight: 900;
         }
     }
     /* share link */
-    p:nth-child(2){
-        text-align: center;
+    a{ 
+        display: block;
+        width: 90%;
         color: #FF9836;
         font-weight: 400;
         font-size: 20px;
         line-height: 25px;
         letter-spacing: -0.05em;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 20px;
     }
 `
 export const LinkKakao = styled.div`
@@ -36,8 +41,10 @@ export const LinkKakao = styled.div`
     display: flex;
     justify-content: center;
     column-gap: 20px;
-    cursor: pointer;
 
+    div{
+        cursor: pointer;
+    }
     /* 링크복사 */
     div:nth-child(1){
         width: 50px;
@@ -65,7 +72,10 @@ export const StepTwoBox = styled.div`
         font-size: 20px;
         line-height: 25px;
         letter-spacing: -0.05em;
-        padding-left: 45px;
+        display: block;
+        width: 299px;
+        margin: 0 auto;
+        margin-bottom: 20px;
         span{
             font-weight: 900;
         }
@@ -93,5 +103,8 @@ export const VoteBox = styled.div`
     width: 299px;
     height: 175px;
     background-color: #D9D9D9;
-    margin-left: 45px;
+    margin: 0 auto;
+    overflow: scroll;
+    padding: 20px;
+    box-sizing: border-box;
 `
