@@ -66,7 +66,7 @@ function Body() {
                 </p>
 
                 <Refresh onClick={() => onClick()} id="refreshBtn"></Refresh>
-
+                <p>새로고침</p>
                 <p>
                     지금까지
                     <span> ({numberOfSubmit}/{numberOfMember})</span>

@@ -74,8 +74,13 @@ export const GatheringBox = styled.div`
         margin-bottom: 15px;
         font-family: 'mainFont';
     }
-    
     p:nth-child(4){
+        text-align: center;
+        margin: 0;
+        font-family: 'mainFont';
+        font-size: 105%;
+    }
+    p:nth-child(5){
         margin: 0;
         margin-top: 18px;
         text-align: center;
@@ -86,7 +91,7 @@ export const GatheringBox = styled.div`
         }
     }
 
-    p:nth-child(5){
+    p:nth-child(6){
         font-style: normal;
         font-weight: 400;
         font-size: 105%;
