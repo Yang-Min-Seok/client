@@ -35,7 +35,7 @@ export const BodyDiv = styled.div`
         margin: 0 auto;
         margin-top: 40px;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 45px;
         text-align: center;
         letter-spacing: -0.05em;
