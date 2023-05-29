@@ -67,7 +67,7 @@ function Body() {
                 
             </TableImg>
 
-            <Link to={`/create/${teamName}`} state={{teamId:teamId, teamName: teamName, timeResponses: timeResponses}}>다음</Link>
+            {/* <Link to={`/create/${teamName}`} state={{teamId:teamId, teamName: teamName, timeResponses: timeResponses}}>다음</Link> */}
             <Link to="/">처음으로</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
