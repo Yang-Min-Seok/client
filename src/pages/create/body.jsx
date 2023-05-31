@@ -1,14 +1,16 @@
 import { BodyDiv, Intro, TimeBox, OptionBox } from "./style";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 import { useEffect } from "react";
+import { createForm } from "../../apis/Apis";
 
 function Body() {
 
-    // teamName, timeResponses 가져오기
+    // teamName, timeResponses, teamId 가져오기
     const location = useLocation();
     const teamName = location.state.teamName;
     const timeResponses = location.state.timeResponses;
+    const teamId = location.state.teamId;
     
     // 시간표 만들기
     const timeTable = [];
@@ -193,45 +195,56 @@ function Body() {
     // 투표 폼 만들기 눌렀을 때
     const makeForm = (e) => {
         e.preventDefault();
-        // sampleBox
-        const sampleBox = document.getElementById('sampleBox');
-        
-        // 필요한 정보들
-        const is30min = e.target[0].checked;
-        const is60min = e.target[1].checked;
-        const is90min = e.target[2].checked;
+        const result = window.confirm('한 번 투표폼을 만들면 다시 돌아올 수 없어요 그래도 진행하시겠어요?');
+        if (result) {
+            // sampleBox
+            const sampleBox = document.getElementById('sampleBox');
+            
+            // 필요한 정보들
+            const is30min = e.target[0].checked;
+            const is60min = e.target[1].checked;
+            const is90min = e.target[2].checked;
 
-        // 투표에 보낼 정보들
-        let min = '';
-        const rawVoteList = sampleBox.innerText.split('\n');
-        const voteList = []
-        const lenOfVoteList = rawVoteList.length;
-        for (let i=0; i<lenOfVoteList; i++){
-            if (rawVoteList[i]){
-                voteList.push(rawVoteList[i]);
-            };
-        }
+            // 투표에 보낼 정보들
+            let divisorMinutes = 30;
+            const rawVoteList = sampleBox.innerText.split('\n');
+            const voteList = []
+            const lenOfVoteList = rawVoteList.length;
+            for (let i=0; i<lenOfVoteList; i++){
+                if (rawVoteList[i]){
+                    voteList.push(rawVoteList[i]);
+                };
+            }
 
-        if(is30min){
-            min = 30;
+            if(is30min){
+                divisorMinutes = 30;
+            }
+            else if(is60min){
+                divisorMinutes = 60;
+            }
+            else if(is90min){
+                divisorMinutes = 90;
+            }
+            const duplicate = e.target[3].checked;
+            
+            // createForm 요청
+            createForm(navigate, teamId, divisorMinutes, duplicate, teamName, timeResponses);
         }
-        else if(is60min){
-            min = 60;
-        }
-        else if(is90min){
-            min = 90;
-        }
-        const isDuplicated = e.target[3].checked;
-        
-        // 투표 화면으로
-        navigate(`/vote/${teamName}`, {state: {voteList:voteList, min:min, isDuplicated, isDuplicated}});
     };
     
+    // 그냥 끝내기 눌렀을 시
+    const justFinish = () => {
+        const result = window.confirm('다시 투표폼을 만들 수 없어요 그래도 진행하시겠어요?');
+        if (result) {
+            navigate(`/`)
+        }
+    }
+
     // default 설정 -> 30분 선택
     useEffect(() => {
         handleOnClick30min();
     }, []);
-    
+
     return (
         <BodyDiv>
             
@@ -266,7 +279,7 @@ function Body() {
 
             </form>
 
-            <Link to="/">그냥 끝내기</Link>
+            <p id="justFinish" onClick={justFinish}>그냥 끝내기</p>
             
             <FooterLogoBlack></FooterLogoBlack>
         </BodyDiv>

@@ -8,11 +8,12 @@ function Body() {
     // teamName
     const teamName = useParams().teamName;
 
-    // resultImage, teamId, timeResponses 가져오기
+    // resultImage, teamId, timeResponses, isLeader 가져오기
     const location = useLocation();
     const resultImageUrl = location.state.resultImageUrl;
     const teamId = location.state.teamId;
     const timeResponses = location.state.timeResponses;
+    const isLeader = location.state.isLeader;
 
     // 이미지를 보여주기 구현
     const showImage = () => {
@@ -66,7 +67,6 @@ function Body() {
             <TableImg id="resultImageBox">
                 
             </TableImg>
-
             {/* <Link to={`/create/${teamName}`} state={{teamId:teamId, teamName: teamName, timeResponses: timeResponses}}>다음</Link> */}
             <Link to="/">처음으로</Link>
             <FooterLogoColor></FooterLogoColor>

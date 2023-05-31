@@ -38,9 +38,10 @@ export const BodyDiv = styled.div`
         line-height: 22px;
         text-align: center;
         letter-spacing: -0.05em;
+        cursor: pointer;
     }
 
-    a {
+    #justFinish {
         display: block;
         width: 170px;
         height: 45px;
@@ -56,6 +57,7 @@ export const BodyDiv = styled.div`
         line-height: 45px;
         text-align: center;
         letter-spacing: -0.05em;
+        cursor: pointer;
     }
 `
 export const Intro = styled.div`

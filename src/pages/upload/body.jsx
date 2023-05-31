@@ -13,6 +13,7 @@ function Body() {
     const location = useLocation();
     const memberId = location.state.memberId;
     const preSignedUrl = location.state.preSignedUrl;
+    const isLeader = location.state.isLeader;
 
     // teamId 가져오기
     const [ teamId, setTeamId ] = useState('');
@@ -69,7 +70,7 @@ function Body() {
                     body: selectedFile
                 });
                 // uploadImg 함수 호출
-                uploadImg(navigate, teamId, teamName, memberId);
+                uploadImg(navigate, teamId, teamName, memberId, isLeader);
             }
             // 에러 처리 
             catch (err) {

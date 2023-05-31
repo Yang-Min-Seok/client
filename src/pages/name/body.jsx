@@ -1,12 +1,25 @@
 import { BodyDiv, Topper } from "./style";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import useInput from "../../hooks/useInput";
 import { useCallback, useState, useEffect } from 'react';
-import { createMember, getTeamId } from "../../apis/Apis";
+import { createMember, getTeamId, getTeamInfo } from "../../apis/Apis";
 
 function Body() {
-    
+
+    // 팀장인지 아닌지 구분
+    const location = useLocation();
+    let isLeader = false;
+
+    // 팀장일 경우
+    try{
+        isLeader = location.state.isLeader;
+    }
+    // 팀원일 경우
+    catch{
+
+    }
+
     // teamName
     const teamName = useParams().teamName;
     // teamId
@@ -20,7 +33,6 @@ function Body() {
         // 첫 렌더링 때 무조건 실행됨
         findTeamID()
     }, []);
-
 
     // useInput 사용
     const [ nickName, onChangeNickName, setNickName ] = useInput('');
@@ -38,8 +50,7 @@ function Body() {
                 nickNameInput.style.animationIterationCount = '1s';
             }
             else{
-                // 멤버 생성 요청
-                createMember(navigate, nickName, teamId, teamName);
+                createMember(navigate, nickName, teamId, teamName, isLeader);
             }
         },
     );
@@ -58,6 +69,17 @@ function Body() {
     }
     else if(nextBtn !== '' && nickName.length === 0){
         nextBtn.style.backgroundColor = '#B8B8B8';
+    }
+    
+    // 이미 종료된 팀인지 확인
+    const checkFinished = useCallback(async () => {
+        await getTeamInfo(navigate, teamId, teamName, isLeader).then((response) => {
+
+        })
+    })
+    // teamId 확보했으면,
+    if (teamId) {
+        checkFinished();
     }
 
     return (

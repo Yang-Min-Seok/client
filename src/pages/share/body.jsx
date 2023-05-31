@@ -77,7 +77,7 @@ function Body() {
                     아래의 링크를 공유하여 <br />
                     모두의 시간표를 모아주세요!
                 </p>
-                <Link to={`/name/${teamName}`} state={{teamId:teamId}}>
+                <Link to={`/name/${teamName}`} state={{teamId:teamId, isLeader: true}}>
                 {`https://www.mogong.app/name/${teamName}`}
                 </Link>
                 
@@ -89,7 +89,7 @@ function Body() {
                 </LinkKakao>
             </ShareBox>
             
-            <Link to={`/name/${teamName}`} state={{teamId:teamId}} id="next">다음</Link>
+            <Link to={`/name/${teamName}`} state={{teamId:teamId, isLeader: true}} id="next">다음</Link>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )

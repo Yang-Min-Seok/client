@@ -9,6 +9,7 @@ function Body() {
     const location = useLocation();
     const teamId = location.state.teamId;
     const teamName = location.state.teamName;
+    const isLeader = location.state.isLeader;
 
     const [ numberOfSubmit, setNumberOfSubmit ] = useState(0);
     const [ numberOfMember, setNumberOfMember ] = useState(0);
@@ -28,7 +29,7 @@ function Body() {
     const navigate = useNavigate();
     const onClick = useCallback(async () => {
         refreshEvent()
-        await getTeamInfo(navigate, teamId, teamName).then((response) => {
+        await getTeamInfo(navigate, teamId, teamName, isLeader).then((response) => {
             setNumberOfSubmit(response[0])
             setNumberOfMember(response[1])
         });
@@ -51,7 +52,7 @@ function Body() {
         // 올바르면
         else{
              // 팀 결과 조회
-            getTeamResult(navigate, teamId, authCode, teamName);
+            getTeamResult(navigate, teamId, authCode, teamName, isLeader);
         }
     }
 
