@@ -40,10 +40,7 @@ function Body() {
     const onClick = useCallback(async () => {
         // 90도 회전 효과
         refreshEvent();
-        // 투표폼 생성 여부 확인
-        await getFormInfo(navigate, teamId, teamName, timeResponses).then((response) => {
-
-        });
+        getFormInfo(navigate, teamId, teamName, timeResponses);
     });
     useEffect(() => {
         // 첫 렌더링 때 무조건 실행됨
@@ -71,7 +68,7 @@ function Body() {
                 </p>
             </GatheringBox>
             <div>
-                <Link to={`/show/${teamName}`} state={{resultImageUrl:resultImageUrl, teamId:teamId, isLeader:isLeader}}>뒤로가기</Link>
+                <Link to={`/show/${teamName}`} state={{resultImageUrl:resultImageUrl, teamId:teamId, isLeader:isLeader, timeResponses:timeResponses}}>뒤로가기</Link>
                 <p id="toFirst" onClick={handleToFirst}>처음으로</p>
             </div>
             <FooterLogoColor></FooterLogoColor>

@@ -69,8 +69,11 @@ function Body() {
                     method: 'PUT',
                     body: selectedFile
                 });
-                // uploadImg 함수 호출
-                uploadImg(navigate, teamId, teamName, memberId, isLeader);
+                // 정상 반응이 오면
+                if (response.status===200){
+                    // uploadImg 함수 호출
+                    uploadImg(navigate, teamId, teamName, memberId, isLeader);
+                }
             }
             // 에러 처리 
             catch (err) {

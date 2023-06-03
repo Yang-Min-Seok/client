@@ -1,4 +1,3 @@
-import { MigrationHub } from 'aws-sdk';
 import axios from 'axios';
 
 // middle server api
@@ -71,7 +70,6 @@ export const getTeamId = async (teamName) => {
 
 // 이미지 업로드하기
 export const uploadImg = async (navigate, teamId, teamName, memberId, isLeader) => {
-  
   // api에서 정상 반응이 오면(파일 형식이 맞으면)
   try{
     await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`).then((response) => {
@@ -83,7 +81,7 @@ export const uploadImg = async (navigate, teamId, teamName, memberId, isLeader) 
   }
   // api에서 에러가 나오면(파일 형식이 안맞으면)
   catch (err) {
-    alert('유의사항을 확인해주세요!')
+    alert('middle server error');
   }
 
 };
@@ -146,7 +144,7 @@ export const createForm = async (navigate, teamId, divisorMinutes, duplicate, te
       const divisorMinutes = response.data.data.divisorMinutes;
       const duplicate = response.data.data.duplicate;
       // vote로
-      navigate(`/vote/${teamName}`, {state: {teamId:teamId, divisorMinutes:divisorMinutes, duplicate:duplicate, timeResponses}});
+      navigate(`/vote/${teamName}`, {state: {teamId:teamId, divisorMinutes:divisorMinutes, duplicate:duplicate, timeResponses:timeResponses}});
     }
     else{
       alert('다시 시도해주세요');
@@ -159,8 +157,10 @@ export const getFormInfo = async (navigate, teamId, teamName, timeResponses) => 
   await serverApi.get(`https://api.mogong.site/votes/teams/${teamId}/forms`).then((response) => {
       // 투표 폼이 생성되었으면
       if(response.data.code==="V-S002"){
+        const divisorMinutes = response.data.data.divisorMinutes;
+        const duplicate = response.data.data.duplicate;
         // vote로
-        navigate(`/vote/${teamName}`, {state: {teamId: teamId, timeResponses:timeResponses}});
+        navigate(`/vote/${teamName}`, {state: {teamId: teamId, divisorMinutes: divisorMinutes, duplicate: duplicate, timeResponses:timeResponses}});
       }
   });
 };

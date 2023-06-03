@@ -6,11 +6,12 @@ import { createForm } from "../../apis/Apis";
 
 function Body() {
 
-    // teamName, timeResponses, teamId 가져오기
+    // teamName, timeResponses, teamId, resultImageUrl 가져오기
     const location = useLocation();
     const teamName = location.state.teamName;
     const timeResponses = location.state.timeResponses;
     const teamId = location.state.teamId;
+    const resultImageUrl = location.state.resultImageUrl;
     
     // 시간표 만들기
     const timeTable = [];
@@ -232,12 +233,9 @@ function Body() {
         }
     };
     
-    // 그냥 끝내기 눌렀을 시
-    const justFinish = () => {
-        const result = window.confirm('다시 투표폼을 만들 수 없어요 그래도 진행하시겠어요?');
-        if (result) {
-            navigate(`/`)
-        }
+    // /show로 돌아가기
+    const getBack = () => {
+        navigate(`/show/${teamName}`, {state: {teamId:teamId, timeResponses:timeResponses, isLeader:true, resultImageUrl:resultImageUrl}})
     }
 
     // default 설정 -> 30분 선택
@@ -252,8 +250,7 @@ function Body() {
                 <Intro>
                     <p>
                         시간 단위를 설정하면,<br />
-                        투표 폼을 만들 수 있어요!<br />
-                        만드시겠어요?
+                        투표 폼을 만들 수 있어요! &nbsp;만드시겠어요?
                     </p>
                 </Intro>
                 
@@ -271,15 +268,16 @@ function Body() {
                     <label htmlFor="90min" id="90minLabel" onClick={handleOnClick90min}>90분</label>
                     <input type="radio" name="timeUnit" id="90min"/>
                 </OptionBox>
+                <p>
+                    <input type="checkbox" name="duplicate" id="duplicate"/><label htmlFor="duplicate" id="duplicateLabel">복수 선택 허용</label>
+                </p>
 
-                <input type="checkbox" name="duplicate" id="duplicate"/>
-                <label htmlFor="duplicate" id="duplicateLabel">복수 선택 허용</label>
 
                 <button type="submit">투표 폼 만들기</button>
 
             </form>
 
-            <p id="justFinish" onClick={justFinish}>그냥 끝내기</p>
+            <p id="getBack" onClick={getBack}>이전으로</p>
             
             <FooterLogoBlack></FooterLogoBlack>
         </BodyDiv>

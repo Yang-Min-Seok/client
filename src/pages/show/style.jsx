@@ -33,7 +33,28 @@ export const BodyDiv = styled.div`
         border-radius: 25px;
         text-align: center;
         margin: 0 auto;
-        margin-top: 40px;
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 45px;
+        text-align: center;
+        letter-spacing: -0.05em;
+        font-family: 'subFont';
+        margin-bottom: 20px;
+    }
+    
+    // 그냥 끝내기 버튼
+    #exit{
+        display: block;
+        width: 155px;
+        height: 45px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #B5B5B5;
+        border-radius: 25px;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 15px;
         font-weight: 400;
         font-size: 20px;
         line-height: 45px;
@@ -41,6 +62,7 @@ export const BodyDiv = styled.div`
         letter-spacing: -0.05em;
         margin-bottom: 28px;
         font-family: 'subFont';
+        cursor: pointer;
     }
 `
 export const DownloadBox = styled.div`
@@ -72,11 +94,9 @@ export const DownloadBtn = styled.div`
 
 export const TableImg = styled.div`
     margin: 0 auto;
-    margin-top: 13px;
-    height: 370px;
-    width: 245px;
-    box-sizing: border-box;
-    border: 1px solid #B5B5B5;
+    margin-top: 5px;
+    height: 360px;
+    width: 270px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
