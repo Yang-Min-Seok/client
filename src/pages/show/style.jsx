@@ -130,4 +130,5 @@ export const Notice = styled.p`
     color: #FF0404;
     text-align: center;
     margin: 0 auto;
+    text-decoration: underline;
 `

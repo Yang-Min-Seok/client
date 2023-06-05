@@ -54,6 +54,12 @@ function Body() {
     };
 
     const navigate = useNavigate();
+    
+    // 카톡 인앱 브라우저로 접근 시 이미지 url 제공
+    const handleKakaoAccess = () => {
+        window.open(resultImageUrl, '_blank');
+    }
+
     // 투표하기 구현
     const toVote = (async() => {
         // 팀장이면
@@ -89,7 +95,7 @@ function Body() {
             <TableImg id="resultImageBox">
                 
             </TableImg>
-            <Notice>카톡 인앱 브라우저에서는 다운이 안돼요.</Notice>
+            <Notice onClick={handleKakaoAccess}>카카오톡 브라우저에서 접속 시 (클릭)</Notice>
             <Link to="/">처음으로</Link>
             {/* <p id="toVote" onClick={toVote}>투표하기</p>
             <p id="exit" onClick={justExit}>그냥 끝내기</p> */}
