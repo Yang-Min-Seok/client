@@ -79,9 +79,9 @@ export const uploadImg = async (navigate, teamId, teamName, memberId, isLeader) 
       }
     });
   }
-  // api에서 에러가 나오면(파일 형식이 안맞으면)
+  // api에서 에러가 나오면
   catch (err) {
-    alert('middle server error');
+    alert(err);
   }
 
 };
@@ -161,6 +161,10 @@ export const getFormInfo = async (navigate, teamId, teamName, timeResponses) => 
         const duplicate = response.data.data.duplicate;
         // vote로
         navigate(`/vote/${teamName}`, {state: {teamId: teamId, divisorMinutes: divisorMinutes, duplicate: duplicate, timeResponses:timeResponses}});
+      }
+      // 생성되지 않았으면
+      else{
+        alert('팀장이 투표 폼 만들기를 완료하면 투표할 수 있어요. 잠시만 기다려주세요!');
       }
   });
 };

@@ -9,7 +9,6 @@ import Create from "./pages/create";
 import Vote from "./pages/vote";
 import Result from "./pages/result";
 import Name from "./pages/name";
-import Waiting from "./pages/waiting";
 function App() {
   return (
     <div>
@@ -25,7 +24,6 @@ function App() {
           <Route path={`/vote/:teamName`} element={<Vote />}></Route>
           <Route path={`/result`} element={<Result />}></Route>
           <Route path={`/name/:teamName`} element={<Name />}></Route>
-          <Route path={`/waiting/:teamName`} element={<Waiting />}></Route>
         </Routes>
       </Router>
     </div>

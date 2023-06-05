@@ -20,6 +20,7 @@ export const BodyDiv = styled.div`
 
     form {
         margin-top: 53px;
+        
         #title{
             font-size: 110%;
             line-height: 25px;
@@ -41,37 +42,37 @@ export const BodyDiv = styled.div`
             background-color: #FF9836;
             color: #fff;
             border-radius: 25px;
-            margin-top: 19px;
+            margin-top: 30px;
             font-size: 20px;
             text-align: center;
             font-family: "subFont";
+            margin-bottom: 70px;
         }
     }
 `
 
 export const VoteBox = styled.div`
     width: 299px;
-    height: 300px;
+    height: 360px;
     background-color: #fff;
-    border: 1px solid #B5B5B5;
     margin: 0 auto;
     overflow: scroll;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
-    box-sizing: border-box;
-    line-height: 2.5;
+    line-height: 2;
+    
     p{  
         display: flex;
         font-size: 105%;
         margin: 0;
         border: 1px solid #B5B5B5;
         box-sizing: border-box;
-        margin-top: 20px;
+        margin-top: 3%;
         padding-left: 20px;
+        font-family: "mainFont";
 
         label{
-            width:80%;
+            width:85%;
         }
 
         input{

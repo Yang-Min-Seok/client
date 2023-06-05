@@ -23,7 +23,7 @@ export const BodyDiv = styled.div`
 
     }
 
-    form p:nth-child(4){
+    form #duplicateBox{
         display:block;
         width:299px;
         margin : 0 auto;
@@ -95,26 +95,42 @@ export const Intro = styled.div`
         letter-spacing: -0.05em;
     }
 `
-export const TimeBox = styled.div`
+export const SampleBox = styled.div`
     width: 299px;
     height: 300px;
     margin: 0 auto;
     background-color: #fff;
-    border: 1px solid #B5B5B5;
     margin-top: 23px;
     margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    box-sizing: border-box;
     overflow: scroll;
     
     p{
-        font-size: 105%;
         margin: 0;
-        line-height: 1.5;
+        display: block;
+        background-color: #F2F2F2;
+        margin-bottom: 3%;
+        
+        span:nth-child(1){
+            display: inline-block;
+            font-size: 105%;
+            line-height: 2;
+            width: 85%;
+            padding-left: 4%;
+            font-family: "mainFont";
+            color: #A6A6A6;
+        }
+
+        span:nth-child(2){
+            display: inline-block;
+            width: 17px;
+            height: 17px;
+            background-color: #D9D9D9;
+            border-radius: 50%;
+        }
     }
+    
 `
 export const OptionBox = styled.div`
     width: 299px;

@@ -1,4 +1,4 @@
-import { BodyDiv, Intro, TimeBox, OptionBox } from "./style";
+import { BodyDiv, Intro, SampleBox, OptionBox } from "./style";
 import { useLocation, useNavigate } from "react-router-dom";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 import { useEffect } from "react";
@@ -52,7 +52,7 @@ function Body() {
                     if (!timeTable[i][j]){
                         const exisitingHTML = sampleBox.innerHTML;
                         // sampleBox에 추가
-                        sampleBox.innerHTML = `${exisitingHTML}<p>${days[i]} ${times[j]}</p>`;
+                        sampleBox.innerHTML = `${exisitingHTML}<p><span>${days[i]} ${times[j]}</span><span></span></p>`;
                     }
                 }
             }
@@ -83,7 +83,7 @@ function Body() {
                     if (!timeTable[i][j] && !timeTable[i][j+1]){
                         const exisitingHTML = sampleBox.innerHTML;
                         // sampleBox에 추가
-                        sampleBox.innerHTML = `${exisitingHTML}<p>${days[i]} ${times[j]}</p>`;
+                        sampleBox.innerHTML = `${exisitingHTML}<p><span>${days[i]} ${times[j]}</span><span></span></p>`;
                     }
                 }
             };
@@ -114,7 +114,7 @@ function Body() {
                     if (!timeTable[i][j] && !timeTable[i][j+1] && !timeTable[i][j+2]){
                         const exisitingHTML = sampleBox.innerHTML;
                         // sampleBox에 추가
-                        sampleBox.innerHTML = `${exisitingHTML}<p>${days[i]} ${times[j]}</p>`;
+                        sampleBox.innerHTML = `${exisitingHTML}<p><span>${days[i]} ${times[j]}</span><span></span></p>`;
                     }
                 }
             };
@@ -254,9 +254,9 @@ function Body() {
                     </p>
                 </Intro>
                 
-                <TimeBox id="sampleBox">
+                <SampleBox id="sampleBox">
                     
-                </TimeBox>
+                </SampleBox>
 
                 <OptionBox>
                     <label htmlFor="30min" id="30minLabel" onClick={handleOnClick30min}>30분</label>
@@ -268,7 +268,7 @@ function Body() {
                     <label htmlFor="90min" id="90minLabel" onClick={handleOnClick90min}>90분</label>
                     <input type="radio" name="timeUnit" id="90min"/>
                 </OptionBox>
-                <p>
+                <p id="duplicateBox">
                     <input type="checkbox" name="duplicate" id="duplicate"/><label htmlFor="duplicate" id="duplicateLabel">복수 선택 허용</label>
                 </p>
 

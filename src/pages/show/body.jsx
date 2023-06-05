@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { BodyDiv, DownloadBox, DownloadIntro, TableImg, DownloadBtn } from "./style";
+import { BodyDiv, DownloadBox, DownloadIntro, TableImg, DownloadBtn, Notice } from "./style";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
+import { getFormInfo } from "../../apis/Apis";
 
 function Body() {
 
@@ -51,15 +52,28 @@ function Body() {
             URL.revokeObjectURL(blobUrl);
           });
     };
-    
-    // 그냥 끝내기 구현
+
     const navigate = useNavigate();
+    // 투표하기 구현
+    const toVote = (async() => {
+        // 팀장이면
+        if (isLeader) {
+            navigate(`/create/${teamName}`, {state: {teamId:teamId, teamName:teamName, timeResponses:timeResponses, resultImageUrl:resultImageUrl}});
+        }
+        // 팀원이면
+        else {
+            getFormInfo(navigate, teamId, teamName, timeResponses);
+        }
+    });
+
+    // 그냥 끝내기 구현
     const justExit = () => {
         const result = window.confirm('다시 투표폼을 만들 수 없어요 그래도 진행하시겠어요?');
         if (result){
             navigate(`/`);
         }
     }
+
     return (
         <BodyDiv>
 
@@ -75,9 +89,9 @@ function Body() {
             <TableImg id="resultImageBox">
                 
             </TableImg>
+            <Notice>카톡 인앱 브라우저에서는 다운이 안돼요.</Notice>
             <Link to="/">처음으로</Link>
-            {/* {isLeader && <Link to={`/create/${teamName}`} state={{teamId:teamId, teamName: teamName, timeResponses: timeResponses, resultImageUrl:resultImageUrl}}>투표하기</Link>}
-            {!isLeader && <Link to={`/waiting/${teamName}`} state={{teamId:teamId, teamName: teamName, timeResponses: timeResponses, resultImageUrl: resultImageUrl, isLeader:isLeader}}>투표하기</Link>}
+            {/* <p id="toVote" onClick={toVote}>투표하기</p>
             <p id="exit" onClick={justExit}>그냥 끝내기</p> */}
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>

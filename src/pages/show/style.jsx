@@ -22,8 +22,30 @@ export const BodyDiv = styled.div`
         font-weight: 400;
     }
 
-    /* link */
-    a {
+    /* 처음으로(v1) */
+    a{
+        display: block;
+        width: 155px;
+        height: 45px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #FF9836;
+        border-radius: 25px;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 30px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 45px;
+        text-align: center;
+        letter-spacing: -0.05em;
+        font-family: 'subFont';
+        cursor: pointer;
+        margin-bottom: 48px;
+    }
+
+    /* 투표하기(v2) */
+    #toVote {
         display: block;
         width: 155px;
         height: 45px;
@@ -40,10 +62,10 @@ export const BodyDiv = styled.div`
         text-align: center;
         letter-spacing: -0.05em;
         font-family: 'subFont';
-        margin-bottom: 20px;
+        cursor: pointer;
     }
     
-    // 그냥 끝내기 버튼
+    // 그냥 끝내기(v2)
     #exit{
         display: block;
         width: 155px;
@@ -100,4 +122,12 @@ export const TableImg = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+`
+
+export const Notice = styled.p`
+    font-family: "mainFont";
+    line-height: 25px;
+    color: #FF0404;
+    text-align: center;
+    margin: 0 auto;
 `

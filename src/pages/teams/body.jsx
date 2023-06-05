@@ -74,8 +74,8 @@ function Body () {
                     <div></div>
                 </Topper2>
                 <PwIntro>
-                    관리자 비밀번호 <br />
-                    4자리를 입력해주세요
+                    관리자 비밀번호 4자리를<br />
+                    숫자로 설정해주세요
                 </PwIntro>
 
                 <PwBox>
