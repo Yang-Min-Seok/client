@@ -6,13 +6,15 @@ import { createForm } from "../../apis/Apis";
 
 function Body() {
 
-    // teamName, timeResponses, teamId, resultImageUrl 가져오기
+    // teamName, timeResponses, teamId, resultImageUrl, memberId, numberOfMember
     const location = useLocation();
     const teamName = location.state.teamName;
     const timeResponses = location.state.timeResponses;
     const teamId = location.state.teamId;
     const resultImageUrl = location.state.resultImageUrl;
-    
+    const memberId = location.state.memberId;
+    const numberOfMember = location.state.numberOfMember;
+
     // 시간표 만들기
     const timeTable = [];
     for (let i=0; i <= 6; i++){
@@ -20,7 +22,7 @@ function Body() {
     }
 
     // 예시 폼 만들기
-    const makeSample = (min) => {
+    const makeSample = (divisorMinutes) => {
         // days
         const days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
         
@@ -28,7 +30,7 @@ function Body() {
         const sampleBox = document.getElementById('sampleBox');
 
         // 30분 기준
-        if (min===30){
+        if (divisorMinutes===30){
             
             // times
             const times = [];
@@ -59,7 +61,7 @@ function Body() {
         }
 
         // 60분 기준
-        else if (min===60) {
+        else if (divisorMinutes===60) {
 
             // times
             const times = [];
@@ -90,7 +92,7 @@ function Body() {
         }
 
         // 90분 기준
-        else if (min===90) {
+        else if (divisorMinutes===90) {
             
             // times
             const times = [];
@@ -196,7 +198,7 @@ function Body() {
     // 투표 폼 만들기 눌렀을 때
     const makeForm = (e) => {
         e.preventDefault();
-        const result = window.confirm('한 번 투표폼을 만들면 다시 돌아올 수 없어요 그래도 진행하시겠어요?');
+        const result = window.confirm('투표폼 옵션은 추후에 바꿀 수 없어요. 지금 옵션대로 진행하시겠어요?');
         if (result) {
             // sampleBox
             const sampleBox = document.getElementById('sampleBox');
@@ -229,7 +231,7 @@ function Body() {
             const duplicate = e.target[3].checked;
             
             // createForm 요청
-            createForm(navigate, teamId, divisorMinutes, duplicate, teamName, timeResponses);
+            createForm(navigate, teamId, divisorMinutes, duplicate, teamName, timeResponses, memberId, numberOfMember);
         }
     };
     

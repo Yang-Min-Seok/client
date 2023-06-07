@@ -3,9 +3,9 @@ import axios from 'axios';
 // middle server api
 const serverApi = axios.create({
     // api 기본 사이트
-    // baseURL: process.env.REACT_APP_SERVER_URL, // 보안 상 env파일에
+    // baseURL: process.env.REACT_APP_SERVER_URL,
     headers: {
-    'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
 });
 
@@ -68,18 +68,18 @@ export const getTeamId = async (teamName) => {
   return teamId
 };
 
-// 이미지 업로드하기
+// 이미지 업로드하기(middle server)
 export const uploadImg = async (navigate, teamId, teamName, memberId, isLeader) => {
   // api에서 정상 반응이 오면(파일 형식이 맞으면)
   try{
     await serverApi.put(`https://api.mogong.site/teams/${teamId}/members/${memberId}/images/v2`).then((response) => {
       // 이미지 업로드에 성공했으면
       if (response.data.code === 'M-S003'){
-          navigate(`/gather/${teamName}`, {state: {teamId:teamId, teamName: teamName, isLeader:isLeader}})
+          navigate(`/gather/${teamName}`, {state: {teamId:teamId, teamName: teamName, isLeader:isLeader, memberId:memberId}})
       }
     });
   }
-  // api에서 에러가 나오면
+  // 에러 시
   catch (err) {
     alert(err);
   }
@@ -87,7 +87,7 @@ export const uploadImg = async (navigate, teamId, teamName, memberId, isLeader) 
 };
 
 // 팀 결과 조회 (without authCode)
-export const getTeamInfo = async (navigate, teamId, teamName, isLeader) => {
+export const getTeamInfo = async (navigate, teamId, teamName, isLeader, memberId) => {
   
   // 팀원수와 멤버수
   let numberOfMember;
@@ -104,14 +104,12 @@ export const getTeamInfo = async (navigate, teamId, teamName, isLeader) => {
 
       // 인원수가 다 채워졌으면
       else if (response.data.code === 'T-S006'){
-        // update
-        numberOfMember = response.data.data.numberOfTeam;
-        numberOfSubmit = response.data.data.submit;
-        // resultImageUrl, timeResponses 도출
+        // numberOfMember, resultImageUrl, timeResponses
+        const numberOfMember = response.data.data.numberOfMember;
         const resultImageUrl = response.data.data.resultImageUrl;
         const timeResponses = response.data.data.timeResponses;
         // resultImageUrl 가지고 show로
-        navigate(`/show/${teamName}`, {state: {resultImageUrl:resultImageUrl,teamId:teamId, teamName:teamName, timeResponses:timeResponses, isLeader:isLeader}})
+        navigate(`/show/${teamName}`, {state: {resultImageUrl:resultImageUrl,teamId:teamId, teamName:teamName, timeResponses:timeResponses, isLeader:isLeader, memberId:memberId, numberOfMember:numberOfMember}})
       }   
     });
   
@@ -119,24 +117,25 @@ export const getTeamInfo = async (navigate, teamId, teamName, isLeader) => {
 };
 
 // 팀 결과 조회 (with authCode)
-export const getTeamResult = async (navigate, teamId, authCode, teamName, isLeader) => {
+export const getTeamResult = async (navigate, teamId, authCode, teamName, isLeader, memberId) => {
   await serverApi.get(`https://api.mogong.site/teams/${teamId}/v2?auth_code=${authCode}`).then((response) => {
-      // authCode 일치 시
-      if (response.data.code === 'T-S006'){
-        // resultImageUrl, timeResponses 도출
-        const resultImageUrl = response.data.data.resultImageUrl;
-        const timeResponses = response.data.data.timeResponses;
-        navigate(`/show/${teamName}`, {state: {resultImageUrl:resultImageUrl, teamId:teamId, timeResponses:timeResponses, isLeader:isLeader}});
-      }
-      // authCode 비일치시
-      else if (response.data.code === 'T-F002'){
-        alert('옳지 않은 authCode 입니다.')
-      }
+    // authCode 일치 시
+    if (response.data.code === 'T-S006'){
+      // numberOfMember, resultImageUrl, timeResponses
+      const numberOfMember = response.data.data.numberOfMember;
+      const resultImageUrl = response.data.data.resultImageUrl;
+      const timeResponses = response.data.data.timeResponses;
+      navigate(`/show/${teamName}`, {state: {resultImageUrl:resultImageUrl, teamId:teamId, timeResponses:timeResponses, isLeader:isLeader, memberId:memberId, numberOfMember:numberOfMember}});
+    }
+    // authCode 비일치시
+    else if (response.data.code === 'T-F002'){
+      alert('옳지 않은 authCode 입니다.')
+    }
   });
 };
 
 // 투표 폼 생성 요청
-export const createForm = async (navigate, teamId, divisorMinutes, duplicate, teamName, timeResponses) => {
+export const createForm = async (navigate, teamId, divisorMinutes, duplicate, teamName, timeResponses, memberId, numberOfMember) => {
   await serverApi.post(`https://api.mogong.site/votes/teams/${teamId}/forms`, { "divisorMinutes": divisorMinutes, "duplicate": duplicate }).then((response) => {
     // 팀 투표 폼 생성에 성공했으면
     if (response.data.code='V-S001'){
@@ -144,7 +143,7 @@ export const createForm = async (navigate, teamId, divisorMinutes, duplicate, te
       const divisorMinutes = response.data.data.divisorMinutes;
       const duplicate = response.data.data.duplicate;
       // vote로
-      navigate(`/vote/${teamName}`, {state: {teamId:teamId, divisorMinutes:divisorMinutes, duplicate:duplicate, timeResponses:timeResponses}});
+      navigate(`/vote/${teamName}`, {state: {teamId:teamId, divisorMinutes:divisorMinutes, duplicate:duplicate, timeResponses:timeResponses, memberId:memberId, numberOfMember:numberOfMember}});
     }
     else{
       alert('다시 시도해주세요');
@@ -153,14 +152,14 @@ export const createForm = async (navigate, teamId, divisorMinutes, duplicate, te
 };
 
 // 투표 폼 생성 여부 조회
-export const getFormInfo = async (navigate, teamId, teamName, timeResponses) => {
+export const getFormInfo = async (navigate, teamId, teamName, timeResponses, memberId, numberOfMember) => {
   await serverApi.get(`https://api.mogong.site/votes/teams/${teamId}/forms`).then((response) => {
       // 투표 폼이 생성되었으면
       if(response.data.code==="V-S002"){
         const divisorMinutes = response.data.data.divisorMinutes;
         const duplicate = response.data.data.duplicate;
         // vote로
-        navigate(`/vote/${teamName}`, {state: {teamId: teamId, divisorMinutes: divisorMinutes, duplicate: duplicate, timeResponses:timeResponses}});
+        navigate(`/vote/${teamName}`, {state: {teamId: teamId, divisorMinutes: divisorMinutes, duplicate: duplicate, timeResponses:timeResponses, memberId:memberId, numberOfMember:numberOfMember}});
       }
       // 생성되지 않았으면
       else{
@@ -168,3 +167,31 @@ export const getFormInfo = async (navigate, teamId, teamName, timeResponses) => 
       }
   });
 };
+
+// 멤버 투표 생성
+export const memberVote = async (navigate, teamName, teamId, memberId, timeRequests, divisorMinutes, timeResponses, numberOfMember) => {
+  await serverApi.post(`https://api.mogong.site/votes/teams/${teamId}/members/${memberId}`, {"timeRequests": timeRequests}).then((response) => {
+    // 멤버 투표 생성에 성공하면
+    if (response.data.code === "V-S004"){
+      // memberVote(방금 투표한 항목), teamVote(팀 전체 투표 현황) 추출
+      const memberVote = response.data.data.memberVote.times;
+      const teamVote = response.data.data.teamTotalVotesResponse.teamVote.times;
+      
+      // 투표 결과 화면으로
+      navigate(`/result/${teamName}`, {state: {teamId:teamId, memberId:memberId, memberVote:memberVote, teamVote:teamVote, divisorMinutes:divisorMinutes, timeResponses:timeResponses, numberOfMember:numberOfMember}})
+    }
+  })
+}
+
+// 팀 전체 투표 현황 조회
+export const getTeamVoteInfo = async (teamId) => {
+  let newTeamVote = '';
+  await serverApi.get(`https://api.mogong.site/votes/teams/${teamId}`).then((response) => {
+    // 조회에 성공하면
+    if (response.data.code === 'V-S003'){
+      newTeamVote = response.data.data.teamVote.times;
+    }
+  })
+  // 반환
+  return newTeamVote;
+}

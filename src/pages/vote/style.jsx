@@ -27,7 +27,7 @@ export const BodyDiv = styled.div`
             display: block;
             width: 299px;
             margin: 0 auto;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             font-family: "mainFont";
         }
 

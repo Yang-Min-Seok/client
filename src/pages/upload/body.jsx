@@ -50,6 +50,7 @@ function Body() {
             const target_sign = document.getElementById("noImg");
             target_sign.style.display="none";  
             
+            // 입력완료 버튼 활성화
             const completeBtn = document.getElementById("completeBtn");
             completeBtn.style.backgroundColor = "#FF9836";
             

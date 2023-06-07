@@ -22,7 +22,7 @@ function App() {
           <Route path={`/show/:teamName`} element={<Show />}></Route>
           <Route path={`/create/:teamName`} element={<Create />}></Route>
           <Route path={`/vote/:teamName`} element={<Vote />}></Route>
-          <Route path={`/result`} element={<Result />}></Route>
+          <Route path={`/result/:teamName`} element={<Result />}></Route>
           <Route path={`/name/:teamName`} element={<Name />}></Route>
         </Routes>
       </Router>

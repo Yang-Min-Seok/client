@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BodyDiv, DownloadBox, DownloadIntro, TableImg, DownloadBtn, Notice } from "./style";
-import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import FooterLogoColor from "../../styles/global/footerLogoColor";
 import { getFormInfo } from "../../apis/Apis";
 
@@ -9,12 +9,14 @@ function Body() {
     // teamName
     const teamName = useParams().teamName;
 
-    // resultImage, teamId, timeResponses, isLeader 가져오기
+    // resultImage, teamId, timeResponses, isLeader, memberId, numberOfMember 가져오기
     const location = useLocation();
     const resultImageUrl = location.state.resultImageUrl;
     const teamId = location.state.teamId;
     const timeResponses = location.state.timeResponses;
     const isLeader = location.state.isLeader;
+    const memberId = location.state.memberId;
+    const numberOfMember = location.state.numberOfMember;
 
     // 이미지를 보여주기 구현
     const showImage = () => {
@@ -60,15 +62,15 @@ function Body() {
         window.open(resultImageUrl, '_blank');
     }
 
-    // 투표하기 구현
-    const toVote = (async() => {
+    // 투표하기 버튼 눌렀을 때
+    const toCreate = (async() => {
         // 팀장이면
         if (isLeader) {
-            navigate(`/create/${teamName}`, {state: {teamId:teamId, teamName:teamName, timeResponses:timeResponses, resultImageUrl:resultImageUrl}});
+            navigate(`/create/${teamName}`, {state: {teamId:teamId, teamName:teamName, timeResponses:timeResponses, resultImageUrl:resultImageUrl, memberId:memberId, numberOfMember:numberOfMember}});
         }
         // 팀원이면
         else {
-            getFormInfo(navigate, teamId, teamName, timeResponses);
+            getFormInfo(navigate, teamId, teamName, timeResponses, memberId, numberOfMember);
         }
     });
 
@@ -95,10 +97,9 @@ function Body() {
             <TableImg id="resultImageBox">
                 
             </TableImg>
-            <Notice onClick={handleKakaoAccess}>카카오톡 브라우저에서 접속 시 (클릭)</Notice>
-            <Link to="/">처음으로</Link>
-            {/* <p id="toVote" onClick={toVote}>투표하기</p>
-            <p id="exit" onClick={justExit}>그냥 끝내기</p> */}
+            <Notice onClick={handleKakaoAccess}>이미지 다운버튼 무응답 시 (클릭)</Notice>
+            <p id="toVote" onClick={toCreate}>투표하기</p>
+            <p id="exit" onClick={justExit}>그냥 끝내기</p>
             <FooterLogoColor></FooterLogoColor>
         </BodyDiv>
     )

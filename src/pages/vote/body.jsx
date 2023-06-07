@@ -2,16 +2,19 @@ import { BodyDiv, VoteBox } from "./style";
 import FooterLogoBlack from "../../styles/global/footerLogoBlack";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import { memberVote } from "../../apis/Apis";
 function Body() {
+    
     // teamName 가져오기
     const teamName = useParams().teamName;
-    // timeResponses, teamId, divisorMinutes, duplicate 가져오기
+    // timeResponses, teamId, divisorMinutes, duplicate, memberId, numberOfMember 가져오기
     const location = useLocation();
     const timeResponses = location.state.timeResponses;
     const teamId = location.state.teamId;
     const divisorMinutes = location.state.divisorMinutes;
     const duplicate = location.state.duplicate;
+    const memberId = location.state.memberId;
+    const numberOfMember = location.state.numberOfMember;
 
     // 시간표 만들기
     const timeTable = [];
@@ -54,12 +57,12 @@ function Body() {
                         // 중복 허용이면
                         if (duplicate){
                             // voteBox 추가
-                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i,j}">${days[i]} ${times[j]}</label><input type="checkBox" name="voteOption" id="${i,j}"></p>`;
+                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i},${j}">${days[i]} ${times[j]}</label><input type="checkBox" name="voteOption" id="${i},${j}"></p>`;
                         }
                         // 비허용시
                         else{
                             // voteBox 추가
-                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i,j}">${days[i]} ${times[j]}</label><input type="radio" name="voteOption" id="${i,j}"></p>`;
+                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i},${j}">${days[i]} ${times[j]}</label><input type="radio" name="voteOption" id="${i},${j}"></p>`;
                         }   
                     }
                 }
@@ -93,12 +96,12 @@ function Body() {
                         // 중복 허용이면
                         if (duplicate){
                             // voteBox 추가
-                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i,j}">${days[i]} ${times[j]}</label><input type="checkBox" name="voteOption" id="${i,j}"></p>`;
+                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i},${j}">${days[i]} ${times[j]}</label><input type="checkBox" name="voteOption" id="${i},${j}"></p>`;
                         }
                         // 비허용시
                         else{
                             // voteBox 추가
-                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i,j}">${days[i]} ${times[j]}</label><input type="radio" name="voteOption" id="${i,j}"></p>`;
+                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i},${j}">${days[i]} ${times[j]}</label><input type="radio" name="voteOption" id="${i},${j}"></p>`;
                         }   
                     }
                 }
@@ -132,12 +135,12 @@ function Body() {
                         // 중복 허용이면
                         if (duplicate){
                             // voteBox 추가
-                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i,j}">${days[i]} ${times[j]}</label><input type="checkBox" name="voteOption" id="${i,j}"></p>`;
+                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i},${j}">${days[i]} ${times[j]}</label><input type="checkBox" name="voteOption" id="${i},${j}"></p>`;
                         }
                         // 비허용시
                         else{
                             // voteBox 추가
-                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i,j}">${days[i]} ${times[j]}</label><input type="radio" name="voteOption" id="${i,j}"></p>`;
+                            voteBox.innerHTML = `${exisitingHTML}<p><label for="${i}${j}">${days[i]}${times[j]}</label><input type="radio" name="voteOption" id="${i},${j}"></p>`;
                         }   
                     }
                 }
@@ -145,10 +148,8 @@ function Body() {
         }
     }
 
-    // voteBox, divisorminutes, duplicate 가져오기
+    // voteBox 가져오기
     const [ voteBox, setVoteBox ] = useState('');
-
-    const navigate = useNavigate();
 
     const getVoteBox = () => {
         setVoteBox(document.getElementById('voteBox'));
@@ -157,16 +158,76 @@ function Body() {
         getVoteBox();
     }, []);
 
-    // voteBox확보했으면.
-    if(voteBox){
+    // voteBox확보했으면 (중복생성 방지)
+    if(voteBox && !voteBox.innerHTML){
         // 투표 폼 만들기
         makeForm(divisorMinutes, duplicate);
-    }
+    };
 
     // 투표하기 버튼을 눌렀을 때
+    const navigate = useNavigate();
     const getVoteResult = (e) => {
         e.preventDefault();
-        console.log(e);
+
+        // 선택된 좌표 관리 
+        let checkedPos = [];
+
+        // 체크된 인덱스 뽑아내기
+        for (let i=0; i<=29*5; i++){
+            // index error handling
+            try{
+                if(e.target[i].checked){
+                    const timePos = e.target[i].id.split(',');
+                    checkedPos.push([Number(timePos[0]), Number(timePos[1])]);
+                };
+            }
+            catch(err) {
+                
+            }
+        }
+
+        // 요일별 관리 (0: 월요일 ~ 6:일요일)
+        let timeByDay = [];
+        for (let i=0; i<=6; i++){
+            timeByDay.push([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+        };
+
+        // 체크된 좌표 표시
+        for (let i=0; i<checkedPos.length; i++){
+            const day = checkedPos[i][0];
+            const time = checkedPos[i][1];
+            timeByDay[day][time] = 1;
+        }
+
+        // timeRequests
+        const timeRequests = {
+                "divisorMinutes" : divisorMinutes,
+                "times" : [{
+                    "dayOfWeek" : "MON",
+                    "time" : timeByDay[0],
+                },{
+                    "dayOfWeek" : "TUE",
+                    "time" : timeByDay[1],
+                },{
+                    "dayOfWeek" : "WED",
+                    "time" : timeByDay[2],                
+                },{
+                    "dayOfWeek" : "THU",
+                    "time" : timeByDay[3],
+                },{
+                    "dayOfWeek" : "FRI",
+                    "time" : timeByDay[4],
+                },{
+                    "dayOfWeek" : "SAT",
+                    "time" : timeByDay[5],
+                },{
+                    "dayOfWeek" : "SUN",
+                    "time" : timeByDay[6],
+                }]
+        };
+
+        // 멤버 투표 생성 요청
+        memberVote(navigate, teamName, teamId, memberId, timeRequests, divisorMinutes, timeResponses, numberOfMember);
     }
 
     return (

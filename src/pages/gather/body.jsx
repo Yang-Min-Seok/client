@@ -1,4 +1,4 @@
-import { BodyDiv, Topper, GatheringBox, Refresh } from "./style";
+import { BodyDiv, GatheringBox, Refresh } from "./style";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getTeamInfo, getTeamResult } from "../../apis/Apis";
 import { useCallback, useState, useEffect } from "react";
@@ -10,6 +10,7 @@ function Body() {
     const teamId = location.state.teamId;
     const teamName = location.state.teamName;
     const isLeader = location.state.isLeader;
+    const memberId = location.state.memberId;
 
     const [ numberOfSubmit, setNumberOfSubmit ] = useState(0);
     const [ numberOfMember, setNumberOfMember ] = useState(0);
@@ -28,8 +29,8 @@ function Body() {
 
     const navigate = useNavigate();
     const onClick = useCallback(async () => {
-        refreshEvent()
-        await getTeamInfo(navigate, teamId, teamName, isLeader).then((response) => {
+        refreshEvent();
+        await getTeamInfo(navigate, teamId, teamName, isLeader, memberId).then((response) => {
             setNumberOfSubmit(response[0])
             setNumberOfMember(response[1])
         });
@@ -52,7 +53,7 @@ function Body() {
         // 올바르면
         else{
              // 팀 결과 조회
-            getTeamResult(navigate, teamId, authCode, teamName, isLeader);
+            getTeamResult(navigate, teamId, authCode, teamName, isLeader, memberId);
         }
     }
 
